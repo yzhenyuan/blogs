@@ -17,12 +17,8 @@ module.exports = {
           { text: "总结", link: "/pages/flow.md" },
         ],
         sidebarDepth: 2, //侧边栏深度
-        sidebar: 
-        // [
-        //     ["/pages/flow.md", "思路"],
-        // ],
-        {
-          "/pages/": [
+        sidebar: {
+          "/node/": [
             {
               title: "Node",
               collapsable: false,
