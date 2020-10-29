@@ -42,7 +42,7 @@ module.exports = {
         // 默认是 false, 设置为 true 来启用
         editLinks: true,
         // 默认为 "Edit this page"
-        editLinkText: "在 Github 上编辑此页",
+        // editLinkText: "在 Github 上编辑此页",
         smoothScroll: true, //页面滚动效果
         lastUpdated: "最后更新" // string | boolea
       },
