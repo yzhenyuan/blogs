@@ -1,6 +1,6 @@
 module.exports = {
     base: "/blogs/", //目录根地址，应与Github仓库名字相同
-    title: " blogs", // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
+    title: "日志", // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
     description: "创建 VuePress + GithubPages + TravisCI 在线文档", // meta 中的描述文字，用于SEO
     // head: [
     //   [
@@ -14,12 +14,24 @@ module.exports = {
     themeConfig: {
         nav: [
           //链接页面链接的根地址为/docs
-          { text: "思路", link: "/pages/flow.md" }
+          { text: "思路", link: "/pages/flow.md" },
         ],
         sidebarDepth: 2, //侧边栏深度
-        sidebar: [
-            ["/pages/flow.md", "思路"],
-        ],
+        sidebar: 
+        // [
+        //     ["/pages/flow.md", "思路"],
+        // ],
+        {
+          "/blog/node/": [
+            {
+              title: "Node",
+              collapsable: false,
+              children: [
+                "node总结"
+              ],
+            },
+          ]
+        },
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
         repo: "yzhenyuan/blogs",
         // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
