@@ -22,7 +22,7 @@ module.exports = {
         //     ["/pages/flow.md", "思路"],
         // ],
         {
-          "/pages/": [
+          "/pages/blogs/": [
             {
               title: "Node",
               collapsable: false,
