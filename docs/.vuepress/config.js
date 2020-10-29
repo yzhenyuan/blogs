@@ -14,7 +14,7 @@ module.exports = {
     themeConfig: {
         nav: [
           //链接页面链接的根地址为/docs
-          { text: "思路", link: "/pages/flow.md" },
+          { text: "总结", link: "/pages/flow.md" },
         ],
         sidebarDepth: 2, //侧边栏深度
         sidebar: 
@@ -22,12 +22,12 @@ module.exports = {
         //     ["/pages/flow.md", "思路"],
         // ],
         {
-          "/blog/node/": [
+          "/blog/": [
             {
               title: "Node",
               collapsable: false,
               children: [
-                "node总结"
+                "node-1"
               ],
             },
           ]
