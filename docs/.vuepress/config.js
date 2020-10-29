@@ -27,7 +27,7 @@ module.exports = {
               title: "Node",
               collapsable: false,
               children: [
-                "node-1"
+                "node-1.md"
               ],
             },
           ]
