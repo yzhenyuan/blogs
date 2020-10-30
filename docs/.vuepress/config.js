@@ -52,11 +52,11 @@ module.exports = {
         // 假如文档不是放在仓库的根目录下：
         docsDir: "docs/pages",
         // 假如文档放在一个特定的分支下：
-        docsBranch: "master",
+        docsBranch: "main",
         // 默认是 false, 设置为 true 来启用
-        editLinks: true,
+        // editLinks: true,
         // 默认为 "Edit this page"
-        // editLinkText: "在 Github 上编辑此页",
+        editLinkText: "源码地址",
         smoothScroll: true, //页面滚动效果
         lastUpdated: "最后更新" // string | boolea
       },
