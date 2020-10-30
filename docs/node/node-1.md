@@ -37,7 +37,7 @@ Event Loop 事件循环，Thread Pool 线程池都是由 Libuv 提供，Libuv �
 
 异步编程是 Node.js 的一大特色，掌握好 Node.js 的异步编程是每个 Node.js 开发者必备的技能。
 
-### 1、异步 IO 的好处
+1、异步 IO 的好处
 
 - 前端通过异步 IO 可以消除阻塞。
 - 请求耗时少，假如有两个请求 A 和 B，那么异步 IO 用时为：Max（A+B）。同步则为 A+B，请求越多差距越大。
@@ -45,7 +45,7 @@ Event Loop 事件循环，Thread Pool 线程池都是由 Libuv 提供，Libuv �
 - Node.js 适用于 IO 密集型，而不适用于 CPU 密集型。
 - 并不是所有都用异步任务好，遵循一个公式： s= (Ws+Wp)/(Ws+Wp/p) Ws 表示同步任务，Wp 表示异步任务，p 表示处理器的数量。
 
-### 2、Node.js 对异步 IO 的实现
+2、Node.js 对异步 IO 的实现
 
 我们来看一下 Node.js 异步 IO 实现图：
 
@@ -110,7 +110,7 @@ Event Loop 事件循环，Thread Pool 线程池都是由 Libuv 提供，Libuv �
 - Libuv 在 Windows 下基于 IOCP 实现。
   :::
 
-### 3、常用的异步 IO 使用方式
+3、常用的异步 IO 使用方式
 
 - 使用 step，q，async 等异步控制库。
 - 使用 Promise 处理异步。
@@ -166,7 +166,7 @@ Node.js 端一般不会直接当成项目后端来使用，而是当成一个 BF
 - Java 服务器将数据库访问结果返回给 Node.js 层。
 - Node.js 层将结果返回给用户。
 
-#### Node.js Web 端应用程序部署流程
+Node.js Web 端应用程序部署流程
 
 - 单元测试。
 - 压力测试，性能分析工具找 Bug。

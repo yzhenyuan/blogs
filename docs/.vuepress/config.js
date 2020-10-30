@@ -27,22 +27,18 @@ module.exports = {
                 "node-2.md",
               ],
             },
-          ],
-          "/docker/": [
             {
               title: "Docker",
               collapsable: false,
               children: [
-                "docker-1.md",
+                "/docker/docker-1.md",
               ],
             },
-          ],
-          "/webpack/": [
             {
               title: "Webpack",
               collapsable: false,
               children: [
-                "webpack-1.md",
+                "/webpack/webpack-1.md",
               ],
             },
           ]
