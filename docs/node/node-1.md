@@ -10,18 +10,20 @@ Node.js 可用于多个领域的开发，例如：
 + 工具（gulp，webpack 等构架工具）
 + 物联网，硬件（ruff）
 
+Node的应用场景：
+1. Node.js 是 Javascript 在服务端的运行环境，
+2. 构建在 chrome 的 V8 引擎之上，
+3. 基于事件驱动、非阻塞I/O模型，
+4. 充分利用操作系统提供的异步 I/O 进行多任务的执行，适合于 I/O 密集型的应用场景，
+5. 因为异步，程序无需阻塞等待结果返回，而是基于回调通知的机制，原本同步模式等待的时间，则可以用来处理其它任务
+6. 适合于**高并发应用场景**
 
-本文主要通过以下几点来梳理一下 Node.js。
 
-- Node.js 基础
-- Node.js 异步编程
-- Node.js 内存管理与优化
-- Node.js 测试与部署
-## 1、node应该要知道的基础知识
+## Node.js 概念
 
-## Node.js 基础
+**Node.js 是基于 Chrome V8 引擎构建的，由事件循环（Event Loop）分发 I/O 任务，最终工作线程（Work Thread）将任务丢到线程池（Thread Pool）里去执行，而事件循环只要等待执行结果就可以了。**
 
-**Node.js 是基于 Chrome V8 引擎构建的，由事件循环（Event Loop）分发 I/O 任务，最终工作线程（Work Thread）将任务丢到线程池（Thread Pool）里去执行，而事件循环只要等待执行结果就可以了。我们先来看一下 Node.js 早期的架构图。**
+我们先来看一下 Node.js 早期的架构图。
 
 
 - **Node.js Bindings 层** 将 Chrome V8 等暴露的 C/C++ 接口转成 JavaScript Api，并且结合这些 Api 编写了 Node.js 标准库，所有这些 Api 统称为 Node.js SDK。
@@ -37,7 +39,7 @@ Event Loop 事件循环，Thread Pool 线程池都是由 Libuv 提供，Libuv �
 
 异步编程是 Node.js 的一大特色，掌握好 Node.js 的异步编程是每个 Node.js 开发者必备的技能。
 
-### 异步 IO 的好处
+### 1、异步 IO 的好处
 
 - 前端通过异步 IO 可以消除阻塞。
 - 请求耗时少，假如有两个请求 A 和 B，那么异步 IO 用时为：Max（A+B）。同步则为 A+B，请求越多差距越大。
@@ -45,7 +47,7 @@ Event Loop 事件循环，Thread Pool 线程池都是由 Libuv 提供，Libuv �
 - Node.js 适用于 IO 密集型，而不适用于 CPU 密集型。
 - 并不是所有都用异步任务好，遵循一个公式： s= (Ws+Wp)/(Ws+Wp/p) Ws 表示同步任务，Wp 表示异步任务，p 表示处理器的数量。
 
-### Node.js 对异步 IO 的实现
+### 2、Node.js 对异步 IO 的实现
 
 我们来看一下 Node.js 异步 IO 实现图：
 
@@ -58,7 +60,7 @@ Event Loop 事件循环，Thread Pool 线程池都是由 Libuv 提供，Libuv �
 - Libuv 将返回结果通过 Node.js Bindings 返回给 V8。
 - V8 再将结果返回给应用程序。
 
-Libuv 实现了 Node.js 中的 Eventloop ，主要有以下几个阶段：
+**Libuv** 实现了 Node.js 中的 Eventloop ，主要有以下几个阶段：
 
 ```js
    ┌───────────────────────────┐
@@ -68,7 +70,7 @@ Libuv 实现了 Node.js 中的 Eventloop ，主要有以下几个阶段：
 │  │     pending callbacks     │
 │  └─────────────┬─────────────┘
 │  ┌─────────────┴─────────────┐
-│  │       idle, prepare       │
+│  │       idle, prepare       │<--------「
 │  └─────────────┬─────────────┘      ┌───────────────┐
 │  ┌─────────────┴─────────────┐      │   incoming:   │
 │  │           poll            │<─────┤  connections, │
@@ -106,7 +108,7 @@ Libuv 实现了 Node.js 中的 Eventloop ，主要有以下几个阶段：
 - Libuv 在 Windows 下基于 IOCP 实现。
   :::
 
-### 常用的异步 IO 使用方式
+### 3、常用的异步 IO 使用方式
 
 - 使用 step，q，async 等异步控制库。
 - 使用 Promise 处理异步。

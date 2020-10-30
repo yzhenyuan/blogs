@@ -1,7 +1,7 @@
 module.exports = {
     base: "/blogs/", //目录根地址，应与Github仓库名字相同
-    title: "日志", // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
-    description: "创建 VuePress + GithubPages + TravisCI 在线文档", // meta 中的描述文字，用于SEO
+    title: "note", // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
+    description: "主要用来总结、整理一些学过的、看过的视频和博客", // meta 中的描述文字，用于SEO
     // head: [
     //   [
     //     "link",
@@ -25,6 +25,15 @@ module.exports = {
               children: [
                 "node-1.md",
                 "node-2.md",
+              ],
+            },
+          ],
+          "/docker/": [
+            {
+              title: "Docker",
+              collapsable: false,
+              children: [
+                "docker-1.md",
               ],
             },
           ]
