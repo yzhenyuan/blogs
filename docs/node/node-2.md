@@ -1,5 +1,5 @@
-# 进程和线
-## 程是操作系统的基本概念
+# Node的进程和线程
+## 进程是操作系统的基本概念
 1. 计算机的核心是CPU，它承担了所有的计算任务。它就像一座工厂，时刻在运行。**（CPU）**
 2. 假定工厂的电力有限，一次只能供给一个车间使用。也就是说，一个车间开工的时候，其他车间都必须停工。背后的含义就是，**单个CPU一次只能运行一个任务。**
 3. 进程就好比工厂的车间，它代表CPU所能处理的单个任务。任一时刻，CPU总是运行一个进程，其他进程处于非运行状态。**（进程）**
@@ -72,15 +72,15 @@ Javascript是单线程的, 那么为什么Javascript要是单线程的？
 
 
 
-# nodejs中的进程和线程
+# Node中的进程和线程
 
-## Node.js 中的进程 Process
+## Node.js 中的进程 `Process`
 1. Node.js 中的进程 Process 是一个全局对象，无需 require 直接使用
 2. 多进程就是进程的复制（fork），fork 出来的每个进程都拥有自己的独立空间地址、数据栈，一个进程无法访问另外一个进程里定义的变量、数据结构，只有建立了 IPC 通信，进程之间才可数据共享。
 + Node.js 在 v0.8 版本之后新增了Cluster 来实现多进程架构） ，即 多进程 + 单线程 模式。
 + 开启多进程不是为了解决高并发，主要是解决了单进程模式下 Node.js CPU 利用率不足的情况，充分利用多核 CPU 的性能。
 
-### node中进程的各种API：
+### Node中进程的各种API：
 + process.env：环境变量，通过 process.env.NODE_ENV 获取不同环境项目配置信息
 + process.nextTick：node的微任务
 + process.pid：获取当前进程id
@@ -98,7 +98,7 @@ Javascript是单线程的, 那么为什么Javascript要是单线程的？
 + child_process.spawn()：适用于返回**大量数据**，例如图像处理，二进制数据处理。
 + child_process.exec()：适用于**小量数据**，maxBuffer 默认值为 200 * 1024 超出这个默认值将会导致程序崩溃，数据量过大可采用 spawn。
 + child_process.execFile()：类似 child_process.exec()，区别是不能通过 shell 来执行，不支持像 I/O 重定向和文件查找这样的行为
-+ child_process.fork()： 衍生新的进程，进程之间是相互独立的，每个进程都有自己的 V8 实例、内存，系统资源是有限的，不建议衍生太多的子进程出来，通长根据系统** CPU 核心数**设置。
++ child_process.fork()： 衍生新的进程，进程之间是相互独立的，每个进程都有自己的 V8 实例、内存，系统资源是有限的，不建议衍生太多的子进程出来，通长根据系统**CPU 核心数**设置。
 ```
 const {spawn } = require('child_process');
 const child = spawn('pwd');
@@ -109,3 +109,23 @@ const child = spawn('pwd');
 + 如果进程不能被衍生（spawn）或者被 killed，error 事件被触发。
 + 当一个子进程的 stdio 关闭的时候，close 事件被触发。
 + message 事件是最重要的一个。当子进程使用 process.send() 函数发送信息的时候，message 事件会被触发。
+
+## Nodejs的线程
+### Node是单线程吗？
+其实只有js执行是单线程，I/O显然是其它线程
+
+
+Node是单线程，但是，Node 中最核心的是 v8 引擎，在 Node 启动后，会创建 v8 的实例，这个实例是多线程的。
++ 主线程：编译、执行代码。
++ 编译/优化线程：在主线程执行的时候，可以优化代码。
++ 分析器线程：记录分析代码运行时间，为 Crankshaft 优化代码执行提供依据。
++ 垃圾回收的几个线程。
+
+node 在 v10 过后提出了 worker_threads 模块，它是在一个单独的 node v8 实例进程里面，可以创建多个线程来进行搞 CPU 任务。
+
+
+参考：
+
+[Node.js 中的进程与线程](https://juejin.im/post/6844903908385488903#heading-22)  
+
+[worker_threads](https://zhuanlan.zhihu.com/p/79803453)

@@ -36,6 +36,15 @@ module.exports = {
                 "docker-1.md",
               ],
             },
+          ],
+          "/webpack/": [
+            {
+              title: "Webpack",
+              collapsable: false,
+              children: [
+                "webpack-1.md",
+              ],
+            },
           ]
         },
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
