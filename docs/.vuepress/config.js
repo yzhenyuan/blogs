@@ -18,7 +18,7 @@ module.exports = {
         ],
         sidebarDepth: 2, //侧边栏深度
         sidebar: {
-          "/node/": [
+          "/pages/": [
             {
               title: "Node",
               collapsable: false,
@@ -31,14 +31,14 @@ module.exports = {
               title: "Docker",
               collapsable: false,
               children: [
-                "/docker/docker-1.md",
+                "docker-1.md",
               ],
             },
             {
               title: "Webpack",
               collapsable: false,
               children: [
-                "/webpack/webpack-1.md",
+                "webpack-1.md",
               ],
             },
           ]
