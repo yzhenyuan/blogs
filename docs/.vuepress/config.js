@@ -32,6 +32,7 @@ module.exports = {
               collapsable: false,
               children: [
                 "docker-1.md",
+                "docker-k8s.md",
               ],
             },
             {
