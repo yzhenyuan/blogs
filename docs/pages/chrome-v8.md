@@ -1,4 +1,4 @@
-# JavaScript 引擎
+# V8 引擎
 V8 是由 Google 开发的开源 JavaScript 引擎，也被称为虚拟机，模拟实际计算机各种功能来实现代码的编译和执行。
 [理解 V8 的字节码](https://zhuanlan.zhihu.com/p/28590489)
 + V8的执行机制
