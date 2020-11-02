@@ -138,13 +138,13 @@ Node.js 采用 V8 的 分代式垃圾回收策略，将内存分为**新生代�
 
 由于 Node.js 单线层的原因，所以 Node.js 的调试和部署特别重要，因为一旦出错，整个应用程序就挂了。
 
-### Node.js 调试
+#### Node.js 调试
 
 - node --inspect app.js
   - 打开浏览器进行调试：chrome://inspect/#devices
 - 使用 vscode 自带的调试。
 
-### Node.js 部署
+#### Node.js 部署
 
 Node.js 端一般不会直接当成项目后端来使用，而是当成一个 BFF 层来使用。具体要怎么架构呢？
 

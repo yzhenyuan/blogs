@@ -24,7 +24,7 @@ module.exports = {
               collapsable: false,
               children: [
                 "node-1.md",
-                "node-2.md",
+                "node-process.md",
               ],
             },
             {
