@@ -45,7 +45,7 @@ module.exports = {
               title: "Chrome",
               collapsable: false,
               children: [
-                "chrome-v8",
+                "chrome-v8.md",
               ],
             },
             
