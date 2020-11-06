@@ -12,13 +12,37 @@ module.exports = {
         lineNumbers: true //是否在每个代码块的左侧显示行号
     },
     themeConfig: {
+      sidebar: 'auto',
         nav: [
           //链接页面链接的根地址为/docs
           { text: "总结", link: "/pages/flow.md" },
+          { text: "分类",ariaLabel: 'Language Menu', items: [
+            { text: 'Chrome', link: '/Chrome/chrome-v8.md' },
+            { text: 'NodeJS', link: '/NodeJS/node-1.md' },
+            { text: 'Webpack', link: '/Webpack/webpack-1.md' },
+          ]},
         ],
         sidebarDepth: 2, //侧边栏深度
         sidebar: {
-          "/pages/": [
+          "/Chrome/":[
+            {
+              title: "Chrome",
+              collapsable: false,
+              children: [
+                "chrome-v8.md",
+              ],
+            },
+          ],
+          "/webpack/":[
+            {
+              title: "Webpack",
+              collapsable: false,
+              children: [
+                "webpack-1.md",
+              ],
+            },
+          ],
+          "/NodeJS/":[
             {
               title: "Node",
               collapsable: false,
@@ -27,6 +51,8 @@ module.exports = {
                 "node-process.md",
               ],
             },
+          ],
+          "/pages/": [
             {
               title: "Docker",
               collapsable: false,
@@ -35,21 +61,7 @@ module.exports = {
                 "docker-k8s.md",
               ],
             },
-            {
-              title: "Webpack",
-              collapsable: false,
-              children: [
-                "webpack-1.md",
-              ],
-            },
-            {
-              title: "Chrome",
-              collapsable: false,
-              children: [
-                "chrome-v8.md",
-              ],
-            },
-            
+
           ]
         },
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
