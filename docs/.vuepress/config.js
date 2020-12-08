@@ -1,3 +1,5 @@
+const Nav = require('./nav')
+const NavList = require('./navList')
 module.exports = {
     base: "/blogs/", //目录根地址，应与Github仓库名字相同
     title: "note", // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
@@ -13,57 +15,9 @@ module.exports = {
     },
     themeConfig: {
       sidebar: 'auto',
-        nav: [
-          //链接页面链接的根地址为/docs
-          { text: "总结", link: "/pages/flow.md" },
-          { text: "分类",ariaLabel: 'Language Menu', items: [
-            { text: 'Chrome', link: '/Chrome/chrome-v8.md' },
-            { text: 'NodeJS', link: '/NodeJS/node-1.md' },
-            { text: 'Webpack', link: '/Webpack/webpack-1.md' },
-          ]},
-        ],
-        sidebarDepth: 2, //侧边栏深度
-        sidebar: {
-          "/Chrome/":[
-            {
-              title: "Chrome",
-              collapsable: false,
-              children: [
-                "chrome-v8.md",
-              ],
-            },
-          ],
-          "/webpack/":[
-            {
-              title: "Webpack",
-              collapsable: false,
-              children: [
-                "webpack-1.md",
-              ],
-            },
-          ],
-          "/NodeJS/":[
-            {
-              title: "Node",
-              collapsable: false,
-              children: [
-                "node-1.md",
-                "node-process.md",
-              ],
-            },
-          ],
-          "/pages/": [
-            {
-              title: "Docker",
-              collapsable: false,
-              children: [
-                "docker-1.md",
-                "docker-k8s.md",
-              ],
-            },
-
-          ]
-        },
+        nav: Nav,
+        sidebarDepth: 5, //侧边栏深度
+        sidebar: NavList,
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
         repo: "yzhenyuan/blogs",
         // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
@@ -77,7 +31,7 @@ module.exports = {
         // 默认是 false, 设置为 true 来启用
         // editLinks: true,
         // 默认为 "Edit this page"
-        editLinkText: "源码地址",
+        // editLinkText: "源码地址",
         smoothScroll: true, //页面滚动效果
         lastUpdated: "最后更新" // string | boolea
       },
