@@ -4,19 +4,19 @@ module.exports = {
     base: "/blogs/", //目录根地址，应与Github仓库名字相同
     title: "note", // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
     description: "主要用来总结、整理一些学过的、看过的视频和博客", // meta 中的描述文字，用于SEO
-    // head: [
-    //   [
-    //     "link",
-    //     { rel: "icon", href: "/gamepad_game_128px.ico" } //浏览器的标签栏的网页图标,基地址/docs/.vuepress/public
-    //   ]
-    // ],
+    head: [
+      [
+        "link",
+        { rel: "icon", href: "/favicon.ico" } //浏览器的标签栏的网页图标,基地址/docs/.vuepress/public
+      ]
+    ],
     markdown: {
         lineNumbers: true //是否在每个代码块的左侧显示行号
     },
     themeConfig: {
       sidebar: 'auto',
         nav: Nav,
-        sidebarDepth: 5, //侧边栏深度
+        sidebarDepth: 6, //侧边栏深度
         sidebar: NavList,
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
         repo: "yzhenyuan/blogs",
