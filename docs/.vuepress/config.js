@@ -1,9 +1,10 @@
 const Nav = require('./nav')
 const NavList = require('./navList')
 module.exports = {
+  theme: 'reco',
   base: "/blogs/", //目录根地址，应与Github仓库名字相同
-  title: "→ 💫 ← ", // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
-  description: "前端,webpack,vue,react,node,gulp,web,web前端,HTTP", // meta 中的描述文字，用于SEO
+  title: "🦍", // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
+  description: "Welcome", // meta 中的描述文字，用于SEO
   head: [
     [
       "link",
@@ -17,6 +18,10 @@ module.exports = {
     lineNumbers: true //是否在每个代码块的左侧显示行号
   },
   themeConfig: {
+    type: 'blog',
+    mode: 'light',
+    codeTheme: 'tomorrow', // default 'tomorrow'
+    modePicker: false,
     sidebar: 'auto',
     nav: Nav,
     sidebarDepth: 6, //侧边栏深度

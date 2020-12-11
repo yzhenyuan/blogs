@@ -3,7 +3,7 @@ const BasicsJSList = ["js/js-1.md",]
 const ChromeList = ["Chrome-1.md","chrome-v8.md", ]
 const webpackList = ["webpack-1.md"]
 const NodeJSList = [ "node-1.md", "node-process.md", ]
-const pagesList = ["docker-1.md", "docker-k8s.md","reg/reg-1.md",]
+const pagesList = ["docker-1.md", "docker-k8s.md","reg/reg-1.md","Design.md"]
 const vueList =["vue2-1.md", "vue2-2.md", "vdom-1.md", "vdom-2.md",]
 const AlgorithmList =["algorithm-1.md",]
 const Network = ['net/net-module.md']
@@ -13,7 +13,7 @@ const safeList = ['safe-1.md']
 module.exports = {
     "/Basics/": [
         { title: "基础知识", children: BasicsList,},
-        { title: "js", children: BasicsJSList,},
+        { title: "JavaScript", children: BasicsJSList,},
     ],
     "/Chrome/": [
         { title: "Chrome", children: ChromeList, },

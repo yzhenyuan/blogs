@@ -8,15 +8,16 @@
     margin-left: 4rem !important;
 }
 h1{
-    font-size:1.2rem;
-    line-height: 2em;
-    border-bottom:1px solid #ccc
+    line-height: 2em !important;
+    border-bottom:1px solid #ccc;
+    margin:0 !important
 }
 h1::before{
-    content:"🏃"
+    content:"⚔ ";
+    font-size:5rem;
 }
 h1::after{
-    content:" 🏃"
+    content:" "
 }
 h2::after{
     content:" ☞ "
@@ -35,7 +36,7 @@ h3,h4,h5,h6{
 .sidebar-heading{
 }
 p, ul, ol{
-    line-height: 1.5;
+    line-height: 1.5 !important;
 }
 .theme-default-content code{
     color: #cc1031;
@@ -56,11 +57,20 @@ blockquote{
     color:#73472d
 }
 
-.no-sidebar>header{
-    display: none;
+.no-sidebar h1, .home-blog-wrapper{
+    display: none !important;
 }
 
-#main-title,.home .features,.description, .home .footer{
+#main-title, .footer{
     opacity: 0 !important;
 }
 
+
+.navbar .site-name{
+    font-size:3rem !important;
+    padding-left:30px
+}
+
+.sidebar-sub-headers a.sidebar-link.active{
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,0.1), 0 0 5px rgba(0,0,0,0.1),0 1px 3px rgba(0,0,0,0.3),0 3px 5px rgba(0,0,0,0.2),0 5px 10px rgba(0,0,0,0.25);
+}

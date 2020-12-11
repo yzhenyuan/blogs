@@ -1,7 +1,7 @@
 ---
 home: true
 # heroImage: https://cdn-image.tsanfer.xyz/img/vuepress_githubpages_travisCI.svg
-actionText: 去看看 → 🐒
+actionText: 快速上手 →
 actionLink: /pages/flow.md
 features:
   - title: 简洁至上
