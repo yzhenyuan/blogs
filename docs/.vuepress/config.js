@@ -3,7 +3,7 @@ const NavList = require('./navList')
 module.exports = {
   base: "/blogs/", //目录根地址，应与Github仓库名字相同
   title: "→ 💫 ← ", // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
-  description: "主要用来总结、整理一些学过的、看过的视频和博客", // meta 中的描述文字，用于SEO
+  description: "前端,webpack,vue,react,node,gulp,web,web前端,HTTP", // meta 中的描述文字，用于SEO
   head: [
     [
       "link",

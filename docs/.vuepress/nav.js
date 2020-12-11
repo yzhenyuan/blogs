@@ -9,16 +9,12 @@ module.exports = [
     ]},
     { text: "框架" , items: [
       { text: 'Vue', link: '/vue/vue2-1.md' },
-      { text: 'React', link: '/vue/vue2-1.md' },
     ]},
     { text: "工程化" , items: [
       { text: 'Webpack', link: '/Webpack/webpack-1.md' },
-      { text: 'TypeScript', link: '/Webpack/webpack-1.md' },
-      { text: 'gulp', link: '/Webpack/webpack-1.md' },
     ]},
     { text: "NodeJS", items: [
       { text: 'NodeJS', link: '/NodeJS/node-1.md' },
-      { text: 'Koa2', link: '/NodeJS/node-1.md' },
     ]},
     { text: "Chrome" , items: [
       { text: 'V8', link: '/Chrome/chrome-v8.md' },
@@ -36,7 +32,7 @@ module.exports = [
     ]},
     { text: "扩展" , items: [
       { text: 'Docker', link: '/pages/docker-1.md' },
-      { text: '设计模式', link: '/pages/reg/reg-1.md' },
+      { text: '设计模式', link: '/pages/Design.md' },
       { text: '正则', link: '/pages/reg/reg-1.md' },
     ]},
   ]
