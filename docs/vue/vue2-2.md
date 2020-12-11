@@ -19,7 +19,7 @@ Object.defineProperty(obj, key, {
   })
 ```
 
-## 1. object的变化侦测
+## 一、 object的变化侦测
 ### 1.1依赖收集
 整个流程是这样的：通过`Object.defineProperty`可以监听对象，我们知道了数据什么时候会变化，数据发生变化之后我们要通知视图去更新。
 
@@ -124,7 +124,7 @@ export function parsePath (path) {
 在创建 Watcher实例 的过程中会自动的把自己添加到这个数据对应的依赖管理器中，
 以后这个 Watcher实例 就代表这个依赖，当数据变化时，我们就通知 Watcher实例 ，由 Watcher实例 再去通知真正的依赖。
 
-## 2. Array的变化侦测
+## 二、 Array的变化侦测
 因为对于Object数据我们使用的是JS提供的对象原型上的方法Object.defineProperty，而这个方法是对象原型上的，所以Array无法使用这个方法，所以我们需要对Array型数据设计一套另外的变化侦测机制,
 
 ### 2.1Array型数据怎么收集
@@ -194,5 +194,5 @@ methodsToPatch.forEach(function (method) {
 })
 ```
 只要知道了Array数据什么时候发生变化，那基本逻辑就回到了之前的 Dep、Watcher
-## 3. 不足之处
+## 三、 不足之处
 `Object.defineProperty`方法仅仅只能观测到object数据的取值及设置值，当我们向object数据里添加一对新的key/value或删除一对已有的key/value时，它是无法观测到的，导致当我们对object数据添加或删除值时，无法通知依赖，无法驱动视图进行响应式更新，为了解决这一问题，Vue增加了两个全局API:Vue.set和Vue.delete

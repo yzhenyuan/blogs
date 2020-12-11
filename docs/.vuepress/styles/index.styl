@@ -1,0 +1,66 @@
+@font-face {
+	font-family:'frozen'; 
+	src:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/Ice%20kingdom%20-%20Bold%20-%20Por%20Kustren.woff');
+}
+
+.theme-default-content{
+    padding: 1rem .5rem !important;
+    margin-left: 4rem !important;
+}
+h1{
+    font-size:1.2rem;
+    line-height: 2em;
+    border-bottom:1px solid #ccc
+}
+h1::before{
+    content:"🏃"
+}
+h1::after{
+    content:" 🏃"
+}
+h2::after{
+    content:" ☞ "
+}
+.sidebar-heading::before{
+    
+}
+
+h2,h1{
+    font-family:"frozen";
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,0.1), 0 0 5px rgba(0,0,0,0.1),0 1px 3px rgba(0,0,0,0.3),0 3px 5px rgba(0,0,0,0.2),0 5px 10px rgba(0,0,0,0.25);
+}
+h3,h4,h5,h6{
+    font-family:"frozen";
+}
+.sidebar-heading{
+}
+p, ul, ol{
+    line-height: 1.5;
+}
+.theme-default-content code{
+    color: #cc1031;
+    background-color: rgba(27,31,35,0.1);
+    border-radius: 5px;
+}
+.navbar{
+    box-shadow: 0 0px 10px #eee;
+}
+
+.navbar .links{
+    right: 5.5rem !important;
+}
+strong{
+    color:#5e0ab7
+}
+blockquote{
+    color:#73472d
+}
+
+.no-sidebar>header{
+    display: none;
+}
+
+#main-title,.home .features,.description, .home .footer{
+    opacity: 0 !important;
+}
+
