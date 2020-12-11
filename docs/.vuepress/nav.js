@@ -27,8 +27,6 @@ module.exports = [
     ]},
     { text: "数据结构&算法" , items: [
       { text: '导论', link: '/Algorithm/algorithm-1.md' },
-      { text: '数据结构', link: '/Algorithm/algorithm-1.md' },
-      { text: '算法', link: '/Algorithm/algorithm-1.md' },
     ]},
     { text: "扩展" , items: [
       { text: 'Docker', link: '/pages/docker-1.md' },
