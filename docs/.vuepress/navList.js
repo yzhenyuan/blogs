@@ -6,9 +6,9 @@ const NodeJSList = [ "node-1.md", "node-process.md", ]
 const pagesList = ["docker-1.md", "docker-k8s.md","reg/reg-1.md",]
 const vueList =["vue2-1.md", "vue2-2.md", "vdom-1.md", "vdom-2.md",]
 const AlgorithmList =["algorithm-1.md",]
-const Network = ['/Network/net/net-module.md']
+const Network = ['net/net-module.md']
 const NetworkList = ['net/net-http.md','net/net-http-cache.md',]
-const safeList = ['safe-1.md','']
+const safeList = ['safe-1.md']
 // collapsable: false,
 module.exports = {
     "/Basics/": [
