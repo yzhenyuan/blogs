@@ -1,15 +1,16 @@
 const BasicsList = ["html-1.md","css-1.md"]
 const BasicsJSList = ["js/js-1.md",]
 const ChromeList = ["Chrome-1.md","chrome-v8.md", ]
-const webpackList = ["webpack-1.md"]
-const NodeJSList = [ "node-1.md", "node-process.md", ]
+const webpackList = ["webpack-module.md","webpack-1.md","webpack-babel.md",]
+const NodeJSList = [ "node-1.md", "node-process.md","node-koa.md" ]
+// const NodeJSKoaList = [ , ]
 const pagesList = ["docker-1.md", "docker-k8s.md","reg/reg-1.md","Design.md"]
 const vueList =["vue2-1.md", "vue2-2.md", "vdom-1.md", "vdom-2.md",]
 const reactList = ['/React/react-1.md']
 const AlgorithmList =["algorithm-1.md",]
 const Network = ['net/net-module.md']
 const NetworkList = ['net/net-http.md','net/net-http-cache.md',]
-const safeList = ['safe-1.md']
+const safeList = ['safe-1.md','safe-xss.md','safe-xsrf.md']
 // collapsable: false,
 module.exports = {
     "/Basics/": [
@@ -23,7 +24,8 @@ module.exports = {
         { title: "Webpack", children: webpackList, }, 
     ],
     "/NodeJS/": [
-        { title: "Node", children: NodeJSList, }, 
+        { title: "了解Node", children: NodeJSList, }, 
+        // { title: "Koa",sidebarDepth: 3, children: NodeJSKoaList, }, 
     ],
     "/pages/": [
         { title: "扩展", children: pagesList, },

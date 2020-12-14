@@ -10,7 +10,7 @@
 OSI模型，即开放式通信系统互联参考模型(Open System Interconnection,OSI/RM,Open Systems Interconnection Reference Model)，是国际标准化组织(ISO)提出的一个试图使各种计算机在世界范围内互连为网络的标准框架，简称OSI。
 这是一种事实上被TCP/IP 4层模型淘汰的协议。**在当今世界上没有大规模使用**。
 
-![OSI七层模型图](net-1.jpeg)
+![OSI七层模型图](../../.vuepress/public/pages/net-1.jpeg)
 <!-- ![OSI七层模型图](https://user-gold-cdn.xitu.io/2019/8/31/16ce7c55e2003c1b?imageslim) -->
 
 ### 应用层

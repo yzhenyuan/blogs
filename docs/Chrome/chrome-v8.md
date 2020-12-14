@@ -42,8 +42,9 @@ V8 是一个非常复杂的项目，有超过 100 万行 C++代码。它由许�
 + Orinoco：garbage collector，垃圾回收模块，负责将程序不再需要的内存空间回收。
 
 >简单地说，Parser 将 JS 源码转换为 AST，然后 Ignition 将 AST 转换为 Bytecode，最后 TurboFan 将 Bytecode 转换为经过优化的 Machine Code(实际上是汇编代码)。
+
 Parser，Ignition 以及 TurboFan 可以将 JS 源码编译为汇编代码，其流程图如下：
-![Parser，Ignition 以及 TurboFan 可以将 JS 源码编译为汇编代码，其流程图如下：](v8.webp)
+![Parser，Ignition 以及 TurboFan 可以将 JS 源码编译为汇编代码，其流程图如下：](../.vuepress/public/pages/v8.png)
 + 如果函数没有被调用，则 V8 不会去编译它。
 + 如果函数只被调用 1 次，则 Ignition 将其编译 Bytecode 就直接解释执行了。TurboFan 不会进行优化编译，因为它需要 Ignition 收集函数执行时的类型信息。这就要求函数至少需要执行 1 次，TurboFan 才有可能进行优化编译。
 + 如果函数被调用多次，则它有可能会被识别为热点函数，且 Ignition 收集的类型信息证明可以进行优化编译的话，这时 TurboFan 则会将 Bytecode 编译为 Optimized Machine Code（已优化的机器码），以提高代码的执行性能。
@@ -56,7 +57,7 @@ Parser，Ignition 以及 TurboFan 可以将 JS 源码编译为汇编代码，其
 在 V8 出现之前，所有的 JavaScript 虚拟机所采用的都是解释执行的方式，这是 JavaScript 执行速度过慢的一个主要原因。而 V8 率先引入了即时编译（JIT）的双轮驱动的设计（混合使用编译器和解释器的技术），这是一种权衡策略，混合编译执行和解释执行这两种手段，给 JavaScript 的执行速度带来了极大的提升。V8 出现之后，各大厂商也都在自己的 JavaScript 虚拟机中引入了 JIT 机制，所以目前市面上 JavaScript 虚拟机都有着类似的架构。另外，V8 也是早于其他虚拟机引入了惰性编译、内联缓存、隐藏类等机制，进一步优化了 JavaScript 代码的编译执行效率。
 
 V8 执行一段 JavaScript 的流程图：
-![V8 执行一段 JavaScript 的流程图](v8-js.webp)
+![V8 执行一段 JavaScript 的流程图](../.vuepress/public/pages/v8-js.jpeg)
 
 V8 本质上是一个虚拟机，因为计算机只能识别二进制指令，所以要让计算机执行一段高级语言通常有两种手段：
 1. 第一种是将高级代码转换为二进制代码，再让计算机去执行；

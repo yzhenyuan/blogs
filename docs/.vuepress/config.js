@@ -6,13 +6,8 @@ module.exports = {
   title: "🦍", // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
   description: "Welcome", // meta 中的描述文字，用于SEO
   head: [
-    [
-      "link",
-      {
-        rel: "icon",
-        href: "/favicon.ico"
-      } //浏览器的标签栏的网页图标,基地址/docs/.vuepress/public
-    ]
+    ["link",{rel: "icon",href: "/vuepress/favicon.ico"} ],
+    ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
   ],
   markdown: {
     lineNumbers: true //是否在每个代码块的左侧显示行号
@@ -23,8 +18,9 @@ module.exports = {
     codeTheme: 'tomorrow', // default 'tomorrow'
     modePicker: false,
     sidebar: 'auto',
+    sidebarDepth: 3, //侧边栏深度
     nav: Nav,
-    sidebarDepth: 6, //侧边栏深度
+    displayAllHeaders: true, // 默认值：false
     sidebar: NavList,
     // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
     repo: "yzhenyuan/blogs",
@@ -46,6 +42,7 @@ module.exports = {
   plugins: [
     "@vuepress/medium-zoom", //zooming images like Medium（页面弹框居中显示）
     "@vuepress/nprogress", //网页加载进度条
+    'flowchart',
     "@vuepress/plugin-back-to-top" //返回页面顶部按钮
   ]
 };

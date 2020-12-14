@@ -10,5 +10,8 @@
   "scripts": {
     "docs:build": "vuepress build docs",
     "dev": "vuepress dev docs"
+  },
+  "devDependencies": {
+    "vuepress-plugin-flowchart": "^1.4.3"
   }
 }

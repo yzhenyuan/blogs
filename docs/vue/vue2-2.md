@@ -1,7 +1,7 @@
 # Vue的数据侦测机制
 数据侦测机制本质就是要知道什么时候数据被读取了，什么时候数据被修改了，JS为我们提供了`Object.defineProperty`方法，通过该方法我们就可以轻松的知道数据在什么时候发生变化
 
-```
+```js
 Object.defineProperty(obj, key, {
     enumerable: true,
     configurable: true,
@@ -38,7 +38,7 @@ Object.defineProperty(obj, key, {
 我们给每个数据都建一个依赖数组，谁依赖了这个数据我们就把谁放入这个依赖数组中。单单用一个数组来存放依赖的话，功能好像有点欠缺并且代码过于耦合。我们应该将依赖数组的功能扩展一下，更好的做法是我们应该为每一个数据都建立一个依赖管理器，把这个数据所有的依赖都管理起来。
 
 依赖管理器Dep类
-```
+```js
 // 源码位置：src/core/observer/dep.js
 export default class Dep {
   constructor () {
@@ -76,7 +76,7 @@ export default class Dep {
 虽然我们一直在说”谁用到了这个数据谁就是依赖“，但是这仅仅是在口语层面上，那么反应在代码上该如何来描述这个”谁“呢？
 
 在Vue中还实现了一个叫做Watcher的类，而Watcher类的实例就是我们上面所说的那个"谁"。换句话说就是：谁用到了数据，谁就是依赖，我们就为谁创建一个Watcher实例。在之后数据变化时，我们不直接去通知依赖更新，而是通知依赖对应的Watch实例，由Watcher实例去通知真正的视图。
-```
+```js
 export default class Watcher {
   constructor (vm,expOrFn,cb) {
     this.vm = vm;
@@ -133,7 +133,7 @@ export function parsePath (path) {
 其实Array型数据的依赖收集方式和Object数据的依赖收集方式相同，都是在getter中收集
 
 因为：在开发过程中我们的代码是这样写的
-```
+```js
 data(){
   return {
     arr:[1,2,3]
@@ -149,7 +149,7 @@ data(){
 
 我们试想一下，要想让Array型数据发生变化，那必然是操作了Array，而JS中提供的操作数组的方法就那么几种，我们可以把这些方法都重写一遍，在不改变原有功能的前提下，我们为其新增一些其他功能，例如下面这个例子：
 
-```
+```js
 let arr = [1,2,3]
 arr.push(4)
 Array.prototype.newPush = function(val){
@@ -163,7 +163,7 @@ arr.newPush(4)
 然后我们顺着这个思路去想：`Object.defineProperty`可以监听对象，那么也就可以监听Array.prototype的一些属性，然后我们就可以通过监听Array原型的一些方法来知道Array被操作了
 
 经过整理，Array原型中可以改变数组自身内容的方法有7个，分别是：push,pop,shift,unshift,splice,sort,reverse
-```
+```js
 // 源码位置：/src/core/observer/array.js
 
 const arrayProto = Array.prototype

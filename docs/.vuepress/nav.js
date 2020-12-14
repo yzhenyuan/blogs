@@ -12,11 +12,11 @@ module.exports = [
       { text: 'React', link: '/React/react-1.md' },
     ]},
     { text: "工程化" , items: [
+      { text: '模块化', link: '/Webpack/webpack-module.md' },
       { text: 'Webpack', link: '/Webpack/webpack-1.md' },
     ]},
-    { text: "NodeJS", items: [
-      { text: 'NodeJS', link: '/NodeJS/node-1.md' },
-    ]},
+    { text: "NodeJS",  link: "/NodeJS/node-1.md"
+    },
     { text: "Chrome" , items: [
       { text: 'V8', link: '/Chrome/chrome-v8.md' },
       { text: 'Chrome渲染机制', link: '/Chrome/Chrome-1.md' },
