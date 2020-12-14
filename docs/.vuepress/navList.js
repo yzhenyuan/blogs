@@ -5,6 +5,7 @@ const webpackList = ["webpack-1.md"]
 const NodeJSList = [ "node-1.md", "node-process.md", ]
 const pagesList = ["docker-1.md", "docker-k8s.md","reg/reg-1.md","Design.md"]
 const vueList =["vue2-1.md", "vue2-2.md", "vdom-1.md", "vdom-2.md",]
+const reactList = ['/React/react-1.md']
 const AlgorithmList =["algorithm-1.md",]
 const Network = ['net/net-module.md']
 const NetworkList = ['net/net-http.md','net/net-http-cache.md',]
@@ -29,6 +30,9 @@ module.exports = {
     ],
     "/vue/": [
         { title: "Vue原理解析", children: vueList, },
+    ],
+    "/React/": [
+        { title: "React原理解析", children: reactList, },
     ],
     "/Algorithm/":[
         { title: "数据结构与算法", children: AlgorithmList, },

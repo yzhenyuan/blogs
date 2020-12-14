@@ -9,6 +9,7 @@ module.exports = [
     ]},
     { text: "框架" , items: [
       { text: 'Vue', link: '/vue/vue2-1.md' },
+      { text: 'React', link: '/React/react-1.md' },
     ]},
     { text: "工程化" , items: [
       { text: 'Webpack', link: '/Webpack/webpack-1.md' },
