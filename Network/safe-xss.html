@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>跨站脚本攻击 XSS | 🦍</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/blogs/vuepress/favicon.ico">
+    <meta name="description" content="Welcome">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/blogs/assets/css/0.styles.99fdf9f1.css" as="style"><link rel="preload" href="/blogs/assets/js/app.407ef2da.js" as="script"><link rel="preload" href="/blogs/assets/js/4.8e2045fe.js" as="script"><link rel="preload" href="/blogs/assets/js/1.94e262a5.js" as="script"><link rel="preload" href="/blogs/assets/js/24.3a32ae87.js" as="script"><link rel="prefetch" href="/blogs/assets/js/10.a48fab36.js"><link rel="prefetch" href="/blogs/assets/js/11.9a18b38f.js"><link rel="prefetch" href="/blogs/assets/js/12.bb1ec8b0.js"><link rel="prefetch" href="/blogs/assets/js/13.3e57589a.js"><link rel="prefetch" href="/blogs/assets/js/14.a0f34a77.js"><link rel="prefetch" href="/blogs/assets/js/15.3f26f69c.js"><link rel="prefetch" href="/blogs/assets/js/16.f7b8afbb.js"><link rel="prefetch" href="/blogs/assets/js/17.4253c64b.js"><link rel="prefetch" href="/blogs/assets/js/18.9980579e.js"><link rel="prefetch" href="/blogs/assets/js/19.0dd50ed6.js"><link rel="prefetch" href="/blogs/assets/js/20.e3d7a792.js"><link rel="prefetch" href="/blogs/assets/js/21.452cb3e9.js"><link rel="prefetch" href="/blogs/assets/js/22.d9fc1d7c.js"><link rel="prefetch" href="/blogs/assets/js/23.1afc7257.js"><link rel="prefetch" href="/blogs/assets/js/25.0dbf9bf7.js"><link rel="prefetch" href="/blogs/assets/js/26.18b6f5a9.js"><link rel="prefetch" href="/blogs/assets/js/27.d32a0725.js"><link rel="prefetch" href="/blogs/assets/js/28.196c1806.js"><link rel="prefetch" href="/blogs/assets/js/29.2c33b1f8.js"><link rel="prefetch" href="/blogs/assets/js/30.f0a679aa.js"><link rel="prefetch" href="/blogs/assets/js/31.ba7a4166.js"><link rel="prefetch" href="/blogs/assets/js/32.b05f224e.js"><link rel="prefetch" href="/blogs/assets/js/33.94811f06.js"><link rel="prefetch" href="/blogs/assets/js/34.59ef42d2.js"><link rel="prefetch" href="/blogs/assets/js/35.acaf4e13.js"><link rel="prefetch" href="/blogs/assets/js/36.8224698b.js"><link rel="prefetch" href="/blogs/assets/js/37.3851cfb2.js"><link rel="prefetch" href="/blogs/assets/js/38.1ed56fa3.js"><link rel="prefetch" href="/blogs/assets/js/39.bdaff23f.js"><link rel="prefetch" href="/blogs/assets/js/40.27f8c6a2.js"><link rel="prefetch" href="/blogs/assets/js/41.4418986a.js"><link rel="prefetch" href="/blogs/assets/js/42.018d5271.js"><link rel="prefetch" href="/blogs/assets/js/5.95f117cb.js"><link rel="prefetch" href="/blogs/assets/js/6.60d6678d.js"><link rel="prefetch" href="/blogs/assets/js/7.cde6d0ce.js"><link rel="prefetch" href="/blogs/assets/js/8.b8efa7e8.js"><link rel="prefetch" href="/blogs/assets/js/9.dd1c76c7.js"><link rel="prefetch" href="/blogs/assets/js/vendors~flowchart.4a8a7c31.js">
+    <link rel="stylesheet" href="/blogs/assets/css/0.styles.99fdf9f1.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-2d5f533b><div data-v-2d5f533b><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-2d5f533b data-v-2d5f533b><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-2d5f533b data-v-2d5f533b><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>🦍</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>🦍</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-2d5f533b><header class="navbar" data-v-2d5f533b><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blogs/" class="home-link router-link-active"><!----> <span class="site-name">🦍</span></a> <div class="links"><!----> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      基础
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Basics/html-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Basics/css-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Basics/js/js-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Basics/performance-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  性能优化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      框架
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/vue/vue2-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/React/react-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  React
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      工程化
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Webpack/webpack-module.html" class="nav-link"><i class="iconfont undefined"></i>
+  模块化
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Webpack/webpack-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Webpack
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/NodeJS/node-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  NodeJS
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      Chrome
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Chrome/chrome-v8.html" class="nav-link"><i class="iconfont undefined"></i>
+  V8
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Chrome/Chrome-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Chrome渲染机制
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      网络&amp;安全
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Network/net/net-module.html" class="nav-link"><i class="iconfont undefined"></i>
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Network/net/net-http.html" class="nav-link"><i class="iconfont undefined"></i>
+  HTTP协议
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Network/safe-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  安全
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      数据结构&amp;算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Algorithm/algorithm-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  导论
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      扩展
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/pages/docker-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/Design.html" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/reg/reg-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  正则
+</a></li></ul></div></div> <a href="https://github.com/yzhenyuan/blogs" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask" data-v-2d5f533b></div> <aside class="sidebar" data-v-2d5f533b><div class="personal-info-wrapper" data-v-ca798c94 data-v-2d5f533b><!----> <h3 class="name" data-v-ca798c94>
+    🦍
+  </h3> <div class="num" data-v-ca798c94><div data-v-ca798c94><h3 data-v-ca798c94>0</h3> <h6 data-v-ca798c94>Article</h6></div> <div data-v-ca798c94><h3 data-v-ca798c94>0</h3> <h6 data-v-ca798c94>Tag</h6></div></div> <hr data-v-ca798c94></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      基础
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Basics/html-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Basics/css-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Basics/js/js-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Basics/performance-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  性能优化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      框架
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/vue/vue2-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/React/react-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  React
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      工程化
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Webpack/webpack-module.html" class="nav-link"><i class="iconfont undefined"></i>
+  模块化
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Webpack/webpack-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Webpack
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/NodeJS/node-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  NodeJS
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      Chrome
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Chrome/chrome-v8.html" class="nav-link"><i class="iconfont undefined"></i>
+  V8
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Chrome/Chrome-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Chrome渲染机制
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      网络&amp;安全
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Network/net/net-module.html" class="nav-link"><i class="iconfont undefined"></i>
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Network/net/net-http.html" class="nav-link"><i class="iconfont undefined"></i>
+  HTTP协议
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Network/safe-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  安全
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      数据结构&amp;算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Algorithm/algorithm-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  导论
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      扩展
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/pages/docker-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/Design.html" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/reg/reg-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  正则
+</a></li></ul></div></div> <a href="https://github.com/yzhenyuan/blogs" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav> <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>网络</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>HTTP协议</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>安全</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blogs/Network/safe-1.html" class="sidebar-link">前言</a></li><li><a href="/blogs/Network/safe-xss.html" aria-current="page" class="active sidebar-link">跨站脚本攻击 XSS</a></li><li><a href="/blogs/Network/safe-csrf.html" class="sidebar-link">跨站点请求伪造 csrf</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-2d5f533b><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e></h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>🦍</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-2d5f533b><main class="page" style="padding-right:0;"><div class="page-title" style="display:none;"><h1 class="title">跨站脚本攻击 XSS</h1> <div data-v-3b7f5bdf><i class="iconfont reco-account" data-v-3b7f5bdf><span data-v-3b7f5bdf>🦍</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default" style="display:none;"><h1 id="跨站脚本攻击-xss"><a href="#跨站脚本攻击-xss" class="header-anchor">#</a> 跨站脚本攻击 XSS</h1> <p>XSS 是跨站脚本攻击（Cross Site Scripting）的简写，但是从首写字母命名的方式来看，应该取名 CSS，但这样就和层叠样式表CSS重名了，所以取名为 XSS。</p> <p>XSS 攻击，一般是指<strong>攻击者通过在网页中注入恶意脚本</strong>，当用户浏览网页时，恶意脚本执行，控制用户浏览器行为的一种攻击方式。</p> <p>XSS 的本质是：恶意代码未经过滤，与网站正常的代码混在一起；浏览器无法分辨哪些脚本是可信的，导致恶意脚本被执行。</p> <h2 id="一、-xss-分类"><a href="#一、-xss-分类" class="header-anchor">#</a> 一、 XSS 分类</h2> <p>XSS 攻击按是否把攻击数据存进服务器端，攻击行为是否伴随着攻击数据一直存在，可分为 <strong>非持久型 XSS 攻击</strong> 和 <strong>持久型 XSS 攻击</strong>。</p> <p>XSS 攻击按攻击方式又可分为：</p> <ol><li>反射型 XSS（非持久型 XSS 攻击）</li> <li>DOM 型 XSS（非持久型 XSS 攻击）</li> <li>存储型 XSS（持久型 XSS 攻击）</li></ol> <h3 id="_1-1-反射型-xss"><a href="#_1-1-反射型-xss" class="header-anchor">#</a> 1.1 反射型 XSS</h3> <p>反射型XSS，简单的把用户输入的数据&quot;反射&quot;给浏览器，</p> <p>即黑客往往需要诱使用户&quot;点击&quot;一个恶意链接攻击才能成功，用户通过点击这个恶意链接，攻击者可以成功获取用户隐私数据的一种方式。如：&quot;盗取用户Cookie信息&quot;、&quot;破坏页面结构&quot;、&quot;重定向到其他网站&quot;，盗取内网IP等。</p> <p>那么既然反射型XSS也可以是HTML注入，那么它注入的关键自然也就从前端的HTML页面开始下手：</p> <ol><li>用户能够与浏览器页面产生交互动作（输入搜索的关键词，点击按钮，点击链接等等），但这些都需要去诱使用户去操作，说起来容易，做起来难。</li> <li>用户输入的数据会被攻击方拼接出合适的html去执行恶意的js脚本，这样的过程就像是&quot;一次反射&quot;</li></ol> <p>反射型 XSS 的数据流向是：<code>浏览器 -&gt; 后端 -&gt; 浏览器</code></p> <h3 id="_1-2-存储型-xss"><a href="#_1-2-存储型-xss" class="header-anchor">#</a> 1.2 存储型 XSS</h3> <p>存储型XSS,顾名思义就是将恶意代码存储到数据库中，只要访问页面，恶意代码即可执</p> <p>例如：访问某黑客写下的一篇含有恶意JavaScript代码的博客文章，黑客把恶意脚本保存到服务端。</p> <p>存储行 XSS 的数据流向是： <code>浏览器 -&gt; 后端 -&gt; 数据库 -&gt; 后端 -&gt; 浏览器</code></p> <h3 id="_1-3-dom型-xss"><a href="#_1-3-dom型-xss" class="header-anchor">#</a> 1.3 DOM型 XSS</h3> <p>从效果上来说，也是&quot;反射型XSS&quot;，单独划分出来，是因为其形成是通过修改页面的<code>DOM节点</code>形成的XSS。</p> <p>例如：通过修改DOM节点上的绑定方法，用户无意间通过点击、输入等行为执行这些方法获取到用户的相关信息</p> <p>可以触发DOM XSS的属性有：</p> <ul><li>document.referer属性</li> <li>window.name属性</li> <li>location属性</li> <li>innerHTML属性</li> <li>documen.write属性等
+DOM XSS并没有经过服务端和数据库，只在浏览器前端，通过DOM的操作执行恶意脚本。因此DOM XSS的数据流如下：<code>URL -&gt; 浏览器</code></li></ul> <h2 id="二、如何去检测是否存在xss"><a href="#二、如何去检测是否存在xss" class="header-anchor">#</a> 二、如何去检测是否存在XSS</h2> <p>一般方法是，用户可以在有关键字输入搜索的地方输入****后点击搜索，若弹框出现展示123，说明存在XSS漏洞，这就说明前端并没有对用户输入的内容过滤处理。</p> <h2 id="三、-xss的攻击方式"><a href="#三、-xss的攻击方式" class="header-anchor">#</a> 三、 XSS的攻击方式</h2> <h3 id="_3-1-cookie劫持"><a href="#_3-1-cookie劫持" class="header-anchor">#</a> 3.1 Cookie劫持</h3> <p>通过伪装一些<code>图片和按钮</code>等，诱使用户对其操作，使网页执行了攻击者的恶意脚本，使攻击者能够获取当前用户的Cookie信息</p> <h3 id="_3-2-构造get和post请求"><a href="#_3-2-构造get和post请求" class="header-anchor">#</a> 3.2 构造GET和POST请求</h3> <p>若某攻击者想删除某网站的一篇文章，首先获得当前文章的id，然后通过使用脚本<code>插入图片</code>发送一个<code>GET请求</code>，或<code>构造表单</code>，<code>XMLHTTPRequest</code>发送<code>POST请求</code>以达到删除该文章的目的</p> <h3 id="_3-3-xss钓鱼"><a href="#_3-3-xss钓鱼" class="header-anchor">#</a> 3.3 XSS钓鱼</h3> <p><code>钓鱼</code>这个词一般认识是起源于<code>社会工程学</code>，黑客使用这个这门学科的理念思想，在未授权不知情的情况下诱骗用户，并得到对方对方的姓名、年龄、邮箱账号、甚至是银行卡密码等私人信息。</p> <p>比如：&quot;某用户在某网站（已被攻击）上操作黑客伪造的一个登录框，当用户在登录框中输入了用户名（这里可能是身份证号等）和密码之后，将其信息上传至黑客的服务器上（该用户的信息就已经从该网站泄漏）&quot;</p> <h3 id="_3-4-获取用户真实的ip地址"><a href="#_3-4-获取用户真实的ip地址" class="header-anchor">#</a> 3.4 获取用户真实的IP地址</h3> <p>通过第三方软件获取，比如客户端安装了Java环境（JRE），则可通过调用<code>Java Applet</code>的接口获取客户端本地的IP地址</p> <h2 id="四、-防御方法"><a href="#四、-防御方法" class="header-anchor">#</a> 四、 防御方法</h2> <p>XSS 攻击有两大要素：</p> <ol><li>攻击者提交恶意代码。</li> <li>浏览器执行恶意代码。</li></ol> <p>XSS产生的原因呢？是由于输入数据的不可控，未对数据进行过滤。 那么我们防御XSS要从以下几个方面着手</p> <ul><li>输入校验：长度限制、值类型是否正确、是否包含特殊字符（&lt;&gt;”等）、是否包含alert、onclick、script等关键字。</li> <li>输出编码：根据输出的位置进行相应的编码，如HTML编码、JavaScript编码、URL编码。原则是该数据不要超出自己所在的区域，也不要被当做指令执行。</li> <li>考虑set-cookie中设置http-only,避免cookie盗用。</li></ul></div> <footer class="page-edit" style="display:none;"><!----> <div class="last-updated"><span class="prefix">最后更新: </span> <span class="time">12/15/2020, 8:53:50 AM</span></div></footer> <!----> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/blogs/assets/js/app.407ef2da.js" defer></script><script src="/blogs/assets/js/4.8e2045fe.js" defer></script><script src="/blogs/assets/js/1.94e262a5.js" defer></script><script src="/blogs/assets/js/24.3a32ae87.js" defer></script>
+  </body>
+</html>

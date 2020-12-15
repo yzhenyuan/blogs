@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>了解Koa | 🦍</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/blogs/vuepress/favicon.ico">
+    <meta name="description" content="Welcome">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/blogs/assets/css/0.styles.99fdf9f1.css" as="style"><link rel="preload" href="/blogs/assets/js/app.407ef2da.js" as="script"><link rel="preload" href="/blogs/assets/js/4.8e2045fe.js" as="script"><link rel="preload" href="/blogs/assets/js/1.94e262a5.js" as="script"><link rel="preload" href="/blogs/assets/js/25.0dbf9bf7.js" as="script"><link rel="prefetch" href="/blogs/assets/js/10.a48fab36.js"><link rel="prefetch" href="/blogs/assets/js/11.9a18b38f.js"><link rel="prefetch" href="/blogs/assets/js/12.bb1ec8b0.js"><link rel="prefetch" href="/blogs/assets/js/13.3e57589a.js"><link rel="prefetch" href="/blogs/assets/js/14.a0f34a77.js"><link rel="prefetch" href="/blogs/assets/js/15.3f26f69c.js"><link rel="prefetch" href="/blogs/assets/js/16.f7b8afbb.js"><link rel="prefetch" href="/blogs/assets/js/17.4253c64b.js"><link rel="prefetch" href="/blogs/assets/js/18.9980579e.js"><link rel="prefetch" href="/blogs/assets/js/19.0dd50ed6.js"><link rel="prefetch" href="/blogs/assets/js/20.e3d7a792.js"><link rel="prefetch" href="/blogs/assets/js/21.452cb3e9.js"><link rel="prefetch" href="/blogs/assets/js/22.d9fc1d7c.js"><link rel="prefetch" href="/blogs/assets/js/23.1afc7257.js"><link rel="prefetch" href="/blogs/assets/js/24.3a32ae87.js"><link rel="prefetch" href="/blogs/assets/js/26.18b6f5a9.js"><link rel="prefetch" href="/blogs/assets/js/27.d32a0725.js"><link rel="prefetch" href="/blogs/assets/js/28.196c1806.js"><link rel="prefetch" href="/blogs/assets/js/29.2c33b1f8.js"><link rel="prefetch" href="/blogs/assets/js/30.f0a679aa.js"><link rel="prefetch" href="/blogs/assets/js/31.ba7a4166.js"><link rel="prefetch" href="/blogs/assets/js/32.b05f224e.js"><link rel="prefetch" href="/blogs/assets/js/33.94811f06.js"><link rel="prefetch" href="/blogs/assets/js/34.59ef42d2.js"><link rel="prefetch" href="/blogs/assets/js/35.acaf4e13.js"><link rel="prefetch" href="/blogs/assets/js/36.8224698b.js"><link rel="prefetch" href="/blogs/assets/js/37.3851cfb2.js"><link rel="prefetch" href="/blogs/assets/js/38.1ed56fa3.js"><link rel="prefetch" href="/blogs/assets/js/39.bdaff23f.js"><link rel="prefetch" href="/blogs/assets/js/40.27f8c6a2.js"><link rel="prefetch" href="/blogs/assets/js/41.4418986a.js"><link rel="prefetch" href="/blogs/assets/js/42.018d5271.js"><link rel="prefetch" href="/blogs/assets/js/5.95f117cb.js"><link rel="prefetch" href="/blogs/assets/js/6.60d6678d.js"><link rel="prefetch" href="/blogs/assets/js/7.cde6d0ce.js"><link rel="prefetch" href="/blogs/assets/js/8.b8efa7e8.js"><link rel="prefetch" href="/blogs/assets/js/9.dd1c76c7.js"><link rel="prefetch" href="/blogs/assets/js/vendors~flowchart.4a8a7c31.js">
+    <link rel="stylesheet" href="/blogs/assets/css/0.styles.99fdf9f1.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-2d5f533b><div data-v-2d5f533b><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-2d5f533b data-v-2d5f533b><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-2d5f533b data-v-2d5f533b><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>🦍</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>🦍</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-2d5f533b><header class="navbar" data-v-2d5f533b><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blogs/" class="home-link router-link-active"><!----> <span class="site-name">🦍</span></a> <div class="links"><!----> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      基础
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Basics/html-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Basics/css-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Basics/js/js-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Basics/performance-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  性能优化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      框架
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/vue/vue2-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/React/react-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  React
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      工程化
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Webpack/webpack-module.html" class="nav-link"><i class="iconfont undefined"></i>
+  模块化
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Webpack/webpack-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Webpack
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/NodeJS/node-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  NodeJS
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      Chrome
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Chrome/chrome-v8.html" class="nav-link"><i class="iconfont undefined"></i>
+  V8
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Chrome/Chrome-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Chrome渲染机制
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      网络&amp;安全
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Network/net/net-module.html" class="nav-link"><i class="iconfont undefined"></i>
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Network/net/net-http.html" class="nav-link"><i class="iconfont undefined"></i>
+  HTTP协议
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Network/safe-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  安全
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      数据结构&amp;算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Algorithm/algorithm-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  导论
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      扩展
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/pages/docker-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/Design.html" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/reg/reg-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  正则
+</a></li></ul></div></div> <a href="https://github.com/yzhenyuan/blogs" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask" data-v-2d5f533b></div> <aside class="sidebar" data-v-2d5f533b><div class="personal-info-wrapper" data-v-ca798c94 data-v-2d5f533b><!----> <h3 class="name" data-v-ca798c94>
+    🦍
+  </h3> <div class="num" data-v-ca798c94><div data-v-ca798c94><h3 data-v-ca798c94>0</h3> <h6 data-v-ca798c94>Article</h6></div> <div data-v-ca798c94><h3 data-v-ca798c94>0</h3> <h6 data-v-ca798c94>Tag</h6></div></div> <hr data-v-ca798c94></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      基础
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Basics/html-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Basics/css-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Basics/js/js-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Basics/performance-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  性能优化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      框架
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/vue/vue2-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/React/react-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  React
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      工程化
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Webpack/webpack-module.html" class="nav-link"><i class="iconfont undefined"></i>
+  模块化
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Webpack/webpack-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Webpack
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/NodeJS/node-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  NodeJS
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      Chrome
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Chrome/chrome-v8.html" class="nav-link"><i class="iconfont undefined"></i>
+  V8
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Chrome/Chrome-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Chrome渲染机制
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      网络&amp;安全
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Network/net/net-module.html" class="nav-link"><i class="iconfont undefined"></i>
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Network/net/net-http.html" class="nav-link"><i class="iconfont undefined"></i>
+  HTTP协议
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Network/safe-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  安全
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      数据结构&amp;算法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Algorithm/algorithm-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  导论
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      扩展
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/pages/docker-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/Design.html" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/reg/reg-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  正则
+</a></li></ul></div></div> <a href="https://github.com/yzhenyuan/blogs" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav> <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>了解Node</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blogs/NodeJS/node-1.html" class="sidebar-link">node 基础</a></li><li><a href="/blogs/NodeJS/node-process.html" class="sidebar-link">Node的进程和线程</a></li><li><a href="/blogs/NodeJS/node-koa.html" aria-current="page" class="active sidebar-link">了解Koa</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-2d5f533b><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e></h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>🦍</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-2d5f533b><main class="page" style="padding-right:0;"><div class="page-title" style="display:none;"><h1 class="title">了解Koa</h1> <div data-v-3b7f5bdf><i class="iconfont reco-account" data-v-3b7f5bdf><span data-v-3b7f5bdf>🦍</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default" style="display:none;"><h1 id="了解koa"><a href="#了解koa" class="header-anchor">#</a> 了解Koa</h1> <h2 id="一、前言"><a href="#一、前言" class="header-anchor">#</a> 一、前言</h2> <p>Koa是Express之后，node的又一主流web框架，相比Express，Koa只保留了核心的中间件处理逻辑，去掉了路由、模板以及其他的一些功能是一个基于node实现的web框架</p> <blockquote><p>特点是：优雅、简洁、健壮、体积小、表现力强，他的所有功能通过插件想形式来表现</p></blockquote> <h2 id="二、koa2原理"><a href="#二、koa2原理" class="header-anchor">#</a> 二、Koa2原理</h2> <p>Koa2通过封装原生的 node http 模块
+koa的 <code>context</code> 把 node 的 <code>request</code> 对象和 <code>response</code> 对象封装到单个对象中，并暴露给中间件等回调函数</p> <p>最主要的是 <strong>中间件机制洋葱模型</strong></p> <p>流程：</p> <ol><li>通过<code>use()</code>注册多个中间件放入数组中</li> <li>从外层开始向内执行</li> <li>遇到<code>next()</code>后进入下一个中间件</li> <li>当所有中间件执行完后，开始返回</li> <li>依次执行中间件中未执行的部分，整体流程就是递归处理</li></ol> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">compose</span><span class="token punctuation">(</span><span class="token parameter">middleware</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 先执行第一个函数</span>
+        <span class="token keyword">return</span> <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">function</span> <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token parameter">i</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">let</span> fn <span class="token operator">=</span> middleware<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+            <span class="token comment">//如果不存在直接返回 Promise</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>fn<span class="token punctuation">)</span> <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+            <span class="token comment">//step1: 返回一个promise，因此单纯变成一个promise 且立即执行</span>
+            <span class="token comment">//step2: 向当前中间件 传入一个 next 方法，当这个中间件有执行next 的时候才执行下一个中间件</span>
+            <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token function">fn</span><span class="token punctuation">(</span>fnction <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token comment">//执行下一个中间件</span>
+                <span class="token keyword">return</span> <span class="token function">dispach</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>核心代码是
+<code>Promise.resolve(fn(context, dispach.bind(null, i+1)))</code>
+，递归遍历，直到遍历完所有的中间件 next ,生成一个多层嵌套的 promise 函数</p> <p>分析：</p> <blockquote><p>中间件的执行 是通过递归的方式来执行，
+调用 dispach 函数，从第一个开始执行，
+当有 next 方法时，创建一个promise，
+等到下一个中间件执行结果后，再执行next，
+当第二个中间件也有 next 方法时，依然会创建一个新的 promise 等待下一个中间件的执行结果，这就是中间件next的执行原理</p></blockquote> <blockquote><p><code>app.use()</code> 将中间件 push 到中间件数组中，然后在 listen 方法中通过调用 compose 方法进行集中处理</p></blockquote> <h2 id="三、koa的基本组成"><a href="#三、koa的基本组成" class="header-anchor">#</a> 三、Koa的基本组成</h2> <ul><li><code>application.js</code>:负责管理中间件，以及处理请求</li> <li><code>context.js</code>:用来维护请求的的上下文环境</li> <li><code>request.js</code>:封装和抽象req</li> <li><code>response.js</code>:封装和抽象res</li></ul> <h2 id="四、koa-body原理"><a href="#四、koa-body原理" class="header-anchor">#</a> 四、Koa-body原理</h2> <p>Koa-body中间件作用是将 post 请求的请求体携带的数据解析到ctx.request.body中。</p> <p>基本原理是：</p> <ol><li>先用<code>type-is</code>这个包（ctx.is函数，根据请求的content-type）判断出请求的数据类型</li> <li>然后根据不同类型的co-body（请求体解析）和formidable（数据类型是multipart，文件上传解析）来解析</li> <li>拿到解析结果放到ctx.request.body或 ctx.request.files里面</li></ol> <h2 id="五、koa与express区别"><a href="#五、koa与express区别" class="header-anchor">#</a> 五、Koa与Express区别</h2> <ol><li><strong>集成方面</strong>：<code>Express</code> 自身集成了路由、视图等处理功能；<code>Koa</code>本身不集成任何中间件</li> <li><strong>异步流程控制</strong>：Express使用<code>callback来处理异步</code>；Koa v1使用<code>generator</code>，v2使用<code>async/await</code>，async/await使用同步写法处理异步明显要优于其他</li> <li><strong>错误处理</strong>： <code>Express</code> 使用 callback 捕获异常，深层次的捕获不了；<code>Koa</code>使用 try/catch 能够更好的捕获异常</li> <li><strong>中间件模型</strong>：<code>Express</code>基于context中间件，线性模型；<code>Koa</code>使用洋葱模型，所有的请求在经过中间件的时候回执行两次，能够方便的执行一些后置处理逻辑</li> <li><strong>context</strong>：<code>Express</code>只有request和response两个对象；<code>Koa</code>增加了一个<code>context</code>作为这次请求的上下文对象（koa1中为中间件的this，v2中作为中间件的第一个参数传入）</li></ol></div> <footer class="page-edit" style="display:none;"><!----> <div class="last-updated"><span class="prefix">最后更新: </span> <span class="time">12/14/2020, 12:41:04 PM</span></div></footer> <!----> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/blogs/assets/js/app.407ef2da.js" defer></script><script src="/blogs/assets/js/4.8e2045fe.js" defer></script><script src="/blogs/assets/js/1.94e262a5.js" defer></script><script src="/blogs/assets/js/25.0dbf9bf7.js" defer></script>
+  </body>
+</html>
