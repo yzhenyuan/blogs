@@ -10,8 +10,7 @@ const reactList = ['/React/react-1.md']
 const AlgorithmList =["algorithm-1.md",]
 const Network = ['net/net-module.md']
 const NetworkList = ['net/net-http.md','net/net-http-cache.md',]
-const safeList = ['safe-1.md','safe-xss.md','safe-xsrf.md']
-// collapsable: false,
+const safeList = ['safe-1.md','safe-xss.md','safe-csrf.md']
 module.exports = {
     "/Basics/": [
         { title: "基础知识", children: BasicsList,},
@@ -25,7 +24,6 @@ module.exports = {
     ],
     "/NodeJS/": [
         { title: "了解Node", children: NodeJSList, }, 
-        // { title: "Koa",sidebarDepth: 3, children: NodeJSKoaList, }, 
     ],
     "/pages/": [
         { title: "扩展", children: pagesList, },
@@ -42,6 +40,6 @@ module.exports = {
     "/Network/":[
         { title: "网络", children:Network},
         { title: "HTTP协议", children: NetworkList, },
-        { title: "安全", children: safeList, },
+        { title: "安全", children: safeList },
     ],
 }
