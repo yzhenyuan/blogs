@@ -24,14 +24,52 @@ import { stat, exists, readFile } from 'fs';
 ```
 上面代码的实质是从fs模块加载3个方法，其他方法不加载。这种加载称为“编译时加载”或者静态加载，即 ES6 可以在编译时就完成模块加载，效率要比 CommonJS 模块的加载方式高。当然，这也导致了没法引用 ES6 模块本身，因为它不是对象。
 
-### 严格模式
+### 1.1 严格模式
 **ES6 的模块自动采用严格模式，不管你有没有在模块头部加上`use strict`;**。
 
-### 模块功能
+### 1.2 模块功能
 
 模块功能主要由两个命令构成：**export和import**。export命令用于规定模块的对外接口，import命令用于输入其他模块提供的功能。
 
 一个模块就是一个独立的文件。该文件内部的所有变量，外部无法获取。如果你希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量。下面是一个 JS 文件，里面使用export命令输出变量。
+
+### 1.3模块的整体加载
+除了指定加载某个输出值，还可以使用整体加载，即用星号（*）指定一个对象，所有输出值都加载在这个对象上面。
+```js
+// circle.js
+
+export function area(radius) {
+  return Math.PI * radius * radius;
+}
+
+export function circumference(radius) {
+  return 2 * Math.PI * radius;
+}
+```
+整体加载方式如下：
+```js
+import * as circle from './circle';
+
+console.log('圆面积：' + circle.area(4));
+console.log('圆周长：' + circle.circumference(14));
+```
+### 1.4 export default 命令
+为了给用户提供方便，让他们不用阅读文档就能加载模块，就要用到export default命令，为模块指定默认输出。
+
+```js
+export default function () {
+  console.log('foo');
+}
+```
+```js
+import customName from './export-default';
+customName(); // foo
+```
+
+本质上，export default就是输出一个叫做default的变量或方法，然后系统允许你为它取任意名字。
+
+
+
 
 ## 二、ES6模块加载的实质
 
@@ -179,5 +217,7 @@ bar
 上面代码中，由于a.js的第一行是加载b.js，所以先执行的是b.js。而b.js的第一行又是加载a.js，这时由于a.js已经开始执行了，所以不会重复执行，而是继续往下执行b.js，所以第一行输出的是b.js。
 
 接着，b.js要打印变量foo，这时a.js还没执行完，取不到foo的值，导致打印出来是undefined。b.js执行完，开始执行a.js，这时就一切正常了。
+
+
 
 [参考](http://caibaojian.com/es6/module.html)

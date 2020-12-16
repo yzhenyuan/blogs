@@ -1,5 +1,6 @@
 const BasicsList = ["html-1.md","css-1.md"]
 const BasicsJSList = ["js/js-1.md",]
+const performanceList = ['performance-1.md']
 const ChromeList = ["Chrome-1.md","chrome-v8.md", ]
 const webpackList = ["webpack-module.md","webpack-1.md","webpack-babel.md",]
 const NodeJSList = [ "node-1.md", "node-process.md","node-koa.md" ]
@@ -15,6 +16,8 @@ module.exports = {
     "/Basics/": [
         { title: "基础知识", children: BasicsList,},
         { title: "JavaScript", children: BasicsJSList,},
+        { title: "性能优化", children: performanceList,},
+
     ],
     "/Chrome/": [
         { title: "Chrome", children: ChromeList, },

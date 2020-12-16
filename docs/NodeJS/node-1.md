@@ -37,7 +37,7 @@ Event Loop 事件循环，Thread Pool 线程池都是由 Libuv 提供，Libuv �
 
 异步编程是 Node.js 的一大特色，掌握好 Node.js 的异步编程是每个 Node.js 开发者必备的技能。
 
-1、异步 IO 的好处
+### 3.1 异步 IO 的好处
 
 - 前端通过异步 IO 可以消除阻塞。
 - 请求耗时少，假如有两个请求 A 和 B，那么异步 IO 用时为：Max（A+B）。同步则为 A+B，请求越多差距越大。
@@ -45,7 +45,7 @@ Event Loop 事件循环，Thread Pool 线程池都是由 Libuv 提供，Libuv �
 - Node.js 适用于 IO 密集型，而不适用于 CPU 密集型。
 - 并不是所有都用异步任务好，遵循一个公式： s= (Ws+Wp)/(Ws+Wp/p) Ws 表示同步任务，Wp 表示异步任务，p 表示处理器的数量。
 
-2、Node.js 对异步 IO 的实现
+### 3.2 Node.js 对异步 IO 的实现
 
 我们来看一下 Node.js 异步 IO 实现图：
 
@@ -110,7 +110,7 @@ Event Loop 事件循环，Thread Pool 线程池都是由 Libuv 提供，Libuv �
 - Libuv 在 Windows 下基于 IOCP 实现。
   :::
 
-3、常用的异步 IO 使用方式
+### 3.3 常用的异步 IO 使用方式
 
 - 使用 step，q，async 等异步控制库。
 - 使用 Promise 处理异步。
@@ -120,8 +120,9 @@ Event Loop 事件循环，Thread Pool 线程池都是由 Libuv 提供，Libuv �
 
 ## 四、Node.js 内存管理与优化
 
-Node.js 是单线程的，所以必须保证这个线程持续稳定，最容易导致 Node.js 应用程序挂掉的因素是内存泄漏。常见的内存泄漏：
+Node.js 是单线程的，所以必须保证这个线程持续稳定，最容易导致 Node.js 应用程序挂掉的因素是内存泄漏。
 
+常见的内存泄漏：
 - 无限增长的数组。
 - 无限制设置对象的属性和值。
 - 任何模块的私有变量都是永驻的。
@@ -138,13 +139,13 @@ Node.js 采用 V8 的 分代式垃圾回收策略，将内存分为**新生代�
 
 由于 Node.js 单线层的原因，所以 Node.js 的调试和部署特别重要，因为一旦出错，整个应用程序就挂了。
 
-#### Node.js 调试
+### 5.1 Node.js 调试
 
 - node --inspect app.js
   - 打开浏览器进行调试：chrome://inspect/#devices
 - 使用 vscode 自带的调试。
 
-#### Node.js 部署
+### 5.2 Node.js 部署
 
 Node.js 端一般不会直接当成项目后端来使用，而是当成一个 BFF 层来使用。具体要怎么架构呢？
 
@@ -165,7 +166,7 @@ Node.js 端一般不会直接当成项目后端来使用，而是当成一个 BF
 - Java 服务器将数据库访问结果返回给 Node.js 层。
 - Node.js 层将结果返回给用户。
 
-Node.js Web 端应用程序部署流程
+### 5.3 Node.js Web 端应用程序部署流程
 
 - 单元测试。
 - 压力测试，性能分析工具找 Bug。
