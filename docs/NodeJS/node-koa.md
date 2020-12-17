@@ -43,7 +43,7 @@ function compose(middleware){
 `Promise.resolve(fn(context, dispach.bind(null, i+1)))`
 ，递归遍历，直到遍历完所有的中间件 next ,生成一个多层嵌套的 promise 函数
 
-分析：
+#### 分析：
 > 中间件的执行 是通过递归的方式来执行，
 调用 dispach 函数，从第一个开始执行，
 当有 next 方法时，创建一个promise，
@@ -61,12 +61,13 @@ function compose(middleware){
 ## 四、Koa-body原理
 Koa-body中间件作用是将 post 请求的请求体携带的数据解析到ctx.request.body中。
 
-基本原理是：
+#### 基本原理是：
 1. 先用`type-is`这个包（ctx.is函数，根据请求的content-type）判断出请求的数据类型
 2. 然后根据不同类型的co-body（请求体解析）和formidable（数据类型是multipart，文件上传解析）来解析
 3. 拿到解析结果放到ctx.request.body或 ctx.request.files里面
 
 ## 五、Koa与Express区别
+
 1. **集成方面**：`Express` 自身集成了路由、视图等处理功能；`Koa`本身不集成任何中间件
 2. **异步流程控制**：Express使用`callback来处理异步`；Koa v1使用`generator`，v2使用`async/await`，async/await使用同步写法处理异步明显要优于其他
 3. **错误处理**： `Express` 使用 callback 捕获异常，深层次的捕获不了；`Koa`使用 try/catch 能够更好的捕获异常
