@@ -5,7 +5,7 @@ module.exports = [
     { text: "数据结构&算法" , link: '/Algorithm/algorithm-1.md'},
     { text: "框架" , items: [
       { text: 'Vue', link: '/vue/vue2-1.md' },
-      { text: 'React', link: '/React/react-1.md' },
+      { text: 'React', link: '/React/react-render.md' },
     ]},
     { text: "工程化" , items: [
       { text: 'Webpack', link: '/Webpack/webpack-1.md' },
