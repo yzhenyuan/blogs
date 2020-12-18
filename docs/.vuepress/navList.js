@@ -1,8 +1,9 @@
 const BasicsList = ["html-1.md","css-1.md"]
-const BasicsJSList = ["js/js-1.md","js/es6-module.md"]
+const BasicsJSList = ["js/js-1.md","js/es6-module.md","js/es6-Reflect"]
 const performanceList = ['performance-1.md']
 const ChromeList = ["Chrome-1.md","chrome-v8.md", ]
 const webpackList = ["webpack-1.md","webpack-babel.md",]
+const webpackTsList = ["ts.md",]
 const NodeJSList = [ "node-1.md", "node-process.md","node-koa.md" ]
 const regList = ["reg/reg-1.md",]
 const standardList = ['standard/standard.md','standard/editorconfig.md','standard/prettier.md','standard/eslint.md']
@@ -19,7 +20,13 @@ module.exports = {
         { title: "性能优化", children: performanceList},
     ],
     "/Chrome/": [{ title: "Chrome", children: ChromeList}],
-    "/webpack/": [{ title: "Webpack", children: webpackList}],
+    "/webpack/": [
+        { title: "Webpack", children: webpackList},
+        { title: "Typscript", children:webpackTsList}
+    ],
+    "/ts/": [
+        { title: "Typscript", children:webpackTsList}
+    ],
     "/NodeJS/": [{ title: "了解Node", children: NodeJSList}],
     "/vue/": [{ title: "Vue原理解析", children: vueList}],
     "/React/": [{ title: "React原理解析", children: reactList}],

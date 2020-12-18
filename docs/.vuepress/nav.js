@@ -10,6 +10,7 @@ module.exports = [
     { text: "工程化" , items: [
       { text: 'Webpack', link: '/Webpack/webpack-1.md' },
       { text: 'Gulp', link: '/Webpack/webpack-module.md' },
+      {text: 'Typscript',link: '/ts/ts.md' }
     ]},
     { text: "网络&安全", link: '/Network/net/net-module.md'},
     { text: "扩展" , items: [
