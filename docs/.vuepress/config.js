@@ -1,4 +1,4 @@
-const Nav = require('./nav')
+const nav = require('./nav')
 const NavList = require('./navList')
 module.exports = {
   theme: 'reco',
@@ -6,7 +6,7 @@ module.exports = {
   title: "🦍", // 显示在左上角的网页名称以及首页在浏览器标签显示的title名称
   description: "Welcome", // meta 中的描述文字，用于SEO
   head: [
-    ["link",{rel: "icon",href: "/vuepress/favicon.ico"} ],
+    ["link",{rel: "icon",href: "../../favicon.ico"} ],
     ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
   ],
   markdown: {
@@ -17,9 +17,8 @@ module.exports = {
     mode: 'light',
     codeTheme: 'tomorrow', // default 'tomorrow'
     modePicker: false,
-    sidebar: 'auto',
     sidebarDepth: 3, //侧边栏深度
-    nav: Nav,
+    nav,
     displayAllHeaders: true, // 默认值：false
     sidebar: NavList,
     // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
