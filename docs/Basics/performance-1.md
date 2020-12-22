@@ -92,7 +92,7 @@ Vue.component('pl-lazy', plLazy);
 ## 页面加载的核心指标
 + `TTFB` 首个字节
 + `FP` 首次绘制，只有 div 根节点 ，对应vue中的 created
-+ `FCP` 首次由内容的绘制，页面的基本框架，但是没有数据内容，对应 monted
++ `FCP` 首次有内容的绘制，页面的基本框架，但是没有数据内容，对应 monted
 + `FMP` 首次有意义的绘制，包含所有元素和数据内容，对应 updated
 + `TTI` 首次能交互时间
 + `Long Task` 大于 等于 50ms的任务

@@ -1,6 +1,6 @@
 const BasicsList = ["html-1.md","css-1.md"]
-const BasicsJSList = ["js/js-1.md","js/es6-module.md","js/es6-Reflect"]
-const performanceList = ['performance-1.md']
+const BasicsJSList = ["js/js-1.md","js/es6-module.md","js/es6-Reflect",'js/error.md']
+const performanceList = ['performance.md','performance-1.md']
 const ChromeList = ["Chrome-1.md","chrome-v8.md", ]
 const webpackList = ["webpack-1.md","webpack-babel.md",]
 const webpackTsList = ["ts.md",]
