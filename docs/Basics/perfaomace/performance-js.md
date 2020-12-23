@@ -1,4 +1,4 @@
-# Performance
+# window.Performance
 
 ![Performance](../.vuepress/public/pages/performase.jpg)
 

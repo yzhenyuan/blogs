@@ -1,6 +1,6 @@
 const BasicsList = ["html-1.md","css-1.md"]
 const BasicsJSList = ["js/js-1.md","js/es6-module.md","js/es6-Reflect",'js/error.md']
-const performanceList = ['performance.md','performance-1.md']
+const performanceList = ['performance/performance.md','performance/performance-1.md','performance/performance-js.md','performance/performance-methods.md']
 const ChromeList = ["Chrome-1.md","chrome-v8.md", ]
 const webpackList = ["webpack-1.md","webpack-babel.md",]
 const webpackTsList = ["ts.md",]
@@ -13,6 +13,7 @@ const AlgorithmList =["algorithm-1.md",]
 const Network = ['net/net-module.md']
 const NetworkList = ['net/net-http.md','net/net-http-cache.md',]
 const safeList = ['safe-1.md','safe-xss.md','safe-csrf.md']
+const DesignList = ['Design/Design-1.md']
 module.exports = {
     "/Basics/": [
         { title: "HTML&CSS", children: BasicsList},
@@ -38,7 +39,7 @@ module.exports = {
     ],
     "/pages/": [
         { title: "Docker", children: ["docker.md", "docker-k8s.md"]},
-        { title: "设计模式", children: ["Design.md"]},
+        { title: "设计模式", children: DesignList},
         { title: "正则表达式", children: regList },
         { title: "代码规范",children:standardList}
     ],

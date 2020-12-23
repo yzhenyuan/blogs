@@ -15,7 +15,7 @@ module.exports = [
     { text: "网络&安全", link: '/Network/net/net-module.md'},
     { text: "扩展" , items: [
       { text: 'Docker', link: '/pages/docker.md' },
-      { text: '设计模式', link: '/pages/Design.md' },
+      { text: '设计模式', link: '/pages/Design/Design-1.md' },
       { text: '正则', link: '/pages/reg/reg-1.md' },
       { text: '代码规范', link: '/pages/standard/standard.md' },
     ]},

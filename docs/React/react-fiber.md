@@ -41,3 +41,19 @@
 
 ## 三、 总结
 总结一下，为了解决 diff 时间过长导致的卡顿问题，React Fiber 用类似 requestIdleCallback 的机制来做异步 diff。但是之前的数据结构不支持这样的实现异步 diff，于是 React 实现了一个类似链表的数据结构，将原来的 递归diff 变成了现在的 遍历diff，这样就能方便的做中断和恢复了。
+
+
+React16.6之后在任务调度中意图使用 requestIdleCallback 这个函数，但是它的兼容性并不好，Safari、安卓8.1以下、IE等都是重灾区，所以React做了一个Polyfill，它是怎么做的呢？这里简要介绍下 React16.13.1 中实现的步骤。
+
+### React如何polyfill
+
+React维护了两个小顶堆`taskQueue`和`timerQueue`，前者保存等待被调度的任务，后者保存调度中的任务，它们的排列依据分别是任务的超时时间和过期时间。到达超时时间的任务会从`timerQueue`移动到`taskQueue`中，而在过期时间之内`taskQueue`中的任务期望得到执行，React调度的核心主要是以下几点：
+1. 何时把超时的任务从`timerQueue`转移到`taskQueue`；
+2.  `taskQueue`中任务的执行时机，以及后续任务的衔接；
+3.  何时暂停执行任务，把资源回交给浏览器。
+
+使用 `unstable_scheduleCallback` 注册任务的时候可以提供两个参数，`delay`表示任务的超时时长，`timeout`表示任务的过期时长（如果没有指定，根据优先程度任务会被分配默认的timeout时长）。
+
+如果没有提供`delay`，则任务被直接放到`taskQueue`中等待处理；
+如果提供了`delay`，则任务被放置在`timerQueue`中，此时如果`taskQueue`为空，且当前任务在timerQueue的堆顶（当前任务的超时时间最近），则使用 `requestHostTimeout` 启动定时器（setTimeout），在到达当前任务的超时时间时执行 `handleTimeout` ，此函数调用 `advanceTimers` 将`timerQueue`中的任务转移到`taskQueue`中，此时如果`taskQueue`没有开启执行则调用 `requestHostCallback` 启动它，否则继续递归地执行 `handleTimeout` 处理下一个`timerQueue`中的任务。
+
