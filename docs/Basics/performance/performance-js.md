@@ -1,6 +1,6 @@
 # window.Performance
 
-![Performance](../.vuepress/public/pages/performase.jpg)
+![Performance](../../.vuepress/public/pages/performase.jpg)
 
 ## 一、属性
 ### 1、memory 浏览器内存情况
@@ -135,8 +135,7 @@ timing: {
 
 
 ## 二、方法
-![方法](../.vuepress/public/pages/performance.jpg)
-
+![方法](../../.vuepress/public/pages/performance.jpg)
 获取pint的时间，例如：
 ```js
 const observer = new PerformanceObserver(list => {
@@ -161,10 +160,10 @@ observer.observe({
 
 #### entryType  
 
-+ “paint”： 值为first-paint’首次绘制、'first-contentful-paint’首次内容绘制
-+ “mark”：通过mark()方法添加到数组中的对象
-+ “resource”
-+ “measure”
++ `paint`： 值为first-paint’首次绘制、'first-contentful-paint’首次内容绘制
++ `mark`：通过mark()方法添加到数组中的对象
++ `resource`
++ `measure`
 
 ::: tips 提示
 目前通过，加载资源,initiatorType还无法返回"audio"和"video"，chrome中只能返回空字符串,firfox返回"other"
