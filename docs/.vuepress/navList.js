@@ -14,7 +14,7 @@ const AlgorithmList =["algorithm-1.md",]
 const Network = ['net/net-module.md']
 const NetworkList = ['net/net-http.md','net/net-http-cache.md',]
 const safeList = ['safe-1.md','safe-xss.md','safe-csrf.md']
-const DesignList = ['Design/Design.md','Design/Singleton.md','Design/Factory.md','Design/Constructor.md',]
+const DesignList = ['Design/Design.md','Design/Singleton.md','Design/Factory.md','Design/Constructor.md','Design/prototype.md']
 module.exports = {
     "/Basics/": [
         { title: "HTML&CSS", children: BasicsList},
