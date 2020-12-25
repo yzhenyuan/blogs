@@ -1,20 +1,45 @@
 
 const BasicsList = ["html-1.md","css-1.md"]
-const BasicsJSList = ["js/js-1.md","js/es6-module.md","js/es6-Reflect",'js/error.md']
-const performanceList = ['performance/performance.md','performance/performance-1.md','performance/performance-js.md','performance/performance-methods.md']
+const BasicsJSList = [
+    "js/js-1.md",
+    "js/es6-module.md",
+    "js/es6-Reflect",
+    'js/error.md'
+]
+const performanceList = [
+    'performance/performance.md',
+    'performance/performance-1.md',
+    'performance/performance-js.md',
+    'performance/performance-methods.md'
+]
 const ChromeList = ["Chrome-1.md","chrome-v8.md", ]
 const webpackList = ["webpack-1.md","webpack-babel.md",]
 const TsList = ["ts.md",'ts-1.md',]
 const NodeJSList = [ "node-1.md", "node-process.md","node-koa.md" ]
 const regList = ["reg/reg-1.md",]
-const standardList = ['standard/standard.md','standard/editorconfig.md','standard/prettier.md','standard/eslint.md']
+const standardList = [
+    'standard/standard.md',
+    'standard/editorconfig.md',
+    'standard/prettier.md',
+    'standard/eslint.md'
+]
 const vueList =["vue2-1.md", "vue2-2.md", "vdom-1.md", "vdom-2.md",]
 const reactList = ['react-render.md','react-fiber.md']
 const AlgorithmList =["algorithm-1.md",]
 const Network = ['net/net-module.md']
 const NetworkList = ['net/net-http.md','net/net-http-cache.md',]
 const safeList = ['safe-1.md','safe-xss.md','safe-csrf.md']
-const DesignList = ['Design/Design.md','Design/Singleton.md','Design/Factory.md','Design/Constructor.md','Design/prototype.md']
+const DesignList = [
+    'Design/Design.md',
+    'Design/Singleton.md',
+    'Design/Factory.md',
+    'Design/Constructor.md',
+    'Design/prototype.md',
+    'Design/Observer.md'
+]
+
+
+
 module.exports = {
     "/Basics/": [
         { title: "HTML&CSS", children: BasicsList},
