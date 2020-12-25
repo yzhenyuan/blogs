@@ -1,7 +1,7 @@
 # 观察者模式||发布-订阅模式
 
-#### 首先看看两种模式的区别
-![两种模式的区别](https://img2018.cnblogs.com/blog/849589/201904/849589-20190424122505055-2083728728.png)
+#### 两种模式的区别
+![两种模式的区别](../../.vuepress/public/pages/oberver.png)
 
 可以看出，`发布-订阅模式`相比`观察者模式`多了个事件通道，事件通道作为调度中心，管理事件的订阅和发布工作，彻底隔绝了订阅者和发布者的依赖关系。
 
@@ -50,7 +50,7 @@ sub.notify('I fired `SMS` event');
 
 
 ## 发布-订阅模式
-在观察者模式中的Subject就像一个发布者（Publisher），观察者（Observer）完全和订阅者（Subscriber）关联。subject通知观察者就像一个发布者通知他的订阅者。
+在观察者模式中的`Subject`就像一个发布者`（Publisher）`，观察者`（Observer）`完全和订阅者`（Subscriber）`关联。`subject`通知观察者就像一个发布者通知他的订阅者。
 ```js
 class PubSub {
     constructor() {
