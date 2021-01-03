@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>防抖节流 | 🦍</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="../../favicon.ico">
+    <meta name="description" content="Welcome">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/blogs/assets/css/0.styles.4e34a246.css" as="style"><link rel="preload" href="/blogs/assets/js/app.c0d7318f.js" as="script"><link rel="preload" href="/blogs/assets/js/4.c1befecb.js" as="script"><link rel="preload" href="/blogs/assets/js/1.94e262a5.js" as="script"><link rel="preload" href="/blogs/assets/js/24.9eb0732a.js" as="script"><link rel="prefetch" href="/blogs/assets/js/10.24a51809.js"><link rel="prefetch" href="/blogs/assets/js/11.e891d927.js"><link rel="prefetch" href="/blogs/assets/js/12.0a87bc04.js"><link rel="prefetch" href="/blogs/assets/js/13.fe29e94a.js"><link rel="prefetch" href="/blogs/assets/js/14.a10e5c8d.js"><link rel="prefetch" href="/blogs/assets/js/15.564321b9.js"><link rel="prefetch" href="/blogs/assets/js/16.3a3bd440.js"><link rel="prefetch" href="/blogs/assets/js/17.54d5c39c.js"><link rel="prefetch" href="/blogs/assets/js/18.5ba3366c.js"><link rel="prefetch" href="/blogs/assets/js/19.78eb48f6.js"><link rel="prefetch" href="/blogs/assets/js/20.e78bae9b.js"><link rel="prefetch" href="/blogs/assets/js/21.73523bea.js"><link rel="prefetch" href="/blogs/assets/js/22.86ded40b.js"><link rel="prefetch" href="/blogs/assets/js/23.605daf7f.js"><link rel="prefetch" href="/blogs/assets/js/25.a8d2750f.js"><link rel="prefetch" href="/blogs/assets/js/26.d2fea007.js"><link rel="prefetch" href="/blogs/assets/js/27.242cd5bf.js"><link rel="prefetch" href="/blogs/assets/js/28.96155555.js"><link rel="prefetch" href="/blogs/assets/js/29.ea983061.js"><link rel="prefetch" href="/blogs/assets/js/30.75cfdfdf.js"><link rel="prefetch" href="/blogs/assets/js/31.7866c038.js"><link rel="prefetch" href="/blogs/assets/js/32.581d9cce.js"><link rel="prefetch" href="/blogs/assets/js/33.e20a78d6.js"><link rel="prefetch" href="/blogs/assets/js/34.2348252c.js"><link rel="prefetch" href="/blogs/assets/js/35.a570f2a6.js"><link rel="prefetch" href="/blogs/assets/js/36.b8392f45.js"><link rel="prefetch" href="/blogs/assets/js/37.a95a5f0b.js"><link rel="prefetch" href="/blogs/assets/js/38.c81f3f74.js"><link rel="prefetch" href="/blogs/assets/js/39.5895c310.js"><link rel="prefetch" href="/blogs/assets/js/40.0546bec5.js"><link rel="prefetch" href="/blogs/assets/js/41.08fbc390.js"><link rel="prefetch" href="/blogs/assets/js/42.6044e6f4.js"><link rel="prefetch" href="/blogs/assets/js/43.0d6b68b5.js"><link rel="prefetch" href="/blogs/assets/js/44.d15e3111.js"><link rel="prefetch" href="/blogs/assets/js/45.5a680e74.js"><link rel="prefetch" href="/blogs/assets/js/46.9d41adc9.js"><link rel="prefetch" href="/blogs/assets/js/47.004d1479.js"><link rel="prefetch" href="/blogs/assets/js/48.630a8c52.js"><link rel="prefetch" href="/blogs/assets/js/49.f35611cd.js"><link rel="prefetch" href="/blogs/assets/js/5.214032ec.js"><link rel="prefetch" href="/blogs/assets/js/50.7b0f9e4d.js"><link rel="prefetch" href="/blogs/assets/js/51.68db4e5c.js"><link rel="prefetch" href="/blogs/assets/js/52.3991e0e2.js"><link rel="prefetch" href="/blogs/assets/js/53.a2e38d87.js"><link rel="prefetch" href="/blogs/assets/js/54.c9303c8b.js"><link rel="prefetch" href="/blogs/assets/js/55.856bea77.js"><link rel="prefetch" href="/blogs/assets/js/56.e632dfe0.js"><link rel="prefetch" href="/blogs/assets/js/57.0dcc82b8.js"><link rel="prefetch" href="/blogs/assets/js/58.bf81929f.js"><link rel="prefetch" href="/blogs/assets/js/59.10fd3b76.js"><link rel="prefetch" href="/blogs/assets/js/6.ead8382e.js"><link rel="prefetch" href="/blogs/assets/js/60.079954dd.js"><link rel="prefetch" href="/blogs/assets/js/61.3699a24b.js"><link rel="prefetch" href="/blogs/assets/js/62.85b7afcd.js"><link rel="prefetch" href="/blogs/assets/js/63.77ed6dbf.js"><link rel="prefetch" href="/blogs/assets/js/64.e75efa09.js"><link rel="prefetch" href="/blogs/assets/js/65.bab4ab5b.js"><link rel="prefetch" href="/blogs/assets/js/7.f933b40f.js"><link rel="prefetch" href="/blogs/assets/js/8.12563e1c.js"><link rel="prefetch" href="/blogs/assets/js/9.d148f97d.js"><link rel="prefetch" href="/blogs/assets/js/vendors~flowchart.8f2e2933.js">
+    <link rel="stylesheet" href="/blogs/assets/css/0.styles.4e34a246.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-2d5f533b><div data-v-2d5f533b><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-2d5f533b data-v-2d5f533b><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-2d5f533b data-v-2d5f533b><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>🦍</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>🦍</span>
+            
+          <!---->
+          2021
+        </a></span></div></div> <div class="hide" data-v-2d5f533b><header class="navbar" data-v-2d5f533b><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blogs/" class="home-link router-link-active"><!----> <span class="site-name">🦍</span></a> <div class="links"><!----> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blogs/Basics/html-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  基础
+</a></div><div class="nav-item"><a href="/blogs/NodeJS/node-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  NodeJS
+</a></div><div class="nav-item"><a href="/blogs/Chrome/Chrome-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Chrome
+</a></div><div class="nav-item"><a href="/blogs/Algorithm/algorithm-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  数据结构&amp;算法
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      框架
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/vue/vue2-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/React/react-render.html" class="nav-link"><i class="iconfont undefined"></i>
+  React
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      工程化
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Webpack/webpack-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Webpack/webpack-module.html" class="nav-link"><i class="iconfont undefined"></i>
+  Gulp
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/ts/ts.html" class="nav-link"><i class="iconfont undefined"></i>
+  Typscript
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/Network/net/net-module.html" class="nav-link"><i class="iconfont undefined"></i>
+  网络&amp;安全
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      扩展
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/pages/docker.html" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/Design/Design.html" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/reg/reg-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  正则
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/standard/standard.html" class="nav-link"><i class="iconfont undefined"></i>
+  代码规范
+</a></li></ul></div></div> <a href="https://github.com/yzhenyuan/blogs" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask" data-v-2d5f533b></div> <aside class="sidebar" data-v-2d5f533b><div class="personal-info-wrapper" data-v-ca798c94 data-v-2d5f533b><!----> <h3 class="name" data-v-ca798c94>
+    🦍
+  </h3> <div class="num" data-v-ca798c94><div data-v-ca798c94><h3 data-v-ca798c94>0</h3> <h6 data-v-ca798c94>Article</h6></div> <div data-v-ca798c94><h3 data-v-ca798c94>0</h3> <h6 data-v-ca798c94>Tag</h6></div></div> <hr data-v-ca798c94></div> <nav class="nav-links"><div class="nav-item"><a href="/blogs/Basics/html-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  基础
+</a></div><div class="nav-item"><a href="/blogs/NodeJS/node-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  NodeJS
+</a></div><div class="nav-item"><a href="/blogs/Chrome/Chrome-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Chrome
+</a></div><div class="nav-item"><a href="/blogs/Algorithm/algorithm-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  数据结构&amp;算法
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      框架
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/vue/vue2-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/React/react-render.html" class="nav-link"><i class="iconfont undefined"></i>
+  React
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      工程化
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Webpack/webpack-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/Webpack/webpack-module.html" class="nav-link"><i class="iconfont undefined"></i>
+  Gulp
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/ts/ts.html" class="nav-link"><i class="iconfont undefined"></i>
+  Typscript
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/Network/net/net-module.html" class="nav-link"><i class="iconfont undefined"></i>
+  网络&amp;安全
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      扩展
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/pages/docker.html" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/Design/Design.html" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/reg/reg-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  正则
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/standard/standard.html" class="nav-link"><i class="iconfont undefined"></i>
+  代码规范
+</a></li></ul></div></div> <a href="https://github.com/yzhenyuan/blogs" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav> <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>HTML&amp;CSS</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blogs/Basics/html-1.html" class="sidebar-link">HTML</a></li><li><a href="/blogs/Basics/css-1.html" class="sidebar-link">CSS</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JS基础</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>性能优化</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-2d5f533b><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e></h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>🦍</span>
+            
+          <!---->
+          2021
+        </a></span></div></div> <div data-v-2d5f533b><main class="page" style="padding-right:0;"><div class="page-title" style="display:none;"><h1 class="title">防抖节流</h1> <div data-v-3b7f5bdf><i class="iconfont reco-account" data-v-3b7f5bdf><span data-v-3b7f5bdf>🦍</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default" style="display:none;"><h1 id="防抖节流"><a href="#防抖节流" class="header-anchor">#</a> 防抖节流</h1> <h2 id="节流"><a href="#节流" class="header-anchor">#</a> 节流</h2> <p>函数节流解释：对函数执行增加一个控制层，保证一段时间内（可配置）只执行一次。此函数作用是对函数执行进行频率控制，常用于用户频繁触发但可以更低频率响应的场景</p></div> <footer class="page-edit" style="display:none;"><!----> <div class="last-updated"><span class="prefix">最后更新: </span> <span class="time">1/3/2021, 3:57:01 PM</span></div></footer> <!----> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/blogs/assets/js/app.c0d7318f.js" defer></script><script src="/blogs/assets/js/4.c1befecb.js" defer></script><script src="/blogs/assets/js/1.94e262a5.js" defer></script><script src="/blogs/assets/js/24.9eb0732a.js" defer></script>
+  </body>
+</html>
