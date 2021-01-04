@@ -64,6 +64,7 @@ module.exports = {
         { title: "Docker", children: ["docker.md", "docker-k8s.md"]},
         { title: "设计模式", children: DesignList},
         { title: "正则表达式", children: regList },
-        { title: "代码规范",children:standardList}
+        { title: "代码规范",children:standardList},
+        { title: "serverless",children:['serverless.md']}
     ],
 }

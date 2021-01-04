@@ -18,5 +18,6 @@ module.exports = [
       { text: '设计模式', link: '/pages/Design/Design.md' },
       { text: '正则', link: '/pages/reg/reg-1.md' },
       { text: '代码规范', link: '/pages/standard/standard.md' },
+      { title: "serverless",children:['/pages/serverless.md']}
     ]},
   ]
