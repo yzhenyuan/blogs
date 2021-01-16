@@ -25,7 +25,7 @@ const standardList = [
 ]
 const vueList =["vue2-1.md", "vue2-2.md", "vdom-1.md", "vdom-2.md",]
 const reactList = ['react-render.md','react-fiber.md','react.md']
-const AlgorithmList =["algorithm-1.md","algorithm-2.md","algorithm-3.md"]
+const AlgorithmList =["algorithm-1.md","algorithm-3.md"]
 const Network = ['net/net-module.md']
 const NetworkList = ['net/net-http.md','net/net-http-cache.md',]
 const safeList = ['safe-1.md','safe-xss.md','safe-csrf.md']

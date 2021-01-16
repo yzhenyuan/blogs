@@ -1,5 +1,5 @@
 const nav = require('./nav')
-const NavList = require('./navList')
+const sidebar = require('./navList')
 module.exports = {
   theme: 'reco',
   base: "/blogs/", //目录根地址，应与Github仓库名字相同
@@ -19,8 +19,8 @@ module.exports = {
     modePicker: false,
     sidebarDepth: 3, //侧边栏深度
     nav,
+    sidebar,
     displayAllHeaders: true, // 默认值：false
-    sidebar: NavList,
     // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
     repo: "yzhenyuan/blogs",
     // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
