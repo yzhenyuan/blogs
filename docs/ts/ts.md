@@ -56,3 +56,13 @@ type val = number | string
 ```
 ## .d.ts
 对文件/项目的声明
+```ts
+declare module "*.vue" {
+  import { ComponentOptions } from "vue";
+  const componentOptions: ComponentOptions;
+  export default componentOptions;
+}
+
+declare module "*.ts"
+declare module '*.svg'
+```
