@@ -3,7 +3,7 @@ const BasicsList = ["html-1.md","css-1.md"]
 const BasicsJSList = [
     "js/js-1.md",
     "js/es6-module.md",
-    "js/es6-Reflect",
+    "js/es6-Reflect.md",
     'js/error.md'
 ]
 const performanceList = [
