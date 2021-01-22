@@ -14,7 +14,7 @@ const performanceList = [
 ]
 const ChromeList = ["Chrome-1.md","chrome-v8.md", ]
 const webpackList = ["webpack-1.md","webpack-babel.md",'esbuild.md','swc.md']
-const TsList = ["ts.md",'ts.config.md','ts-d.ts.md','ts-1.md','ts-2.md','ts-3.md']
+const TsList = ["ts.md",'ts.config.md','ts.d.ts.md','ts-1.md','ts-2.md','ts-3.md']
 const NodeJSList = [ "node-1.md", "node-process.md","node-koa.md","node-buffer.md" ,'node-libuv.md']
 const regList = ["reg/reg-1.md",]
 const standardList = [
