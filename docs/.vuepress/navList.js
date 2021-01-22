@@ -13,9 +13,9 @@ const performanceList = [
     'performance/performance-methods.md'
 ]
 const ChromeList = ["Chrome-1.md","chrome-v8.md", ]
-const webpackList = ["webpack-1.md","webpack-babel.md",]
-const TsList = ["ts.md",'ts.config.md','ts-1.md','ts-2.md','ts-3.md']
-const NodeJSList = [ "node-1.md", "node-process.md","node-koa.md","node-buffer.md" ]
+const webpackList = ["webpack-1.md","webpack-babel.md",'esbuild.md','swc.md']
+const TsList = ["ts.md",'ts.config.md','ts-d.ts.md','ts-1.md','ts-2.md','ts-3.md']
+const NodeJSList = [ "node-1.md", "node-process.md","node-koa.md","node-buffer.md" ,'node-libuv.md']
 const regList = ["reg/reg-1.md",]
 const standardList = [
     'standard/standard.md',
@@ -24,7 +24,7 @@ const standardList = [
     'standard/eslint.md'
 ]
 const vueList =["vue2-1.md", "vue2-2.md", "vdom-1.md", "vdom-2.md","vue3-1.md"]
-const reactList = ['react-render.md','react-fiber.md','react.md']
+const reactList = ['react-render.md','react-fiber.md', 'react.md']
 const AlgorithmList =["algorithm-1.md","algorithm-3.md"]
 const Network = ['net/net-module.md']
 const NetworkList = ['net/net-http.md','net/net-http-cache.md',]
