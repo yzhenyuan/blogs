@@ -2,16 +2,19 @@
 
 基于函数式编程
 
-## 入口文件
+## 一、入口文件
 
 ```js
-import { createApp } from "vue";
-import App from "./App.vue";
+import {createApp} from 'vue'
 const app = createApp(App);
-app.mount("#app");
+app.use();
+app.mixins();
+app.component();
+app.directive();
+app.mount("#root");
 ```
 
-## 增加了 `Fragement template`
+## 二、Fragement template
 
 可以使用多个节点
 
@@ -31,7 +34,7 @@ app.mount("#app");
 </template>
 ```
 
-## style
+## 三、style
 
 ```scss
 // ::v-deep()
@@ -50,16 +53,11 @@ app.mount("#app");
 </style>
 ```
 
-## 可以使用 jsx + tsx
+## 四、Suspense
 
-```ts
-const React = { createElement: vue.h, Fragment: vue.Fragment }
-为了让 tsx 转换之后的代码可以正确引用到 vue
-```
+一开始是 react 中 才有的，vue2 中一般使用 `v-if`去模拟
 
-## Suspense
-一开始是react 中 才有的，vue2中一般使用 `v-if`去模拟
-### 异步组件作用：
+### 🐩 异步组件作用
 
 - 在页面加载之前显示加载动画
 - 显示占位符内容
@@ -77,3 +75,10 @@ const React = { createElement: vue.h, Fragment: vue.Fragment }
 
 <!-- ## 所有的数据都代理到proxy上 -->
 
+## 五、可以使用 jsx + tsx
+
+```ts
+import {h} from 'vue'
+const React = { createElement: h }
+// 为了让 tsx 转换之后的代码可以正确引用到 vue
+```
