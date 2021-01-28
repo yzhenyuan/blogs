@@ -23,7 +23,7 @@ const standardList = [
     'standard/prettier.md',
     'standard/eslint.md'
 ]
-const vueList =["vue2-1.md", "vue2-2.md", "vdom-1.md", "vdom-2.md","vue3-1.md"]
+const vueList =["vue2-1.md", "vue2-2.md", "vdom-1.md", "vdom-2.md","vue3-vite.md", "vue3-composition.md","vue3-3.md"]
 const reactList = ['react-render.md','react-fiber.md', 'react.md']
 const AlgorithmList =["algorithm-1.md","algorithm-3.md"]
 const Network = ['net/net-module.md']
