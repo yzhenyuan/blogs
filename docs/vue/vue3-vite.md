@@ -2,17 +2,17 @@
 
 ## 一、Vite 特点
 
-一个基于浏览器原生 module sciprt 的开发服务器。利用浏览器去解析 imports，在服务器端按需编译返回，完全跳过了打包这个概念。对 Vue 文件支持，还搞定了热更新，而且热更新的速度不会随着模块增多而变慢。针对生产环境则可以把同一份代码用 rollup 打包
+一个基于浏览器原生 ES Import 的开发服务器。利用浏览器去解析 imports，在服务器端按需编译返回，完全跳过了打包这个概念。对 Vue 文件支持，还搞定了热更新，而且热更新的速度不会随着模块增多而变慢。针对生产环境则可以把同一份代码用 rollup 打包
 
-1. 类似于 `webpack-dev-server`
-2. 基于 `module sciprt`
+1. 类似于 `webpack-dev-server`,冷启动速度
+2. 基于 `ES Import`
 3. 热更新使用 `WebSocket` ，服务端使用 Koa 构建
 4. 按需编译，开发模式下不需要打包，只需要编译浏览器发出的 HTTP 请求对应的文件即可，所以热更新速度很快
 5. 打包使用 rollup
 
-### 1.1 基于 `module sciprt`
+### 1.1 基于 `ES Import`
 
-开发模式下 拦截浏览器发出的 `module sciprt` 请求并做相应处理，拦截后使用 `es-module-lexer`，来进行的语法分析获取 imports 数组，然后再做的替换
+开发模式下 拦截浏览器发出的 `ES Import` 请求并做相应处理，拦截后使用 `es-module-lexer`，来进行的语法分析获取 imports 数组，然后再做的替换
 
 当声明一个 script 标签类型为 module 时，浏览器将对其内部的 import 引用发起 HTTP 请求获取模块内容
 
@@ -61,5 +61,5 @@ vue-loader 比较类似，借助 module script 处理文件依赖，然后通过
 ## 三、和 webpack 的区别
 
 1. 本身没有打包功能
-2. 利用`module sciprt`按需编译，项目随起随用
+2. 利用`ES Import`按需编译，项目随起随用
 3. 不需要安装太多依赖
