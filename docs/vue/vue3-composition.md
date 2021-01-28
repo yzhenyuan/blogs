@@ -158,3 +158,64 @@ setup(props){
 
 }
 ```
+
+## 解决 Mixins 的问题
+
+Vue2 中的 Mixins 存在的问题
+
+1. 命名冲突
+2. 隐式依赖
+### Vue2中使用 Mixins
+```js
+// Mixin1.js
+export default {
+  data: () => ({
+    msg: null,
+  }),
+  methods: {
+    setMsg() {},
+  },
+};
+```
+
+```js
+// app.vue
+import Mixin1 from "./Mixin1.js";
+export default {
+  mixins: [Mixin1],
+  //命名冲突
+  data: () => ({
+    msg: null,
+  }),
+  methods: {
+    setMsg() {},
+  },
+};
+```
+### vue3 components API 使用
+```js
+// useMixin1.js
+export  default{
+    setup () {
+        const msg = ref(0)
+        const setMsg(){
+            msg.value++
+        }
+        return {
+            msg,
+            setMsg
+        }
+    }
+}
+```
+
+```js
+// app.vue
+import useMixin1 from "./useMixin1.js";
+export default {
+    setup () {
+        const {msg, setMsg} = useMixin1()
+    }
+}
+
+```
