@@ -24,7 +24,7 @@
     /* 严格的类型检查选项 */
     "strict": true,                        // 启用所有严格类型检查选项
     "noImplicitAny": true,                 // 在表达式和声明上有隐含的 any类型时报错
-    "strictNullChecks": true,              // 启用严格的 null 检查
+    "strictNullChecks": true,              // 启用严格的 null 检查指定了--strictNullChecks标记，null和undefined只能赋值给void和它们各自。
     "noImplicitThis": true,                // 当 this 表达式值为 any 类型的时候，生成一个错误
     "alwaysStrict": true,                  // 以严格模式检查每个模块，并在每个文件里加入 'use strict'
 

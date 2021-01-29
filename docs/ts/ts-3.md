@@ -17,7 +17,6 @@
     Pick：对象类型的子类型及其键的子集
     Record：从键类型到值类型的映射
     Required：将对象中的所有属性设为必需
-
     ReturnType：函数的返回类型
     用它取到函数返回值的类型方便之后使用.
     function foo(x: number): Array<number> {
