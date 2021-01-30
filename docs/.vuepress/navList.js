@@ -5,7 +5,9 @@ const BasicsJSList = [
     "js/es6-module.md",
     "js/es6-Reflect.md",
     'js/error.md',
-    'js/js-forin-forof.md'
+    'js/js-forin-forof.md',
+    'js/fp.md',
+    'js/fp2.md',
 ]
 const performanceList = [
     'performance/performance.md',
