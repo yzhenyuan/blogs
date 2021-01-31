@@ -17,7 +17,8 @@ module.exports = {
     mode: 'light',
     codeTheme: 'tomorrow', // default 'tomorrow'
     modePicker: false,
-    sidebarDepth: 3, //侧边栏深度
+    sidebarDepth: 5, //侧边栏深度
+    subSidebar: "auto",
     nav,
     sidebar,
     displayAllHeaders: true, // 默认值：false

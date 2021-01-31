@@ -1,52 +1,52 @@
 
-const BasicsList = ["html-1.md","css-1.md"]
+const BasicsList = ["html-1","css-1"]
 const BasicsJSList = [
-    "js/js-1.md",
-    "js/es6-module.md",
-    "js/es6-Reflect.md",
-    'js/error.md',
-    'js/js-forin-forof.md',
-    'js/fp.md',
-    'js/fp2.md',
+    "js/js-1",
+    "js/es6-module",
+    "js/es6-Reflect",
+    'js/error',
+    'js/js-forin-forof',
+    'js/fp',
+    'js/fp2',
 ]
 const performanceList = [
-    'performance/performance.md',
-    'performance/performance-1.md',
-    'performance/performance-js.md',
-    'performance/performance-methods.md'
+    'performance/performance',
+    'performance/performance-1',
+    'performance/performance-js',
+    'performance/performance-methods'
 ]
-const ChromeList = ["Chrome-1.md","chrome-v8.md", ]
-const webpackList = ["webpack-1.md","webpack-babel.md",'esbuild.md','swc.md']
-const TsList = ["ts-basic.md","ts.md",'ts.config.md','ts.d.ts.md','ts-1.md','ts-2.md','ts-3.md']
-const NodeJSList = [ "node-1.md", "node-process.md","node-koa.md","node-buffer.md" ,'node-libuv.md']
-const regList = ["reg/reg-1.md",]
+const ChromeList = ["Chrome-1","chrome-v8", ]
+const webpackList = ["webpack-1","webpack-babel",'esbuild','swc']
+const TsList = ["ts-basic","ts",'ts.config','ts.d.ts','ts-1','ts-2','ts-3']
+const NodeJSList = [ "node-1", "node-process","node-koa","node-buffer" ,'node-libuv']
+const regList = ["reg/reg-1",]
 const standardList = [
-    'standard/standard.md',
-    'standard/editorconfig.md',
-    'standard/prettier.md',
-    'standard/eslint.md'
+    'standard/standard',
+    'standard/editorconfig',
+    'standard/prettier',
+    'standard/eslint'
 ]
-const vueList =["vue2-1.md", "vue2-2.md", "vdom-1.md", "vdom-2.md","vue3-vite.md", "vue3-composition.md","vue3-3.md"]
-const reactList = ['react-render.md','react-fiber.md', 'react.md']
-const AlgorithmList =["algorithm-1.md","algorithm-3.md"]
-const Network = ['net/net-module.md']
-const NetworkList = ['net/net-http.md','net/net-http-cache.md',]
-const safeList = ['safe-1.md','safe-xss.md','safe-csrf.md']
+const vueList =["vue2-1", "vue2-2", "vdom-1", "vdom-2","vue3-vite", "vue3-composition","vue3-3"]
+const reactList = ['react-render','react-fiber', 'react']
+const AlgorithmList =["algorithm-1","algorithm-3"]
+const Network = ['net/net-module']
+const NetworkList = ['net/net-http','net/net-http-cache',]
+const safeList = ['safe-1','safe-xss','safe-csrf']
 const DesignList = [
-    'Design/Design.md',
-    'Design/Singleton.md',
-    'Design/Factory.md',
-    'Design/Constructor.md',
-    'Design/prototype.md',
-    'Design/Observer.md'
+    'Design/Design',
+    'Design/Singleton',
+    'Design/Factory',
+    'Design/Constructor',
+    'Design/prototype',
+    'Design/Observer'
 ]
 
 
 
 module.exports = {
     "/Basics/": [
-        { title: "HTML&CSS", children: BasicsList},
-        { title: "JS基础", children: BasicsJSList},
+        { title: "HTML&CSS",sidebarDepth: 3, children: BasicsList},
+        { title: "JS基础",sidebarDepth: 10, children: BasicsJSList},
         { title: "性能优化", children: performanceList},
     ],
     "/Chrome/": [{ title: "Chrome", children: ChromeList}],
@@ -64,10 +64,10 @@ module.exports = {
         { title: "安全", children: safeList },
     ],
     "/pages/": [
-        { title: "Docker", children: ["docker.md", "docker-k8s.md"]},
+        { title: "Docker", children: ["docker", "docker-k8s"]},
         { title: "设计模式", children: DesignList},
         { title: "正则表达式", children: regList },
         { title: "代码规范",children:standardList},
-        { title: "serverless",children:['serverless.md']}
+        { title: "serverless",children:['serverless']}
     ],
 }
