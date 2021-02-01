@@ -8,6 +8,7 @@ const BasicsJSList = [
     'js/js-forin-forof',
     'js/fp',
     'js/fp2',
+    'js/fp3',
 ]
 const performanceList = [
     'performance/performance',

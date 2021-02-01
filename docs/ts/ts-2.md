@@ -6,7 +6,9 @@
 - 索引类型（Index types）
 - 映射类型
 
-## 交叉类型
+## 一、交叉类型
+
+**取并集**
 
 交叉类型是将多个类型合并为一个类型，它包含了所需的所有类型的特性
 
@@ -42,11 +44,28 @@ var n = jim.name;
 jim.log();
 ```
 
-## 联合类型
+## 二、联合类型
+
+**取交集**
 
 我们只能访问此联合类型的所有类型里**共有**的成员
 
-## 类型保护
+```ts
+type names = {
+  name: string;
+};
+type numbers = {
+  name: string;
+  age: number;
+};
+type testType = names | numbers;
+const data: testType = { age: 90 };
+// 🚚
+// Type '{ age: number; }' is not assignable to type 'testType'. Property 'name' is missing in type '{ age: number; }' but required in type 'numbers'
+console.log(data);
+```
+
+## 三、类型保护
 
 类型保护使你可以用运算符检查变量或对象的类型。它实际上是一个检查用 `typeof`、`instanceof` 或 `in` 所返回类型的条件块。
 
@@ -131,19 +150,7 @@ showType({ y: "ccc" });
 
 是 TS 本身使用 typeof 和改进类型的方式 instanceof
 
-## Conditional 类型
-
-用来对两种类型进行测试，并根据测试的结果选择其中的一种
-
-### NonNullable
-```ts
-type NonNullable<T> = T extends null | undefined ? never : T;
-```
-
-这个例子中的 `NonNullable` 检查该类型是否为 `null` 并根据该类型进行处理。
-
-
-## 索引类型（Index types）
+## 四、索引类型（Index types）
 
 ### 1. 查询操作符 keyof
 
@@ -181,3 +188,15 @@ interface obj {
 // 此时,key的类型为 "name"
 let key: obj["name"]; //  ->let key: string
 ```
+
+## Conditional 类型
+
+用来对两种类型进行测试，并根据测试的结果选择其中的一种
+
+### NonNullable
+
+```ts
+type NonNullable<T> = T extends null | undefined ? never : T;
+```
+
+这个例子中的 `NonNullable` 检查该类型是否为 `null` 并根据该类型进行处理。
