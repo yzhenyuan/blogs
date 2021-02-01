@@ -31,7 +31,7 @@ const vueList =["vue2-1", "vue2-2", "vdom-1", "vdom-2","vue3-vite", "vue3-compos
 const reactList = ['react-render','react-fiber', 'react']
 const AlgorithmList =["algorithm-1","algorithm-3"]
 const Network = ['net/net-module']
-const NetworkList = ['http/1','http/getpost','net/net-http-cache',]
+const NetworkList = ['http/1.md','http/getpost.md','net/net-http-cache',]
 const safeList = ['safe-1','safe-xss','safe-csrf']
 const DesignList = [
     'Design/Design',
