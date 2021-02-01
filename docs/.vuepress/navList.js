@@ -46,8 +46,8 @@ const DesignList = [
 
 module.exports = {
     "/Basics/": [
-        { title: "HTML&CSS",sidebarDepth: 3, children: BasicsList},
-        { title: "JS基础",sidebarDepth: 10, children: BasicsJSList},
+        { title: "HTML&CSS",children: BasicsList},
+        { title: "JS基础", children: BasicsJSList},
         { title: "性能优化", children: performanceList},
     ],
     "/Chrome/": [{ title: "Chrome", children: ChromeList}],
