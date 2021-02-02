@@ -148,28 +148,28 @@ class Functor {
 💖 一般约定，函子的标志就是容器具有 map 方法。该方法将容器里面的每一个值，映射到另一个容器。**学习函数式编程，实际上就是学习函子的各种运算**
 
 #### 示例：
+
 ```js
-(new Functor(2)).map(function (two) {
+new Functor(2).map(function(two) {
   return two + 2;
 });
 // Functor(4)
 
-(new Functor('flamethrowers')).map(function(s) {
+new Functor("flamethrowers").map(function(s) {
   return s.toUpperCase();
 });
 // Functor('FLAMETHROWERS')
 
-(new Functor('bombs')).map(_.concat(' away')).map(_.prop('length'));
+new Functor("bombs").map(_.concat(" away")).map(_.prop("length"));
 // Functor(10)
 ```
 
-
 ## 四、of 方法
 
-函数式编程一般约定，函子有一个of方法，用来生成新的容器。
+函数式编程一般约定，函子有一个 of 方法，用来生成新的容器。
 
+下面就用 of 方法替换掉 new。
 
-下面就用of方法替换掉new。
 ```js
 Functor.of = function(val) {
   return new Functor(val);
@@ -185,17 +185,72 @@ Functor.of(2).map(function (two) {
 
 ## 五、 Maybe 函子
 
-函子接受各种函数，处理容器内部的值。这里就有一个问题，容器内部的值可能是一个空值（比如null），而外部函数未必有处理空值的机制，如果传入空值，很可能就会出错。
+函子接受各种函数，处理容器内部的值。这里就有一个问题，容器内部的值可能是一个空值（比如 null），而外部函数未必有处理空值的机制，如果传入空值，很可能就会出错。
 
 ```js
-Functor.of(null).map(function (s) {
+Functor.of(null).map(function(s) {
   return s.toUpperCase();
 });
 // TypeError
 ```
-上面代码中，函子里面的值是null，结果小写变成大写的时候就出错了。
 
-Maybe 函子就是为了解决这一类问题而设计的。简单说，它的map方法里面设置了空值检查。
+上面代码中，函子里面的值是 null，结果小写变成大写的时候就出错了。
+
+Maybe 函子就是为了解决这一类问题而设计的。简单说，它的 map 方法里面设置了空值检查。
+
+## 六、Either 函子
+
+条件运算 if...else 是最常见的运算之一，函数式编程里面，使用 Either 函子表达。
+
+Either 函子内部有两个值：左值（Left）和右值（Right）。右值是正常情况下使用的值，左值是右值不存在时使用的默认值。
+
+```js
+class Either extends Functor {
+  constructor(left, right) {
+    this.left = left;
+    this.right = right;
+  }
+  map(f) {
+    return this.right
+      ? Either.of(this.left, f(this.right))
+      : Either.of(f(this.left), this.right);
+  }
+}
+Either.of = function(left, right) {
+  return new Either(left, right);
+};
+
+// 🔧 下面是用法。
+
+var addOne = function(x) {
+  return x + 1;
+};
+
+Either.of(5, 6).map(addOne);
+// Either(5, 7);
+
+Either.of(1, null).map(addOne);
+// Either(2, null);
+```
+
+Either 函子的常见用途是提供默认值。下面是一个例子。
+
+```js
+Either.of({ address: "xxx" }, currentUser.address).map(updateField);
+// 上面代码中，如果用户没有提供地址，Either 函子就会使用左值的默认地址。
+```
+
+Either 函子的另一个用途是代替 try...catch，使用左值表示错误。
+
+## 七、ap 函子
+
+函子里面包含的值，完全可能是函数。我们可以想象这样一种情况，一个函子的值是数值，另一个函子的值是函数。
+
+## 八、Monad 函子
+
+Monad 函子的重要应用，就是实现 I/O （输入输出）操作
+
+I/O 是不纯的操作，普通的函数式编程没法做，这时就需要把 IO 操作写成 Monad 函子，通过它来完成
 
 ---
 

@@ -19,7 +19,7 @@
 ### 🐩 复合类型，包含多个单一类型的类型
 
 1. 数组类型
-2. 元组类型
+2. Tuple 元组类型
 3. 字面量类型
 4. 接口类型
 
@@ -95,3 +95,19 @@ let obj: StrEnum = {
 ## 多态
 
 相同的类型调不同的方法就会有不同的行为
+
+## interface
+
+## type
+
+interface 和 type的区别：
+
+type 只是声明类型用的可以声明交叉联合，interface 可以 extends 和合并，且只能定义对象类型，type 声明更加广泛
+
+
+interface可以继承多个
+```ts
+interface A extends B,C {
+
+}
+```

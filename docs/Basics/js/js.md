@@ -1,22 +1,22 @@
-
 # 准备
 
-1. CSS：BFC容器、居中方式、flex布局
+1. CSS：BFC 容器、居中方式、flex 布局
 2. JS：原型链、函数执行栈、闭包、this
-3. 手写JS代码：防抖/节流、Promise.all、快排/归并排序
-4. vue：computed原理、数组绑定原理、nextTick原理、keep-alive原理、vue3新特性
-5. react：fiber原理、hooks原理、diff算法原理
-6. 网络：DNS解析流程、CDN原理、TCP/UDP协议、三次握手四次挥手过程、HTTP1.1/2区别、各状态码表达含义
-7. 浏览器原理：从HTML到完整页面展示全流程
-8.  v8：GC机制
+3. 手写 JS 代码：防抖/节流、Promise.all、快排/归并排序
+4. vue：computed 原理、数组绑定原理、nextTick 原理、keep-alive 原理、vue3 新特性
+5. react：fiber 原理、hooks 原理、diff 算法原理
+6. 网络：DNS 解析流程、CDN 原理、TCP/UDP 协议、三次握手四次挥手过程、HTTP1.1/2 区别、各状态码表达含义
+7. 浏览器原理：从 HTML 到完整页面展示全流程
+8. v8：GC 机制
 9. 缓存：强缓存与协商缓存完整过程
 10. 跨域：成因、注意事项及解决方案
-11.  node：express/koa中间件原理，SSR原理
-12. web安全：xss与csrf，原理及防范手段
-13. 前端工程化：webpack优化策略，vite优点
+11. node：express/koa 中间件原理，SSR 原理
+12. web 安全：xss 与 csrf，原理及防范手段
+13. 前端工程化：webpack 优化策略，vite 优点
 14. 性能优化：常见性能瓶颈、优化手段，如何检测首屏时间并提升首屏速度
 
-其它：TS、移动端适配、flutter/RN/weex等native开发方式
+其它：TS、移动端适配、flutter/RN/weex 等 native 开发方式
+
 ```js
 面经：
 
@@ -266,5 +266,7 @@ bigo 音视频sdk工程师
 2. 如何从视频中提取某一时刻的图像，并作为封面展示出来
 
 ```
+
 ## 防抖/节流
+
 函数节流解释：对函数执行增加一个控制层，保证一段时间内（可配置）只执行一次。此函数作用是对函数执行进行频率控制，常用于用户频繁触发但可以更低频率响应的场景
