@@ -1,19 +1,20 @@
-# Vue中的DOM-Diff 
-在Vue中，把 DOM-Diff过程叫做patch过程。patch,意为“补丁”，即指对旧的VNode修补，打补丁从而得到新的VNode。
+# Vue 中的 DOM-Diff
 
-总之一句话：以新的VNode为基准，改造旧的oldVNode使之成为跟新的VNode一样，这就是patch过程要干的事。
+在 Vue 中，把 DOM-Diff 过程叫做 patch 过程。patch,意为“补丁”，即指对旧的 VNode 修补，打补丁从而得到新的 VNode。
 
-整个patch无非就是干三件事：
+总之一句话：以新的 VNode 为基准，改造旧的 oldVNode 使之成为跟新的 VNode 一样，这就是 patch 过程要干的事。
 
-- 创建节点：新的VNode中有而旧的oldVNode中没有，就在旧的oldVNode中创建。
-- 删除节点：新的VNode中没有而旧的oldVNode中有，就从旧的oldVNode中删除。
-- 更新节点：新的VNode和旧的oldVNode中都有，就以新的VNode为准，更新旧的oldVNode
+整个 patch 无非就是干三件事：
 
+- 创建节点：新的 VNode 中有而旧的 oldVNode 中没有，就在旧的 oldVNode 中创建。
+- 删除节点：新的 VNode 中没有而旧的 oldVNode 中有，就从旧的 oldVNode 中删除。
+- 更新节点：新的 VNode 和旧的 oldVNode 中都有，就以新的 VNode 为准，更新旧的 oldVNode
 
-## vue中对节点更新的优化
+## vue 中对节点更新的优化
+
 1. 新节点数组中第一个节点和旧数组中的第一个节点对比，相同，那就直接进入更新节点的操作
 2. 不同：再把新数组里面的最后一个节点和旧数组里的最后一个节点对比，，相同，那就直接进入更新节点的操作
 3. 不同：再把新数组的最后一个节点和旧数组中第一个节点对比
-   + 如果相同，那就直接进入更新节点的操作，
-   + 更新完后，再将旧数组中的该节点移动到 与新节点相同的位置
+   - 如果相同，那就直接进入更新节点的操作，
+   - 更新完后，再将旧数组中的该节点移动到 与新节点相同的位置
 4. 不同：把新节点中第一个节点和旧数组中最后一个节点做对比

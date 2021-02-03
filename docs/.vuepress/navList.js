@@ -1,7 +1,9 @@
 
 const BasicsList = ["html-1","css-1"]
 const BasicsJSList = [
-    "js/js-1",
+    "js/js",
+    "js/js-proto",
+    "js/js-scope",
     "js/es6-module",
     "js/es6-Reflect",
     'js/error',
