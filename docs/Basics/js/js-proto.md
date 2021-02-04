@@ -85,8 +85,10 @@ const dogA = new DOG("大毛");
 任何一个prototype对象都有一个constructor属性，指向它的构造函数
 
 每一个实例也有一个constructor属性，默认调用prototype对象的constructor属性
-
-### 总结
+```js
+Cat.prototype.constructor = Cat
+```
+### 三、总结
 
 由于所有的实例对象共享同一个 prototype 对象，那么从外界看起来，prototype 对象就好像是实例对象的原型，而实例对象则好像"继承"了 prototype 对象一样。
 
