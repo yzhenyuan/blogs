@@ -86,7 +86,22 @@ const dogA = new DOG("大毛");
 
 每一个实例也有一个constructor属性，默认调用prototype对象的constructor属性
 ```js
-Cat.prototype.constructor = Cat
+function Animal(){
+　　this.species = "动物";
+}
+function Cat(name,color){
+　　this.name = name;
+　　this.color = color;
+}
+// ❓ 怎样才能使"Cat"继承"Animal"呢？
+
+/*
+
+*/
+
+
+Cat.prototype = new Animal();
+Cat.prototype.constructor = Cat;
 ```
 ### 三、总结
 
