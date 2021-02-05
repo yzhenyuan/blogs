@@ -1,22 +1,22 @@
 # React Fiber
+
 ## 为什么要了解 Fiber
 
-**Fiber是什么？**---计算机有进程（Process）和线程（Thread）的概念，然后，还有个`Fiber`概念，意思是比线程(Thread)控制得更精密的并发处理机制。
+**Fiber 是什么？**---计算机有进程（Process）和线程（Thread）的概念，然后，还有个`Fiber`概念，意思是比线程(Thread)控制得更精密的并发处理机制。
 
-react在进行组件渲染时，从setState开始到渲染完成整个过程是**同步**的。如果需要渲染的组件比较庞大，js执行会占据主线程时间较长，会导致页面响应度变差，因为 JavaScript 是单线程的，任何交互、布局、渲染都会停止，使得react在动画、手势等应用中效果比较差
-
+react 在进行组件渲染时，从 setState 开始到渲染完成整个过程是**同步**的。如果需要渲染的组件比较庞大，js 执行会占据主线程时间较长，会导致页面响应度变差，因为 JavaScript 是单线程的，任何交互、布局、渲染都会停止，使得 react 在动画、手势等应用中效果比较差
 
 ### 那么如何解决呢？
 
 1. 提升计算机的算力，但是我们的应用可能跑在千差万别的设备上，总会有很多设备硬件水平不是很高
-2. `web worker`，让 diff 操作在另外一个线程中并行执行。这是个好思路，但是这可能会带来额外的开销，react 官方并没有采用这个策略 
+2. `web worker`，让 diff 操作在另外一个线程中并行执行。这是个好思路，但是这可能会带来额外的开销，react 官方并没有采用这个策略
 3. React Fiber：将 diff 操作变成可中断的，只有当浏览器空闲时再做 diff。避免 diff 更新长时间占据浏览器线程
 
 事实上，我们要解决的其实并不是性能问题，而是 **调度问题**。用户的交互事件属于高优先级，需要尽快响应。而 diff 操作优先级相对没那么高，可以在几个时间段内分片执行。
 
 ## 什么是 React Fiber
 
-为了解决 diff 时间过长导致的卡顿问题，React Fiber 用类似 `requestIdleCallback` 的机制来做异步diff
+为了解决 diff 时间过长导致的卡顿问题，React Fiber 用类似 `requestIdleCallback` 的机制来做异步 diff
 
 ### 了解 requestIdleCallback
 
@@ -26,13 +26,11 @@ react在进行组件渲染时，从setState开始到渲染完成整个过程是*
 
 但是由于原生提供的 `requestIdleCallback` 方法的 `timeRemaining()` 最大返回是 50ms，也就是 20fps，达不到页面流畅度的要求，并且该 API 兼容性也比较差。所以 React 团队没有直接使用原生的 requestIdleCallback，而是自己 [polyfill](https://github.com/facebook/react/blob/master/packages/scheduler/src/forks/SchedulerDOM.js) 了一个
 
-1. 浏览器一帧需要的时间是
+### fiber 特点
 
-
-### fiber特点
 - 链表结构 - fiber
 - 循环代替递归（深度优先遍历）——可中断（协程的概念来回交换执行权）
-- requestIdleCallback/requestAnimateFrame —— 可异步（时间切片把langtime分成一段一段小任务）
+- requestIdleCallback/requestAnimateFrame —— 可异步（时间切片把 langtime 分成一段一段小任务）
 
 ## 二、 如何让 React 的 diff 可中断？
 
@@ -41,12 +39,10 @@ react在进行组件渲染时，从setState开始到渲染完成整个过程是*
 不同于前面一直递增到 10000 就结束的简单例子，在递归中中断以及恢复状态很麻烦。如果改成类似链表的结构那就好办很多，可以一直 next，知道 next 为 null 就知道遍历结束了。
 
 也就是说，我们需要将递归操作变成遍历操作，Fiber 恰巧也是这么做的。
- 
+
 ::: tips 总结
 总结一下，为了解决 diff 时间过长导致的卡顿问题，React Fiber 用类似 requestIdleCallback 的机制来做异步 diff。但是之前的数据结构不支持这样的实现异步 diff，于是 React 实现了一个类似链表的数据结构，将原来的 递归 diff 变成了现在的 遍历 diff，这样就能方便的做中断和恢复了。
 :::
-
-
 
 ## React Fiber polyfill
 
@@ -64,4 +60,3 @@ React 维护了两个小队列 `taskQueue`和`timerQueue`，前者保存等待�
 
 如果没有提供`delay`，则任务被直接放到`taskQueue`中等待处理；
 如果提供了`delay`，则任务被放置在`timerQueue`中，此时如果`taskQueue`为空，且当前任务在 timerQueue 的堆顶（当前任务的超时时间最近），则使用 `requestHostTimeout` 启动定时器（setTimeout），在到达当前任务的超时时间时执行 `handleTimeout` ，此函数调用 `advanceTimers` 将`timerQueue`中的任务转移到`taskQueue`中，此时如果`taskQueue`没有开启执行则调用 `requestHostCallback` 启动它，否则继续递归地执行 `handleTimeout` 处理下一个`timerQueue`中的任务。
-
