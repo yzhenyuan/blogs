@@ -41,7 +41,7 @@ cosnt sin = _.memorize(x => Math.sin(x))
 sin(1)
 // 📚 第二次有了缓存就会很快
 sin(1)
-```
+```s
 
 ```js
 // 不纯的
@@ -167,14 +167,16 @@ f("acds cds")
 
 ```js
 // 命令式
-let list = []
-for(let i = 0; i<data.length; i++){
-    list.push(data[i].m)
+let list = [];
+for (let i = 0; i < data.length; i++) {
+  list.push(data[i].m);
 }
 // 声明式
-let list = data.map(i=>i.m)
+let list = data.map((i) => i.m);
 ```
-## 🐴 类SQL数据：函数既数据
+
+## 🐴 类 SQL 数据：函数既数据
+
 以函数形式对数据建模
 
 ## 🐷 惰性链、惰性求值、惰性函数
