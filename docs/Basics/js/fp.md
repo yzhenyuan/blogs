@@ -35,7 +35,7 @@ arr.slice(0, 3); //[1, 2, 3]
 
 ```js
 import _ from 'lodash'
-cosnt sin = _.memorize(x => Math.sin(x))
+cont sin = _.memorize(x => Math.sin(x))
 
 // 📚 第一次会稍慢一点
 sin(1)
@@ -46,13 +46,13 @@ sin(1)
 ```js
 // 不纯的
 let min = 10;
-let checkage = (age) => age > min;
-// 📚 checkage 不仅取决于 age 还有外部依赖的变量 min
+let checkAge = (age) => age > min;
+// 📚 checkAge 不仅取决于 age 还有外部依赖的变量 min
 
 // 纯的 函数式
 
-let checkage = (age) => age > 10;
-// 📚 纯的 checkage 把数字 10 写在函数内部，扩展性比较差，柯里化优雅的函数式解决
+let checkAge = (age) => age > 10;
+// 📚 纯的 checkAge 把数字 10 写在函数内部，扩展性比较差，柯里化优雅的函数式解决
 ```
 
 ## 三、偏应用函数（partial application）
@@ -69,9 +69,9 @@ let checkage = (age) => age > 10;
 
 ```js
 // 📚 柯里化改造，先穿进去一个参数，再返回一个函数，再传剩余的参数
-let checkage = (min) => (age) => age > min;
-let checkage18 = checkage(18);
-checkage18(20);
+let checkAge = (min) => (age) => age > min;
+let checkAge18 = checkAge(18);
+checkAge18(20);
 ```
 
 ### 3.2 反柯里化
@@ -193,3 +193,17 @@ let list = data.map((i) => i.m);
 2) lodash、underscore 等库原理
 3) node 中 koa 的原理
 4) 业务逻辑模块的封装
+
+
+```js
+const curry = (fn) => 
+  (judge = (...args) =>
+    args.length === fn.length
+    ? fn(...args)
+    : (...arg) => judge(...args, arg)
+  )
+const add = (a,b,c) => a+b+c
+const curryAdd = curry(add)
+
+curryAdd(1)(2)(3)
+```

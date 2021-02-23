@@ -4,10 +4,11 @@ const BasicsJSList = [
     "js/js",
     "js/js-proto",
     "js/js-scope",
+    'js/module',
     "js/es6-module",
     "js/es6-Reflect",
     'js/error',
-    'js/js-forin-forof',
+    'js/js-for',
     'js/fp',
     'js/fp2',
     'js/fp3',
@@ -29,11 +30,19 @@ const standardList = [
     'standard/prettier',
     'standard/eslint'
 ]
-const vueList =["vue2-1", "vue2-2", "vdom-1", "vdom-2","vue3-vite", "vue3-composition","vue3-3"]
+const vueList =[
+    "vue2-1", 
+    "vue2-2", 
+    "vdom-1", 
+    "vdom-2",
+    "vue3-vite", 
+    "vue3-composition",
+    "vue3-3"
+]
 const reactList = ['react-render','react-fiber', 'react']
 const AlgorithmList =["algorithm-1","algorithm-3"]
 const Network = ['net/net-module']
-const NetworkList = ['http/edition.md','http/getpost.md','http/https.md','net/net-http-cache',]
+const NetworkList = ['http/edition.md','http/GetPost.md','http/https.md','net/cache',]
 const safeList = ['safe-1','safe-xss','safe-csrf']
 const DesignList = [
     'Design/Design',
@@ -44,9 +53,7 @@ const DesignList = [
     'Design/Observer'
 ]
 
-
-
-module.exports = {
+const allList = {
     "/Basics/": [
         { title: "HTML&CSS",children: BasicsList},
         { title: "JS基础", children: BasicsJSList},
@@ -74,3 +81,4 @@ module.exports = {
         { title: "serverless",children:['serverless']}
     ],
 }
+module.exports = allList 

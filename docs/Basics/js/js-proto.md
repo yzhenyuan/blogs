@@ -14,7 +14,7 @@
 
 工程师 Brendan Eich 负责开发这种新语言。他觉得，没必要设计得很复杂，这种语言只要能够完成一些简单操作就够了，比如判断用户有没有填写表单
 
-🚗 总结：设计js的目的就是让浏览器可以与网页互动
+🚗 总结：设计 js 的目的就是让浏览器可以与网页互动
 
 ### 二、遇到的问题
 
@@ -70,6 +70,7 @@ const dogA = new DOG("大毛");
 🚗 总结：使用构造函数来将所有的对象联系起来，**构造函数和普通函数的区别就是，构造函数前面有`new`**
 
 #### 2.3 prototype
+
 每一个实例对象，都有自己的属性和方法的副本。这不仅无法做到数据共享，也是极大的资源浪费。
 
 考虑到这一点，Brendan Eich 决定为构造函数设置一个`prototype`属性。
@@ -79,19 +80,21 @@ const dogA = new DOG("大毛");
 实例对象一旦创建，将自动引用 prototype 对象的属性和方法。
 
 🚗 总结：为构造函数设置一个`prototype`属性，将需要共享的属性和方法放到里面
- 
-####  constructor
-❓ 如何实现 继承呢？
-任何一个prototype对象都有一个constructor属性，指向它的构造函数
 
-每一个实例也有一个constructor属性，默认调用prototype对象的constructor属性
+#### constructor
+
+❓ 如何实现 继承呢？
+任何一个 prototype 对象都有一个 constructor 属性，指向它的构造函数
+
+每一个实例也有一个 constructor 属性，默认调用 prototype 对象的 constructor 属性
+
 ```js
-function Animal(){
-　　this.species = "动物";
+function Animal() {
+  this.species = "动物";
 }
-function Cat(name,color){
-　　this.name = name;
-　　this.color = color;
+function Cat(name, color) {
+  this.name = name;
+  this.color = color;
 }
 // ❓ 怎样才能使"Cat"继承"Animal"呢？
 
@@ -99,10 +102,10 @@ function Cat(name,color){
 
 */
 
-
 Cat.prototype = new Animal();
 Cat.prototype.constructor = Cat;
 ```
+
 ### 三、总结
 
 由于所有的实例对象共享同一个 prototype 对象，那么从外界看起来，prototype 对象就好像是实例对象的原型，而实例对象则好像"继承"了 prototype 对象一样。

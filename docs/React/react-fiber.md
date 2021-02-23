@@ -60,3 +60,8 @@ React 维护了两个小队列 `taskQueue`和`timerQueue`，前者保存等待�
 
 如果没有提供`delay`，则任务被直接放到`taskQueue`中等待处理；
 如果提供了`delay`，则任务被放置在`timerQueue`中，此时如果`taskQueue`为空，且当前任务在 timerQueue 的堆顶（当前任务的超时时间最近），则使用 `requestHostTimeout` 启动定时器（setTimeout），在到达当前任务的超时时间时执行 `handleTimeout` ，此函数调用 `advanceTimers` 将`timerQueue`中的任务转移到`taskQueue`中，此时如果`taskQueue`没有开启执行则调用 `requestHostCallback` 启动它，否则继续递归地执行 `handleTimeout` 处理下一个`timerQueue`中的任务。
+
+
+
+旧版react通过递归方式进行渲染，使用的是js的函数调用栈
+
