@@ -7,6 +7,7 @@ const BasicsJSList = [
     'js/module',
     "js/es6-module",
     "js/es6-Reflect",
+    "js/es6-promise",
     'js/error',
     'js/js-for',
     'js/fp',
