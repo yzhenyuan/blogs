@@ -40,7 +40,7 @@ const vueList =[
     "vue3-composition",
     "vue3-3"
 ]
-const reactList = ['react-render','react-fiber', 'react']
+const reactList = ['vs','react-render','react-fiber', 'react']
 const AlgorithmList =["algorithm-1","algorithm-3"]
 const Network = ['net/net-module']
 const NetworkList = ['http/edition','http/getPost','http/https','http/catch']
