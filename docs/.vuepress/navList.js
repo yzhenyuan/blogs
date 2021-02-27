@@ -20,7 +20,7 @@ const performanceList = [
     'performance/performance-js',
     'performance/performance-methods'
 ]
-const ChromeList = ["Chrome-1","chrome-v8", ]
+const ChromeList = ["Chrome-1","chrome-v8",'url']
 const webpackList = ["webpack-1","webpack-babel",'esbuild','swc']
 const TsList = ["ts-basic","ts",'ts.config','ts.d.ts','ts-1','ts-2','ts-3']
 const NodeJSList = [ "node-1", "node-process","node-koa","node-buffer" ,'node-libuv']
@@ -43,7 +43,7 @@ const vueList =[
 const reactList = ['react-render','react-fiber', 'react']
 const AlgorithmList =["algorithm-1","algorithm-3"]
 const Network = ['net/net-module']
-const NetworkList = ['http/edition','http/getPost','http/https','http/cache',]
+const NetworkList = ['http/edition','http/getPost','http/https','http/catch']
 const safeList = ['safe-1','safe-xss','safe-csrf']
 const DesignList = [
     'Design/Design',
