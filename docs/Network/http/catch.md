@@ -13,16 +13,16 @@ http 缓存指的是: 当客户端向服务器请求资源时，会先抵达浏�
 #### 1. cache-control: max-age=xxxx，public
 
 客户端和代理服务器都可以缓存该资源；
-客户端在 xxx 秒的有效期内，如果有请求该资源的需求的话就直接读取缓存,statu code:200 ，如果用户做了刷新操作，就向服务器发起 http 请求
+客户端在 xxx 秒的有效期内，如果有请求该资源的需求的话就直接读取缓存,statue code:200 ，如果用户做了刷新操作，就向服务器发起 http 请求
 
 #### 2. cache-control: max-age=xxxx，private
 
 只让客户端可以缓存该资源；代理服务器不缓存
-客户端在 xxx 秒内直接读取缓存,statu code:200
+客户端在 xxx 秒内直接读取缓存,statue code:200
 
 #### 3. cache-control: max-age=xxxx，immutable
 
-客户端在 xxx 秒的有效期内，如果有请求该资源的需求的话就直接读取缓存,statu code:200 ，即使用户做了刷新操作，也不向服务器发起 http 请求
+客户端在 xxx 秒的有效期内，如果有请求该资源的需求的话就直接读取缓存,statue code:200 ，即使用户做了刷新操作，也不向服务器发起 http 请求
 
 #### 4. cache-control: no-cache
 
@@ -36,12 +36,12 @@ http 缓存指的是: 当客户端向服务器请求资源时，会先抵达浏�
 
 > 通过比较去看是否需要缓存，会去和服务器进行一次通信，把本地缓存的状态发给服务器，让服务器去比较要不要重新拉取资源
 
-### 对比缓存两种策略 Etag 和 Last-modify
+### 对比缓存两种策略 eTag 和 Last-modify
 
-#### etag/if-none-match
+#### eTag/if-none-match
 
-- 服务器给这个资源生成一个**唯一标识**，放在 http-etag 头里面
-- 资源过期的时候，浏览器把 etag 拿出来，向服务器发送一个请求，让服务器去确认 etag 是否过期
+- 服务器给这个资源生成一个**唯一标识**，放在 http-eTag 头里面
+- 资源过期的时候，浏览器把 eTag 拿出来，向服务器发送一个请求，让服务器去确认 eTag 是否过期
 - 如果过期就会把资源重新发送到浏览器，返回一个 200
 - 如果没有过期，服务器就不会重新推送资源，返回一个 304 跳转（304 是本地跳转，从磁盘缓存上去拿 ）
 
@@ -53,7 +53,7 @@ http 缓存指的是: 当客户端向服务器请求资源时，会先抵达浏�
 ## 三、 缓存的优先级
 
 1. last-modified/if-modified-since
-2. etag/if-none-match //对文件做精准的 md5,能响应文件非常细致的
+2. eTag/if-none-match //对文件做精准的 md5,能响应文件非常细致的
 3. expires // 不能响应毫秒级别
 4. cache-control //过期时间长度
 

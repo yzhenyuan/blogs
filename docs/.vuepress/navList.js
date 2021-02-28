@@ -43,7 +43,7 @@ const vueList =[
 const reactList = ['vs','react-render','react-fiber', 'react']
 const AlgorithmList =["algorithm-1","algorithm-3"]
 const Network = ['net/net-module']
-const NetworkList = ['http/edition','http/getPost','http/https','http/catch']
+const NetworkList = ['http/edition','http/getpost','http/https','http/catch']
 const safeList = ['safe-1','safe-xss','safe-csrf']
 const DesignList = [
     'Design/Design',
