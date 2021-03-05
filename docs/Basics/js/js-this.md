@@ -59,30 +59,15 @@ Function.prototype.myapply = function(context, ...argus) {
 - 新函数的 this 不能修改
 
 ```js
-Function.prototype.myapply = function(context, ...argus) {
-  if (typeof this !== "function") {
-    throw new TypeError("not funciton");
-  }
-  const fn = this;
-  let result = null;
-
-  context = context || window;
-  argus = (argus && argus[0]) || [];
-  context.fn = fn;
-  result = context.fn(...argus);
-  delete context.fn;
-
-  return result;
-};
 Function.prototype.mybind = function(context) {
   var me = this;
-  var args = Array.prototype.slice.myapply(arguments, [1]);
+  var args = Array.prototype.slice.apply(arguments, [1]);
   var F = function() {};
   F.prototype = this.prototype;
   var bound = function() {
-    var innerArgs = Array.prototype.slice.mycall(arguments);
+    var innerArgs = Array.prototype.slice.call(arguments);
     var finalArgs = args.concat(innerArgs);
-    return me.myapply(this instanceof F ? this : context || this, finalArgs);
+    return me.apply(this instanceof F ? this : context || this, finalArgs);
   };
   bound.prototype = new F();
   return bound;

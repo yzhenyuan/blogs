@@ -22,7 +22,7 @@ GET 和 POST 能做的事情是一样一样的。你要给 GET 加上 request bo
 - GET 比 POST 更不安全，因为参数直接暴露在 URL 上，所以不能用来传递敏感信息。
 - GET 参数通过 URL 传递，POST 放在 Request body 中。
 
-## 再去理解
+## 理解
 
 ### 1、TCP 👉 汽车
 
