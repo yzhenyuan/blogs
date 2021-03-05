@@ -35,6 +35,7 @@ const standardList = [
 const vueList =[
     "vue2-1", 
     "vue2-2", 
+    "vue-observer",
     "vdom-1", 
     "vdom-2",
     "vue3-vite", 

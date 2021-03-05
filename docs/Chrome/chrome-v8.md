@@ -46,7 +46,7 @@ V8 是一个非常复杂的项目，有超过 100 万行 C++代码。它由许�
 - TurboFan：compiler，即编译器，利用 Ignitio 所收集的类型信息，将 Bytecode 转换为优化的汇编代码；
 - Orinoco：garbage collector，垃圾回收模块，负责将程序不再需要的内存空间回收。
 
-> 简单地说，Parser 将 JS 源码转换为 AST，然后 Ignition 将 AST 转换为 Bytecode，最后 TurboFan 将 Bytecode 转换为经过优化的 Machine Code(实际上是汇编代码)。
+> 简单地说，Parser 将 JS 源码转换为 AST，→ Ignition 将 AST 转换为 Bytecode，→ 最后 TurboFan 将 Bytecode 转换为经过优化的 Machine Code(实际上是汇编代码)。
 
 Parser，Ignition 以及 TurboFan 可以将 JS 源码编译为汇编代码，其流程图如下：
 ![Parser，Ignition 以及 TurboFan 可以将 JS 源码编译为汇编代码，其流程图如下：](../.vuepress/public/pages/v8.png)

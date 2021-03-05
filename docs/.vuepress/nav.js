@@ -9,7 +9,7 @@ module.exports = [
     ]},
     { text: "工程化" , items: [
       { text: 'Webpack', link: '/Webpack/webpack-1' },
-      { text: 'Gulp', link: '/Webpack/webpack-module' },
+      // { text: 'Gulp', link: '/Webpack/webpack-module' },
       {text: 'Typscript',link: '/ts/ts' }
     ]},
     { text: "网络&安全", link: '/Network/net/net-module'},
