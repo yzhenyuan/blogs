@@ -51,35 +51,36 @@ sub.notify("I fired `SMS` event");
 
 在观察者模式中的`Subject`就像一个发布者`（Publisher）`，观察者`（Observer）`完全和订阅者`（Subscriber）`关联。`subject`通知观察者就像一个发布者通知他的订阅者。
 
-```js
-class PubSub {
-  constructor() {
-    this.subscribers = [];
+```ts
+// 发布订阅中心, on-订阅, off取消订阅, emit发布, 内部需要一个单独事件中心caches进行存储;
+
+interface CacheProps {
+  [key: string]: Array<((data?: unknown) => void)>;
+}
+
+class Observer {
+
+  private caches: CacheProps = {}; // 事件中心
+
+  on (eventName: string, fn: (data?: unknown) => void){ // eventName事件名-独一无二, fn订阅后执行的自定义行为
+    this.caches[eventName] = this.caches[eventName] || [];
+    this.caches[eventName].push(fn);
   }
 
-  subscribe(topic, callback) {
-    letcallbacks = this.subscribers[topic];
-    if (!callbacks) {
-      this.subscribers[topic] = [callback];
-    } else {
-      callbacks.push(callback);
+  emit (eventName: string, data?: unknown) { // 发布 => 将订阅的事件进行统一执行
+    if (this.caches[eventName]) {
+      this.caches[eventName].forEach((fn: (data?: unknown) => void) => fn(data));
     }
   }
 
-  publish(topic, ...args) {
-    letcallbacks = this.subscribers[topic] || [];
-    callbacks.forEach((callback) => callback(...args));
+  off (eventName: string, fn?: (data?: unknown) => void) { // 取消订阅 => 若fn不传, 直接取消该事件所有订阅信息
+    if (this.caches[eventName]) {
+      const newCaches = fn ? this.caches[eventName].filter(e => e !== fn) : [];
+      this.caches[eventName] = newCaches;
+    }
   }
-}
 
-// 创建事件调度中心，为订阅者和发布者提供调度服务
-let pubSub = new PubSub();
-// A订阅了SMS事件（A只关注SMS本身，而不关心谁发布这个事件）
-pubSub.subscribe("SMS", console.log);
-// B订阅了SMS事件
-pubSub.subscribe("SMS", console.log);
-// C发布了SMS事件（C只关注SMS本身，不关心谁订阅了这个事件）
-pubSub.publish("SMS", "I published `SMS` event");
+}
 ```
 
 ## 总结

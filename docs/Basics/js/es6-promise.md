@@ -11,6 +11,7 @@
 5. 使用 try...catch 捕获异常
 6. 执行传入的参数
 7. 增加 then 函数，参数是 resolve 和 reject 函数
+8. then函数中判断status去执行函数
 
 ```js
 function myPromise(constructor) {

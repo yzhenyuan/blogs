@@ -111,3 +111,53 @@ Cat.prototype.constructor = Cat;
 由于所有的实例对象共享同一个 prototype 对象，那么从外界看起来，prototype 对象就好像是实例对象的原型，而实例对象则好像"继承"了 prototype 对象一样。
 
 ## 原型链
+
+JavaScript中的每一个对象都有一个prototype属性，成为原型，而原型的值也是一个对象，因此它也有自己的原型，这样就串联成一条原型链，原型链的链头是object
+
+如果找到Object.prototype上还找不到，原路返回，告诉实例此方法或属性没有找到或者没有定义。如果说在中间的任意一个环节找到了，他就停止向上查找直接返回这个方法的用处
+
+![原型链](../../.vuepress/public/pages/prototype.jpg)
+
+### prototype 和 __proto__
+
+prototype（显式原型）是构造函数才有，指向当前的原型对象，用来实现 基于原型的继承和属性的共享
+
+__proto__（隐式原型） Object.create(null)创建的对象没有 __proto__
+
+
+## new
+new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象的实例。new 关键字会进行如下的操作：
+1. 创建一个空的简单JavaScript对象（即{}）；
+2. 链接该对象（即设置该对象的构造函数）到另一个对象 ；
+3. 将步骤1新创建的对象作为this的上下文 ；
+4. 如果该函数没有返回对象，则返回this。
+```js
+// 参考答案：1.简单实现
+function newOperator(ctor) {
+    if (typeof ctor !== 'function'){
+        throw 'newOperator function the first param must be a function';
+    }
+    var args = Array.prototype.slice.call(arguments, 1);
+    // 1.创建一个空的简单JavaScript对象（即{}）
+    var obj = {};
+    // 2.链接该新创建的对象（即设置该对象的__proto__）到该函数的原型对象prototype上
+    obj.__proto__ = ctor.prototype;
+    // 3.将步骤1新创建的对象作为this的上下文
+    var result = ctor.apply(obj, args);
+    // 4.如果该函数没有返回对象，则返回新创建的对象
+
+    var isObject = typeof result === 'object' && result !== null;
+    var isFunction = typeof result === 'function';
+    return isObject || isFunction ? result : obj;
+}
+
+// 测试
+function company(name, address) {
+    this.name = name;
+    this.address = address;
+  }
+
+var company1 = newOperator(company, 'yideng', 'beijing');
+console.log('company1: ', company1);
+
+```
