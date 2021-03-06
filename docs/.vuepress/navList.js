@@ -5,16 +5,18 @@ const BasicsJSList = [
     "js/js-proto",
     "js/js-scope",
     "js/js-this",
+    'js/error',
+    
+    
+]
+const es6List = [
     'js/module',
     "js/es6-module",
     "js/es6-Reflect",
     "js/es6-promise",
-    'js/error',
     'js/js-for',
-    'js/fp',
-    'js/fp2',
-    'js/fp3',
 ]
+const fpList = ['js/fp','js/fp2','js/fp3',]
 const performanceList = [
     'performance/performance',
     'performance/performance-1',
@@ -60,6 +62,8 @@ const allList = {
     "/Basics/": [
         { title: "HTML&CSS",children: BasicsList},
         { title: "JS基础", children: BasicsJSList},
+        { title: "ES6", children: es6List},
+        {title:"函数式编程", children:fpList},
         { title: "性能优化", children: performanceList},
     ],
     "/Chrome/": [{ title: "Chrome", children: ChromeList}],
