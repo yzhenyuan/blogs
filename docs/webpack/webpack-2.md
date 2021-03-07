@@ -27,3 +27,25 @@ scope hoisting 将所有模块的代码 按照引用顺序放到后一个函数�
 
 - 必须是 es6 语法
 - 需要配置 mainFilds 对第三方模块采用 jsnext:main 中指向 es6 的语法
+
+## 五、 quicklink
+
+main.bundle.js 里面还有一些库（node-module，例如 html-entities）需要提出来（默认打包 80kb，提取出来之后 30kb，白屏的几率就很小了），放到 common.js 两里面
+
+### 下一页的优化，quicklink 做预加载
+
+prefetch
+`<link rel='dns-prefetch' href='http://g-ecx.images-amazon.com'>`
+
+```js
+window.addEventListener("load", () => {
+  quicklink.listen();
+});
+```
+
+原理:
+
+1. 监听视窗
+2. 滚动到 a 标签的时候，调用了 requestIdleCallback(react 一直在模仿的 api)
+3. 判断用户的网络的类型，如果弱网就不干这事了，强网就会用
+4. prefetch

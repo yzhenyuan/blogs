@@ -87,3 +87,20 @@ div,h1-h6,hr,menu,ol,ul,li,table,p,form
 3. 使用 innerHTML 代替 appendChild
 4. 批量读，一次性写；使用 requestAnimationFrame
 5. 虚拟 DOM
+
+## 五、 async 和 defer区别
+
+浏览器在执行HTML的时候遇到 `<script>` 会停止渲染，然后去下载和执行 js 文件 直到遇到 `</script>` 才会继续渲染页面；所以，浏览器在执行js的时候会是一片空白，为了解决这个问题 ECS 定义了 `defer` 和 `async`来解决这个问题
+
+使用这两个属性不能使用`document.write`方法
+这两个属性同时出现的情况下 async 会覆盖 defer
+
+### async
+js 边加载js - 边解析 - 边执行
+
+Load事件触发前执行，容易出现脚本执行顺序打乱；
+
+### defer
+js 边加载js - 边解析 **执行** 等到所有元素解析完
+
+整个文档解析完成后，触发 DOMContentLoaded 事件前执行，解析完后按照解析的顺序执行；

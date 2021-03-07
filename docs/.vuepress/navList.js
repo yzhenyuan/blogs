@@ -5,9 +5,7 @@ const BasicsJSList = [
     "js/js-proto",
     "js/js-scope",
     "js/js-this",
-    'js/error',
-    
-    
+    'js/error'
 ]
 const es6List = [
     'js/module',
@@ -23,8 +21,8 @@ const performanceList = [
     'performance/performance-js',
     'performance/performance-methods'
 ]
-const ChromeList = ["Chrome-1","chrome-v8",'url']
-const webpackList = ["webpack-1","webpack-babel","webpack-loaderPlugin",'esbuild','swc']
+const ChromeList = ["chrome-v8",'chrome-url','chrome-eventLoop']
+const webpackList = ["webpack-1","webpack-2","webpack-babel","webpack-loaderPlugin",'esbuild','swc']
 const TsList = ["ts-basic","ts",'ts.config','ts.d.ts','ts-1','ts-2','ts-3']
 const NodeJSList = [ "node-1", "node-process","node-koa","node-buffer" ,'node-libuv']
 const regList = ["reg/reg-1",]
@@ -42,12 +40,12 @@ const vueList =[
     "vdom-2",
     "vue3-vite", 
     "vue3-composition",
-    "vue3-3"
+    "vue3-vs2"
 ]
 const reactList = ['vs','react-render','react-fiber', 'react']
 const AlgorithmList =["algorithm-1","algorithm-3"]
 const Network = ['net/net-module']
-const NetworkList = ['http/edition','http/getpost','http/https','http/catch']
+const NetworkList = ['http/edition','http/getpost','http/https','http/catch','http/status']
 const safeList = ['safe-1','safe-xss','safe-csrf']
 const DesignList = [
     'Design/Design',

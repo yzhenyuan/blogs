@@ -1,5 +1,4 @@
-# Webpack 系列（一）使用总结
-
+# Webpack
 webpack 是一个模块打包器。webpack 的主要目标是将 **js** 文件打包在一起，打包后的文件用于在浏览器中使用，但它也能够胜任转换(transform)、打包(bundle)或包裹(package)任何资源(resource or asset)。
 
 随着 webpack 不断地发展，webpack 配置变得越来越简单，构建速度也越来越快，官方文档上说 webpack4 比 webpack3 构建速度快了 98%，这还不仅如此，官方表示在 webpack5 中，会使用多进程构建，进一步优化构建速度。
@@ -8,7 +7,7 @@ webpack 是一个模块打包器。webpack 的主要目标是将 **js** 文件�
 - Webpack 调优
 - Webpack 运行原理
 
-## Webpack 核心概念
+## 一、 Webpack 核心概念
 
 - 入口(entry)
 - 输出(output)
@@ -120,7 +119,7 @@ class APlugin {
 }
 ```
 
-## Webpack 调优
+## 二、 Webpack 调优
 
 在 webpack4 发布后，相比 webpack3 的构建进行了高效地优化，速度提高了 98%，一些常规优化 webpack 都已经帮我们做了，使得 webpack 变得越来越简单，甚至可以达到零配置，但是对于零配置而言，不能满足全部需求，所以还是建议进行手动配置。
 
@@ -149,35 +148,7 @@ module.exports = {
 
 如果不拆分文件，webpack 会把所有文件都打包在一个 js 文件中，这个文件会使变得非常大，我们可以配置 optimization.splitChunks 来拆分文件。
 
-这是 webpack 默认的配置，也可以根据自己需求做对应修改：
 
-```js
-module.exports = {
-  optimization: {
-    splitChunks: {
-      chunks: 'async', // 参数可能是：all，async和initial，这里表示拆分异步模块。
-      minSize: 30000, // 如果模块的大小大于30kb，才会被拆分
-      minChunks: 1,
-      maxAsyncRequests: 5, // 按需加载时最大的请求数，意思就是说，如果拆得很小，就会超过这个值，限制拆分的数量。
-      maxInitialRequests: 3, // 入口处的最大请求数
-      automaticNameDelimiter: '~', // webpack将使用块的名称和名称生成名称（例如vendors~main.js）
-      name: true, // 拆分块的名称
-      cacheGroups: {
-        // 缓存splitchunks
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10
-        },
-        default: {
-          minChunks: 2, // 一个模块至少出现2次引用时，才会被拆分
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
-    }
-  }
-};
-```
 
 ### 使用 Happypack
 
@@ -222,49 +193,6 @@ Happypack 实际上是使用了 node processes 执行多线程构建，可以让
 
 ### 使用 DllPlugin
 
-**DllPlugin 可以将特定的类库提前打包然后引入**。这种方式可以极大的减少打包类库的次数，只有当类库更新版本才有需要重新打包，并且也实现了将公共代码抽离成单独文件的优化方案。
-
-- DllPlugin：用于打包单独的动态链接库文件。
-- DllReferencePlugin：用于在主要的配置文件中引入 DllPlugin 插件打包好的动态链接库文件。
-
-这里需要建 2 个配置文件，先执行 webpack.dll.config.js，生成 mainfest，然后再执行 webpack.config.js 打包文件。
-
-动态链接库配置：
-
-```js {5,12,13,14,15}
-// webpack.dll.config.js
-// 这里配置DllPlugin，生成mainifest
-module.exports = {
-  entry:{
-      // 将react相关，放入一个单独的动态链接库中
-      react:['react','react-dom']
-  },
-  output:{
-      filename:'[name].dll.js'
-  },
-  plugins:[
-    new webpack.DllPlugin({
-        name: '_dll_[name]',
-        path: path.join(__dirname, '[name].manifest.json'),
-    );
-  ]
-};
-```
-
-使用打包后的动态链接库：
-
-```js {5,6,7}
-// webpack.config.js
-// 这里配置DllPlugin，生成mainifest
-module.exports = {
-  plugins:[
-    new webpack.DllReferencePlugin({
-        manifest: require('./react.manifest.json')
-    });
-  ]
-};
-```
-
 ### 其他优化方法
 
 #### 常规优化
@@ -283,23 +211,10 @@ module.exports = {
 
 6、导出打包的统计文件，使用分析工具进行分析 `webpack --profile --json > stat.json`。
 
-#### 开发环境优化
 
-1、选择合理 devtool，在大多数情况下，`cheap-module-eval-source-map` 是最好的选择。
-
-2、注意设置 mode，开发阶段一般不需要进行压缩合并，提取单独文件等操作。
-
-3、webpack 会在输出文件中生成路径信息注释。可以在 `options.output.pathinfo` 设置中关闭注释.
-
-4、在开发阶段，可以直接引用 `cdn` 上的库文件，使用 `externals` 配置全局对象，避免打包。
-
-#### 生产环境优化
-
-1、静态资源上 cdn。
-
-2、使用 `tree shaking`，只打包用到的模块，删除没有用到的模块。
-
-3、配置 `scope hoisting` 作用域提升，将多个 IIFE 放在一个 IIFE 中。
+1. 静态资源上 cdn。
+2. 使用 `tree shaking`，只打包用到的模块，删除没有用到的模块。
+3. 配置 `scope hoisting` 作用域提升，将多个 IIFE 放在一个 IIFE 中。
 
 相关的代码如下：
 
@@ -345,17 +260,12 @@ module.exports = {
 
 webpack 在运行时大致分为这几个阶段：
 
-1、读取 webpack.config.js 配置文件，生成 compiler 实例，并把 compiler 实例注入 plugin 中的 apply 方法中。
-
-2、读取配置的 `Entries`，递归遍历所有的入口文件。
-
-3、对入口文件进行编译，开始 `compilation` 过程，使用 `loader` 对文件内容编译，再将编译好的文件内容解析成 `AST` 静态语法树。
-
-4、递归依赖的模块，重复第 3 步，生成 `AST` 语法树，在 `AST` 语法树中可以分析到模块之间的依赖关系，对应做出优化。
-
-5、将所有模块中的 require 语法替换成`__webpack_require__`来模拟模块化操作。
-
-6、最后把所有的模块打包进一个自执行函数（IIFE）中。
+1. 读取 webpack.config.js 配置文件，生成 compiler 实例，并把 compiler 实例注入 plugin 中的 apply 方法中。
+2. 读取配置的 `Entries`，递归遍历所有的入口文件。
+3. 对入口文件进行编译，开始 `compilation` 过程，使用 `loader` 对文件内容编译，再将编译好的文件内容解析成 `AST` 静态语法树。
+4. 递归依赖的模块，重复第 3 步，生成 `AST` 语法树，在 `AST` 语法树中可以分析到模块之间的依赖关系，对应做出优化。
+5. 将所有模块中的 require 语法替换成`__webpack_require__`来模拟模块化操作。
+6. 最后把所有的模块打包进一个自执行函数（IIFE）中。
 
 ### 流程图
 
