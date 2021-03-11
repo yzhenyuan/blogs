@@ -12,7 +12,7 @@ module.exports = [
       // { text: 'Gulp', link: '/Webpack/webpack-module' },
       {text: 'Typscript',link: '/ts/ts' }
     ]},
-    { text: "网络&安全", link: '/Network/net/net-module'},
+    { text: "网络&安全", link: '/Network/http/modules'},
     { text: "扩展" , items: [
       { text: 'Docker', link: '/pages/docker' },
       { text: '设计模式', link: '/pages/Design/Design' },

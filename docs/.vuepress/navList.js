@@ -43,8 +43,14 @@ const vueList =[
 ]
 const reactList = ['vsVue','react-render','react-fiber', 'react','react-hooks']
 const AlgorithmList =["algorithm-1","algorithm-3"]
-const Network = ['net/net-module']
-const NetworkList = ['http/edition','http/getpost','http/https','http/catch','http/status']
+const NetworkList = [
+    'http/modules',
+    'http/edition',
+    'http/https',
+    'http/catch',
+    'http/getpost',
+    'http/status'
+]
 const safeList = ['safe-1','safe-xss','safe-csrf','safe-other']
 const DesignList = [
     'Design/Design',
@@ -73,8 +79,8 @@ const allList = {
     "/React/": [{ title: "React原理解析", children: reactList}],
     "/Algorithm/":[{ title: "数据结构&算法", children: AlgorithmList}],
     "/Network/":[
-        { title: "网络", children:Network},
-        { title: "HTTP协议", children: NetworkList },
+        // { title: "网络", children:Network},
+        { title: "HTTP", children: NetworkList },
         { title: "安全", children: safeList },
     ],
     "/pages/": [

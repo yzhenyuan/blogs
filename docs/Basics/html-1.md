@@ -95,25 +95,25 @@ div,h1-h6,hr,menu,ol,ul,li,table,p,form
 使用这两个属性不能使用`document.write`方法
 这两个属性同时出现的情况下 async 会覆盖 defer
 
-### async
+### 5.1 async
 
 js 边加载 js - 边解析 - 边执行
 
 Load 事件触发前执行，容易出现脚本执行顺序打乱；
 
-### defer
+### 5.2 defer
 
 js 边加载 js - 边解析， **执行** 等到所有元素解析完
 
 整个文档解析完成后，触发 DOMContentLoaded 事件前执行，解析完后按照解析的顺序执行；
 
-## DomContentLoaded 和 load
+## 六、DomContentLoaded 和 load
 
-### DomContentLoaded 事件的触发
+### 6.1 DomContentLoaded 事件的触发
 
 当初始的 HTML 文档被完全加载和解析完成之后，DOMContentLoaded 事件被触发，而无需等待样式表、图像和子框架的完成加载
 
-### load 事件的触发
+### 6.2 load 事件的触发
 
 load 仅用于检测一个完全加载的页面
 
