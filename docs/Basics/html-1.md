@@ -88,19 +88,33 @@ div,h1-h6,hr,menu,ol,ul,li,table,p,form
 4. 批量读，一次性写；使用 requestAnimationFrame
 5. 虚拟 DOM
 
-## 五、 async 和 defer区别
+## 五、 async 和 defer 区别
 
-浏览器在执行HTML的时候遇到 `<script>` 会停止渲染，然后去下载和执行 js 文件 直到遇到 `</script>` 才会继续渲染页面；所以，浏览器在执行js的时候会是一片空白，为了解决这个问题 ECS 定义了 `defer` 和 `async`来解决这个问题
+浏览器在执行 HTML 的时候遇到 `<script>` 会停止渲染，然后去下载和执行 js 文件 直到遇到 `</script>` 才会继续渲染页面；所以，浏览器在执行 js 的时候会是一片空白，为了解决这个问题 ECS 定义了 `defer` 和 `async`来解决这个问题
 
 使用这两个属性不能使用`document.write`方法
 这两个属性同时出现的情况下 async 会覆盖 defer
 
 ### async
-js 边加载js - 边解析 - 边执行
 
-Load事件触发前执行，容易出现脚本执行顺序打乱；
+js 边加载 js - 边解析 - 边执行
+
+Load 事件触发前执行，容易出现脚本执行顺序打乱；
 
 ### defer
-js 边加载js - 边解析 **执行** 等到所有元素解析完
+
+js 边加载 js - 边解析， **执行** 等到所有元素解析完
 
 整个文档解析完成后，触发 DOMContentLoaded 事件前执行，解析完后按照解析的顺序执行；
+
+## DomContentLoaded 和 load
+
+### DomContentLoaded 事件的触发
+
+当初始的 HTML 文档被完全加载和解析完成之后，DOMContentLoaded 事件被触发，而无需等待样式表、图像和子框架的完成加载
+
+### load 事件的触发
+
+load 仅用于检测一个完全加载的页面
+
+当页面 DOM 结构中的 js、css、图片，以及 js 异步加载的 js、css 、图片都加载完成之后，才会触发 load 事件

@@ -24,7 +24,7 @@ const performanceList = [
 const ChromeList = ["chrome-v8",'chrome-url','chrome-eventLoop']
 const webpackList = ["webpack-1","webpack-2","webpack-babel","webpack-loaderPlugin",'esbuild','swc']
 const TsList = ["ts-basic","ts",'ts.config','ts.d.ts','ts-1','ts-2','ts-3']
-const NodeJSList = [ "node-1", "node-process","node-koa","node-buffer" ,'node-libuv']
+const NodeJSList = [ "node-1", "node-process","node-koa","node-buffer" ,'node-libuv','node-monitor']
 const regList = ["reg/reg-1",]
 const standardList = [
     'standard/standard',
@@ -35,18 +35,17 @@ const standardList = [
 const vueList =[
     "vue2-1", 
     "vue2-2", 
-    "vue-observer",
-    "vdom-1", 
-    "vdom-2",
+    "vue2-diff",
+    "vue2-observer",
     "vue3-vite", 
     "vue3-composition",
     "vue3-vs2"
 ]
-const reactList = ['vs','react-render','react-fiber', 'react']
+const reactList = ['vsVue','react-render','react-fiber', 'react','react-hooks']
 const AlgorithmList =["algorithm-1","algorithm-3"]
 const Network = ['net/net-module']
 const NetworkList = ['http/edition','http/getpost','http/https','http/catch','http/status']
-const safeList = ['safe-1','safe-xss','safe-csrf']
+const safeList = ['safe-1','safe-xss','safe-csrf','safe-other']
 const DesignList = [
     'Design/Design',
     'Design/Singleton',
