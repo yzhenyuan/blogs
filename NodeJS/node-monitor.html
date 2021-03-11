@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Node 监控 &amp; 优化 | 🦍</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="../../favicon.ico">
+    <meta name="description" content="Welcome">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/blogs/assets/css/0.styles.09f83964.css" as="style"><link rel="preload" href="/blogs/assets/js/app.6bd4a8db.js" as="script"><link rel="preload" href="/blogs/assets/js/4.8673a24f.js" as="script"><link rel="preload" href="/blogs/assets/js/1.94e262a5.js" as="script"><link rel="preload" href="/blogs/assets/js/57.cfa7e40c.js" as="script"><link rel="prefetch" href="/blogs/assets/js/10.925332a7.js"><link rel="prefetch" href="/blogs/assets/js/100.ba256b00.js"><link rel="prefetch" href="/blogs/assets/js/11.ab6cbbbb.js"><link rel="prefetch" href="/blogs/assets/js/12.03bc348d.js"><link rel="prefetch" href="/blogs/assets/js/13.aec8f196.js"><link rel="prefetch" href="/blogs/assets/js/14.ab3aa421.js"><link rel="prefetch" href="/blogs/assets/js/15.b1f03781.js"><link rel="prefetch" href="/blogs/assets/js/16.028b0132.js"><link rel="prefetch" href="/blogs/assets/js/17.ee7c16c1.js"><link rel="prefetch" href="/blogs/assets/js/18.f9fb47f8.js"><link rel="prefetch" href="/blogs/assets/js/19.1e2c0053.js"><link rel="prefetch" href="/blogs/assets/js/20.41949668.js"><link rel="prefetch" href="/blogs/assets/js/21.81ceb24e.js"><link rel="prefetch" href="/blogs/assets/js/22.573e9a4d.js"><link rel="prefetch" href="/blogs/assets/js/23.6626841a.js"><link rel="prefetch" href="/blogs/assets/js/24.12ac6bff.js"><link rel="prefetch" href="/blogs/assets/js/25.86740e7c.js"><link rel="prefetch" href="/blogs/assets/js/26.20c4119d.js"><link rel="prefetch" href="/blogs/assets/js/27.4ffd5d4b.js"><link rel="prefetch" href="/blogs/assets/js/28.a6e4859d.js"><link rel="prefetch" href="/blogs/assets/js/29.b537f7c8.js"><link rel="prefetch" href="/blogs/assets/js/30.ff4faee2.js"><link rel="prefetch" href="/blogs/assets/js/31.7767d105.js"><link rel="prefetch" href="/blogs/assets/js/32.6b545131.js"><link rel="prefetch" href="/blogs/assets/js/33.4da19944.js"><link rel="prefetch" href="/blogs/assets/js/34.78e1dc45.js"><link rel="prefetch" href="/blogs/assets/js/35.bcb4c92d.js"><link rel="prefetch" href="/blogs/assets/js/36.1b6d65bf.js"><link rel="prefetch" href="/blogs/assets/js/37.23968fb9.js"><link rel="prefetch" href="/blogs/assets/js/38.716d63f2.js"><link rel="prefetch" href="/blogs/assets/js/39.cd1c0a2c.js"><link rel="prefetch" href="/blogs/assets/js/40.129b9624.js"><link rel="prefetch" href="/blogs/assets/js/41.2845ef08.js"><link rel="prefetch" href="/blogs/assets/js/42.a6b50158.js"><link rel="prefetch" href="/blogs/assets/js/43.bf21d5d2.js"><link rel="prefetch" href="/blogs/assets/js/44.5663c47d.js"><link rel="prefetch" href="/blogs/assets/js/45.d1ac047f.js"><link rel="prefetch" href="/blogs/assets/js/46.a61f8b0d.js"><link rel="prefetch" href="/blogs/assets/js/47.69cccf12.js"><link rel="prefetch" href="/blogs/assets/js/48.9980ecc1.js"><link rel="prefetch" href="/blogs/assets/js/49.ebbe2fef.js"><link rel="prefetch" href="/blogs/assets/js/5.f00ebe1c.js"><link rel="prefetch" href="/blogs/assets/js/50.18d3f364.js"><link rel="prefetch" href="/blogs/assets/js/51.e4dc561d.js"><link rel="prefetch" href="/blogs/assets/js/52.12806f9a.js"><link rel="prefetch" href="/blogs/assets/js/53.864a7645.js"><link rel="prefetch" href="/blogs/assets/js/54.643243b4.js"><link rel="prefetch" href="/blogs/assets/js/55.fffbc5d3.js"><link rel="prefetch" href="/blogs/assets/js/56.42706dc8.js"><link rel="prefetch" href="/blogs/assets/js/58.f3789493.js"><link rel="prefetch" href="/blogs/assets/js/59.c6efe3c9.js"><link rel="prefetch" href="/blogs/assets/js/6.bd308a17.js"><link rel="prefetch" href="/blogs/assets/js/60.70e0dac9.js"><link rel="prefetch" href="/blogs/assets/js/61.04d60796.js"><link rel="prefetch" href="/blogs/assets/js/62.43be1d48.js"><link rel="prefetch" href="/blogs/assets/js/63.d6168ac3.js"><link rel="prefetch" href="/blogs/assets/js/64.1d1979b9.js"><link rel="prefetch" href="/blogs/assets/js/65.1aaa6cf0.js"><link rel="prefetch" href="/blogs/assets/js/66.8ccdb311.js"><link rel="prefetch" href="/blogs/assets/js/67.10094224.js"><link rel="prefetch" href="/blogs/assets/js/68.f1433907.js"><link rel="prefetch" href="/blogs/assets/js/69.bbfe7669.js"><link rel="prefetch" href="/blogs/assets/js/7.c3aa7f70.js"><link rel="prefetch" href="/blogs/assets/js/70.e0ef5218.js"><link rel="prefetch" href="/blogs/assets/js/71.62cd4f2f.js"><link rel="prefetch" href="/blogs/assets/js/72.fed79437.js"><link rel="prefetch" href="/blogs/assets/js/73.90d5ded9.js"><link rel="prefetch" href="/blogs/assets/js/74.a1497c66.js"><link rel="prefetch" href="/blogs/assets/js/75.5cade038.js"><link rel="prefetch" href="/blogs/assets/js/76.de0ca064.js"><link rel="prefetch" href="/blogs/assets/js/77.3fe2bb1e.js"><link rel="prefetch" href="/blogs/assets/js/78.d345f91a.js"><link rel="prefetch" href="/blogs/assets/js/79.53feaa0f.js"><link rel="prefetch" href="/blogs/assets/js/8.de2f1ef4.js"><link rel="prefetch" href="/blogs/assets/js/80.9548fe9c.js"><link rel="prefetch" href="/blogs/assets/js/81.f10bae15.js"><link rel="prefetch" href="/blogs/assets/js/82.4e9dc7e4.js"><link rel="prefetch" href="/blogs/assets/js/83.f04739e1.js"><link rel="prefetch" href="/blogs/assets/js/84.80c1d8e1.js"><link rel="prefetch" href="/blogs/assets/js/85.b11013f1.js"><link rel="prefetch" href="/blogs/assets/js/86.73663c60.js"><link rel="prefetch" href="/blogs/assets/js/87.bcd987dd.js"><link rel="prefetch" href="/blogs/assets/js/88.a9dc18a2.js"><link rel="prefetch" href="/blogs/assets/js/89.362b7dcb.js"><link rel="prefetch" href="/blogs/assets/js/9.25f30aea.js"><link rel="prefetch" href="/blogs/assets/js/90.a33b8895.js"><link rel="prefetch" href="/blogs/assets/js/91.03d87c47.js"><link rel="prefetch" href="/blogs/assets/js/92.58db2a50.js"><link rel="prefetch" href="/blogs/assets/js/93.2be27a30.js"><link rel="prefetch" href="/blogs/assets/js/94.9f44b11a.js"><link rel="prefetch" href="/blogs/assets/js/95.d494ac60.js"><link rel="prefetch" href="/blogs/assets/js/96.40c37593.js"><link rel="prefetch" href="/blogs/assets/js/97.6077de8b.js"><link rel="prefetch" href="/blogs/assets/js/98.220afc65.js"><link rel="prefetch" href="/blogs/assets/js/99.1e38de96.js"><link rel="prefetch" href="/blogs/assets/js/vendors~flowchart.2281f3c7.js">
+    <link rel="stylesheet" href="/blogs/assets/css/0.styles.09f83964.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-2d5f533b><div data-v-2d5f533b><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-2d5f533b data-v-2d5f533b><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-2d5f533b data-v-2d5f533b><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>🦍</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>🦍</span>
+            
+          <!---->
+          2021
+        </a></span></div></div> <div class="hide" data-v-2d5f533b><header class="navbar" data-v-2d5f533b><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blogs/" class="home-link router-link-active"><!----> <span class="site-name">🦍</span></a> <div class="links"><!----> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blogs/Basics/html-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  基础
+</a></div><div class="nav-item"><a href="/blogs/NodeJS/node-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  NodeJS
+</a></div><div class="nav-item"><a href="/blogs/Chrome/Chrome-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Chrome
+</a></div><div class="nav-item"><a href="/blogs/Algorithm/algorithm-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  数据结构&amp;算法
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      框架
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/vue/vue2-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/React/react-render.html" class="nav-link"><i class="iconfont undefined"></i>
+  React
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      工程化
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Webpack/webpack-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/ts/ts.html" class="nav-link"><i class="iconfont undefined"></i>
+  Typscript
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/Network/net/net-module.html" class="nav-link"><i class="iconfont undefined"></i>
+  网络&amp;安全
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      扩展
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/pages/docker.html" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/Design/Design.html" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/reg/reg-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  正则
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/standard/standard.html" class="nav-link"><i class="iconfont undefined"></i>
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/serverless.html" class="nav-link"><i class="iconfont undefined"></i>
+  serverless
+</a></li></ul></div></div> <a href="https://github.com/yzhenyuan/blogs" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask" data-v-2d5f533b></div> <aside class="sidebar" data-v-2d5f533b><div class="personal-info-wrapper" data-v-ca798c94 data-v-2d5f533b><!----> <h3 class="name" data-v-ca798c94>
+    🦍
+  </h3> <div class="num" data-v-ca798c94><div data-v-ca798c94><h3 data-v-ca798c94>0</h3> <h6 data-v-ca798c94>Article</h6></div> <div data-v-ca798c94><h3 data-v-ca798c94>0</h3> <h6 data-v-ca798c94>Tag</h6></div></div> <hr data-v-ca798c94></div> <nav class="nav-links"><div class="nav-item"><a href="/blogs/Basics/html-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  基础
+</a></div><div class="nav-item"><a href="/blogs/NodeJS/node-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  NodeJS
+</a></div><div class="nav-item"><a href="/blogs/Chrome/Chrome-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Chrome
+</a></div><div class="nav-item"><a href="/blogs/Algorithm/algorithm-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  数据结构&amp;算法
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      框架
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/vue/vue2-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/React/react-render.html" class="nav-link"><i class="iconfont undefined"></i>
+  React
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      工程化
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/Webpack/webpack-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/ts/ts.html" class="nav-link"><i class="iconfont undefined"></i>
+  Typscript
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/Network/net/net-module.html" class="nav-link"><i class="iconfont undefined"></i>
+  网络&amp;安全
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont undefined"></i>
+      扩展
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/pages/docker.html" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/Design/Design.html" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/reg/reg-1.html" class="nav-link"><i class="iconfont undefined"></i>
+  正则
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/standard/standard.html" class="nav-link"><i class="iconfont undefined"></i>
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/pages/serverless.html" class="nav-link"><i class="iconfont undefined"></i>
+  serverless
+</a></li></ul></div></div> <a href="https://github.com/yzhenyuan/blogs" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav> <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>了解Node</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blogs/NodeJS/node-1.html" class="sidebar-link">node 基础</a></li><li><a href="/blogs/NodeJS/node-process.html" class="sidebar-link">Node的进程和线程</a></li><li><a href="/blogs/NodeJS/node-koa.html" class="sidebar-link">了解 Koa</a></li><li><a href="/blogs/NodeJS/node-buffer.html" class="sidebar-link">Stream 和 Buffer</a></li><li><a href="/blogs/NodeJS/node-libuv.html" class="sidebar-link">Libuv</a></li><li><a href="/blogs/NodeJS/node-monitor.html" aria-current="page" class="active sidebar-link">Node 监控 &amp; 优化</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-2d5f533b><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e></h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>🦍</span>
+            
+          <!---->
+          2021
+        </a></span></div></div> <div data-v-2d5f533b><main class="page"><div class="page-title" style="display:none;"><h1 class="title">Node 监控 &amp; 优化</h1> <div data-v-3b7f5bdf><i class="iconfont reco-account" data-v-3b7f5bdf><span data-v-3b7f5bdf>🦍</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default" style="display:none;"><h1 id="node-监控-优化"><a href="#node-监控-优化" class="header-anchor">#</a> Node 监控 &amp; 优化</h1> <h2 id="监控分类"><a href="#监控分类" class="header-anchor">#</a> 监控分类</h2> <p>主要分为：</p> <ul><li>业务逻辑的监控</li> <li>硬件的监控</li></ul> <h2 id="性能监控"><a href="#性能监控" class="header-anchor">#</a> 性能监控</h2> <ol><li>日志监控：可以实现<code>PV/UV</code>的监控，预知访问高峰</li> <li>响应时间：可以在 Nginx 一类的反向代理 或者 自行产生的访问日志来监控</li> <li>进程监控：一般是 检查操作系统中运行的应用进程数，例如：多进程架构的 web 应用</li> <li>磁盘监控：监控磁盘的用量</li> <li>内存监控：监控服务器的内存状况可以检查应用中是否存在内存泄漏</li> <li>CPU 监控</li> <li>CPU 负载监控：监控 CPU 在单位时间内 正在使用和等待使用的平均任务数</li> <li>IO 负载：主要指磁盘 IO，磁盘上的读写情况</li> <li>网络监控：流入和流出 流量</li> <li>应用状态监控</li> <li>DNS 监控</li></ol> <h2 id="性能优化"><a href="#性能优化" class="header-anchor">#</a> 性能优化</h2> <ul><li></li></ul> <h3 id="web-应用层的优化"><a href="#web-应用层的优化" class="header-anchor">#</a> web 应用层的优化</h3> <ol><li>动静分离
+<ol><li>node 处理静态文件的能力并不突出，可以传到专业的静态文件服务器上（Nginx、DNA）</li> <li>node 只处理动态请求</li> <li>动静分离后可以对不同的域名消除不必要的 cookie</li></ol></li> <li>利用缓存
+<ol><li>提升性能不外乎：① 提升服务的速度，② 避免不必要的计算</li> <li>能消除同步 IO 带来的时间浪费</li></ol></li> <li>多进程架构：利用多核 CPU，如：PM2</li> <li>读写分离：主要针对数据库，数据库中 读 的速度要大于 写，有些数据库为了保证数据的一致性，会进行锁表操作，影响到读取速度</li></ol> <h3 id="代码层的优化"><a href="#代码层的优化" class="header-anchor">#</a> 代码层的优化</h3> <ol><li>使用最新版的 node，① v8 的版本更新优化，② node 内部代码的哟花</li> <li>使用 fast-json-stringify 加速 json 序列化</li> <li>正确编写异步代码</li></ol> <h2 id="错误监控"><a href="#错误监控" class="header-anchor">#</a> 错误监控</h2> <ul><li>错误类型
+<ul><li>语法或运行时错误</li> <li>访问不存在或没有权限的文件</li> <li>除了 js 错误和系统错误，也可以自定义错误</li></ul></li> <li>监控异常日志</li></ul></div> <footer class="page-edit" style="display:none;"><!----> <div class="last-updated"><span class="prefix">最后更新: </span> <span class="time">3/11/2021, 2:05:31 PM</span></div></footer> <!----> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/blogs/assets/js/app.6bd4a8db.js" defer></script><script src="/blogs/assets/js/4.8673a24f.js" defer></script><script src="/blogs/assets/js/1.94e262a5.js" defer></script><script src="/blogs/assets/js/57.cfa7e40c.js" defer></script>
+  </body>
+</html>
