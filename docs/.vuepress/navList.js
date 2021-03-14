@@ -2,6 +2,7 @@
 const BasicsList = ["html-1","css-1"]
 const BasicsJSList = [
     "js/js",
+    "js/js-type",
     "js/js-proto",
     "js/js-scope",
     "js/js-this",
@@ -12,6 +13,7 @@ const es6List = [
     "js/es6-module",
     "js/es6-Reflect",
     "js/es6-promise",
+    "js/es6-setMap",
     'js/js-for',
 ]
 const fpList = ['js/fp','js/fp2','js/fp3',]

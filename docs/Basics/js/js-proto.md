@@ -112,52 +112,197 @@ Cat.prototype.constructor = Cat;
 
 ## 原型链
 
-JavaScript中的每一个对象都有一个prototype属性，成为原型，而原型的值也是一个对象，因此它也有自己的原型，这样就串联成一条原型链，原型链的链头是object
+JavaScript 中的每一个对象都有一个 prototype 属性，成为原型，而原型的值也是一个对象，因此它也有自己的原型，这样就串联成一条原型链，原型链的链头是 object
 
-如果找到Object.prototype上还找不到，原路返回，告诉实例此方法或属性没有找到或者没有定义。如果说在中间的任意一个环节找到了，他就停止向上查找直接返回这个方法的用处
+如果找到 Object.prototype 上还找不到，原路返回，告诉实例此方法或属性没有找到或者没有定义。如果说在中间的任意一个环节找到了，他就停止向上查找直接返回这个方法的用处
 
 ![原型链](../../.vuepress/public/pages/prototype.jpg)
 
-### prototype 和 __proto__
+### prototype 和 **proto**
 
 prototype（显式原型）是构造函数才有，指向当前的原型对象，用来实现 基于原型的继承和属性的共享
 
-__proto__（隐式原型） Object.create(null)创建的对象没有 __proto__
+**proto**（隐式原型） Object.create(null)创建的对象没有 **proto**
 
+## 四、new
 
-## new
 new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象的实例。new 关键字会进行如下的操作：
-1. 创建一个空的简单JavaScript对象（即{}）；
+
+1. 创建一个空的简单 JavaScript 对象（即{}）；
 2. 链接该对象（即设置该对象的构造函数）到另一个对象 ；
-3. 将步骤1新创建的对象作为this的上下文 ；
-4. 如果该函数没有返回对象，则返回this。
+3. 将步骤 1 新创建的对象作为 this 的上下文 ；
+4. 如果该函数没有返回对象，则返回 this。
+
 ```js
 // 参考答案：1.简单实现
 function newOperator(ctor) {
-    if (typeof ctor !== 'function'){
-        throw 'newOperator function the first param must be a function';
-    }
-    var args = Array.prototype.slice.call(arguments, 1);
-    // 1.创建一个空的简单JavaScript对象（即{}）
-    var obj = {};
-    // 2.链接该新创建的对象（即设置该对象的__proto__）到该函数的原型对象prototype上
-    obj.__proto__ = ctor.prototype;
-    // 3.将步骤1新创建的对象作为this的上下文
-    var result = ctor.apply(obj, args);
-    // 4.如果该函数没有返回对象，则返回新创建的对象
+  if (typeof ctor !== "function") {
+    throw "newOperator function the first param must be a function";
+  }
+  var args = Array.prototype.slice.call(arguments, 1);
+  // 1.创建一个空的简单JavaScript对象（即{}）
+  var obj = {};
+  // 2.链接该新创建的对象（即设置该对象的__proto__）到该函数的原型对象prototype上
+  obj.__proto__ = ctor.prototype;
+  // 3.将步骤1新创建的对象作为this的上下文
+  var result = ctor.apply(obj, args);
+  // 4.如果该函数没有返回对象，则返回新创建的对象
 
-    var isObject = typeof result === 'object' && result !== null;
-    var isFunction = typeof result === 'function';
-    return isObject || isFunction ? result : obj;
+  var isObject = typeof result === "object" && result !== null;
+  var isFunction = typeof result === "function";
+  return isObject || isFunction ? result : obj;
 }
 
 // 测试
 function company(name, address) {
-    this.name = name;
-    this.address = address;
+  this.name = name;
+  this.address = address;
+}
+
+var company1 = newOperator(company, "yideng", "beijing");
+console.log("company1: ", company1);
+```
+
+## 五、继承
+
+### 5.1 原型链
+
+```js
+function Parent() {
+  this.name = "kevin";
+}
+Parent.prototype.getName = function() {};
+
+function Child() {}
+Child.prototype = new Parent();
+
+var child1 = new Child();
+console.log(child1.getName()); // kevin
+```
+
+缺点：
+
+- 在包含有引用类型的数据时，会被所有的实例对象所共享，容易造成修改的混乱
+- 还有就是在 创建子类型 的时候不能向 父类型 传递参数。（因为是共用的一套数据）
+
+### 5.2 借用构造函数
+
+通过在 子类型的函数中 调用 父类型的构造函数 来实现的
+```js
+function Parent () {
+  this.names = ['kevin', 'daisy'];
+}
+// 修改了this指向
+function Child () {
+  Parent.call(this);
+}
+
+var child1 = new Child();
+child1.names.push('yayu');
+console.log(child1.names); // ["kevin", "daisy", "yayu"]
+
+var child2 = new Child();
+console.log(child2.names); // ["kevin", "daisy"]
+```
+- 特点：
+  - 避免了引用类型的属性被所有实例共享
+  - 解决了不能向超类型传递参数的缺点
+- 缺点：
+  - 无法复用，方法都在构造函数中定义，每次创建实例都会创建一遍方法
+  - 父类型原型 定义的方法，子类型访问不到
+
+### 5.3 组合继承（原型链+构造函数）
+
+利用原型链继承和构造函数继承的各自优势进行组合使用
+
+```js
+// ①利用原型链继承，实现原型对象方法的继承
+// ②利用构造函数继承，实现属性的继承
+function Parent(name){
+  this.name = name;
+  this.type = ['JS','HTML','CSS'];
+}
+Parent.prototype.Say=function(){
+  console.log(this.name);
+}
+function Son(name){
+  Parent.call(this,name);
+}
+Son.prototype = new Parent();
+son1 = new Son('张三');
+son2 = new Son('李四');
+
+```
+缺点：都会调用两次父级构造函数：一次是在创建子级原型的时候，另一次是在子级构造函数内部
+### 5.4 原型式继承
+向函数中传入一个对象，然后返回一个以这个对象为原型的对象。
+```js
+function fun(obj) {
+  function Son(){};
+  Son.prototype = obj;
+  return new Son();
+}   
+```
+这种继承的思路只是对某个对象实现一种简单继承
+
+ES5 中定义的 Object.create() 方法就是原型式继承的实现。
+
+缺点：与原型链方式相同。
+
+### 5.5 寄生式继承(原型继承+)
+
+创建一个用于封装继承过程的函数，通过传入一个对象，然后复制一个对象的副本，然后对象进行扩展，最后返回这个对象。
+
+这个扩展的过程就可以理解是一种继承。
+```js
+function fun(obj) {
+  function Son() { };
+  Son.prototype = obj;
+  return new Son();
+}
+function JiSheng(obj) {
+  var clone = fun(obj);
+  clone.Say = function () {
+    console.log('我是新增的方法');
   }
+  return clone;
+}
+var parent = {
+  name: '张三'
+}
+var parent1 = JiSheng(parent);
+var parent2 = JiSheng(parent);
+console.log(parent2.Say==parent1.Say);// false
+```
+- 优点：就是对一个简单对象实现继承，如果这个对象不是我们的自定义类型时
+- 缺点是没有办法实现函数的复用
 
-var company1 = newOperator(company, 'yideng', 'beijing');
-console.log('company1: ', company1);
+### 5.6 寄生式组合继承
+利用组合继承和寄生继承各自优势
 
+```js
+function Parent (name) {
+  this.name = name;
+  this.colors = ['red', 'blue', 'green'];
+}
+ 
+Parent.prototype.getName = function () {
+  console.log(this.name)
+}
+ 
+function Child (name, age) {
+  Parent.call(this, name);
+  this.age = age;
+}
+// 关键的三步
+var F = function () {};
+ 
+F.prototype = Parent.prototype;
+ 
+Child.prototype = new F();
+ 
+ 
+var child1 = new Child('kevin', '18');
+ 
+console.log(child1);
 ```

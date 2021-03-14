@@ -4,48 +4,65 @@ http 缓存指的是: 当客户端向服务器请求资源时，会先抵达浏�
 
 ## 一、强缓存
 
-当浏览器去请求某个文件的时候，服务端就在 respone header 里面对该文件做了缓存配置。
+当浏览器去请求某个文件的时候，服务端就在 `response header` 里面对该文件做了缓存配置。
 
-缓存的时间、缓存类型都由服务端控制，具体表现为：respone header 的 cache-control，常见的设置是 max-age public private no-cache no-store 等
+缓存的时间、缓存类型都由**服务端控制**
+具体表现为：`response header` 的 cache-control，
+
+常见的设置是：max-age public private no-cache no-store
 
 ### 强缓存两种策略 expires 和 cache-control
 
-#### 1. cache-control: max-age=xxxx，public
+cache-control 常见的设置是：
+
+`max-age` `public` `private` `no-cache` `no-store`
+
+#### 1. public
 
 客户端和代理服务器都可以缓存该资源；
-客户端在 xxx 秒的有效期内，如果有请求该资源的需求的话就直接读取缓存,statue code:200 ，如果用户做了刷新操作，就向服务器发起 http 请求
 
-#### 2. cache-control: max-age=xxxx，private
+#### 2. private
 
 只让客户端可以缓存该资源；代理服务器不缓存
-客户端在 xxx 秒内直接读取缓存,statue code:200
 
-#### 3. cache-control: max-age=xxxx，immutable
+#### 3. max-age
 
-客户端在 xxx 秒的有效期内，如果有请求该资源的需求的话就直接读取缓存,statue code:200 ，即使用户做了刷新操作，也不向服务器发起 http 请求
+**Expires 的一个缺点就是，返回的到期时间是服务器端的时间，这样存在一个问题，如果客户端的时间与服务器的时间相差很大，那么误差就很大，所以在 HTTP 1.1 版开始，使用 Cache-Control: max-age=秒替代。**
 
-#### 4. cache-control: no-cache
+cache-control: max-age=xxxx，immutable
 
-跳过设置强缓存，但是不妨碍设置协商缓存；一般如果你做了强缓存，只有在强缓存失效了才走协商缓存的，设置了 no-cache 就不会走强缓存了，每次请求都回询问服务端。
+客户端在 xxx 秒的有效期内，如果有请求该资源的需求的话就直接读取缓存
 
-#### 5. cache-control: no-store
+#### 4. no-cache
+
+cache-control: no-cache
+
+设置了 no-cache 就**不会走强缓存**了，每次请求都回询问服务端。
+
+#### 5. no-store
+
+cache-control: no-store
 
 不缓存，这个会让客户端、服务器都不缓存，也就没有所谓的强缓存、协商缓存了。
 
 ## 二、对比缓存
 
-> 通过比较去看是否需要缓存，会去和服务器进行一次通信，把本地缓存的状态发给服务器，让服务器去比较要不要重新拉取资源
+通过比较去看是否需要缓存，会去和服务器进行一次通信，把本地缓存的状态发给服务器，让服务器去比较要不要重新拉取资源
 
 ### 对比缓存两种策略 eTag 和 Last-modify
 
-#### eTag/if-none-match
+#### eTag
+
+eTag/if-none-match
 
 - 服务器给这个资源生成一个**唯一标识**，放在 http-eTag 头里面
 - 资源过期的时候，浏览器把 eTag 拿出来，向服务器发送一个请求，让服务器去确认 eTag 是否过期
 - 如果过期就会把资源重新发送到浏览器，返回一个 200
 - 如果没有过期，服务器就不会重新推送资源，返回一个 304 跳转（304 是本地跳转，从磁盘缓存上去拿 ）
 
-#### last-modified/if-modified-since
+#### last-modified
+
+last-modified/if-modified-since
 
 - 服务器给这个资源生成一个时间戳，标示着资源的最后修改时间（实际上服务上面所有的资源都是有时间戳），客户端在请求数据的时候，先去本地缓存里面检查是否过期
 - 如果资源过期，他会把时间戳放到请求头（cache-control）去发送请求，服务器收到请求后发现头有 if-modified-since,就会去和被请求资源的最后修改时间做对比，如果最后修改时间比较新就反回 200，否则 304

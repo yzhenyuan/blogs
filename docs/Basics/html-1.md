@@ -106,6 +106,7 @@ Load 事件触发前执行，容易出现脚本执行顺序打乱；
 js 边加载 js - 边解析， **执行** 等到所有元素解析完
 
 整个文档解析完成后，触发 DOMContentLoaded 事件前执行，解析完后按照解析的顺序执行；
+![](../.vuepress/public/pages/asyncdefer.jpg)
 
 ## 六、DomContentLoaded 和 load
 
@@ -118,3 +119,32 @@ js 边加载 js - 边解析， **执行** 等到所有元素解析完
 load 仅用于检测一个完全加载的页面
 
 当页面 DOM 结构中的 js、css、图片，以及 js 异步加载的 js、css 、图片都加载完成之后，才会触发 load 事件
+
+## 七、 prefetch preload
+
+都是告知浏览器提前加载文件(图片、视频、js、css 等)，但执行上是有区别的
+
+有些情况我们需要某些依赖在浏览器进入渲染的主进程之前就希望被加载
+
+1. preload 和 prefetch 都没有同域名的限制；
+2. preload 主要用于预加载当前页面需要的资源；而 prefetch 主要用于加载将来页面可能需要的资源；
+
+### 7.1 prefetch
+
+被标记为 prefetch 的资源，将会被浏览器在空闲时间加载
+
+### 7.2 preload
+
+preload 通常用于本页面要用到的关键资源，包括关键 js、字体、css 文件。preload 将会把资源得下载顺序权重提高，使得关键数据提前下载好，优化页面打开速度。
+
+<!-- esbuild没有prepack
+
+- 4 处理图片文本使用 url-loader file-loader
+- 5 本身用assete modules,不需要配置loader
+
+
+redux -> flow 复杂了
+mobx -> 闭包 @observe
+mobx-lite 10kb
+useReducer ->redux
+recoil -->
