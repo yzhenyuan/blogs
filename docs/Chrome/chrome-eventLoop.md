@@ -32,73 +32,65 @@ js 任务 分为 同步和异步，同步任务在 主线程 上依次执行，�
 检查调用栈是否为空，以及将某个任务添加到调用栈的过程就是 event loop
 
 ## 二、 浏览器中的 event loop
-浏览器中event loop有两种 macro 和micro
+
+浏览器中 event loop 有两种 macro 和 micro
 
 ### requestAnimationFrame
-requestAnimationFrame也属于异步执行的方法，**在GUI渲染之前，micro之后执行**
+
+requestAnimationFrame 也属于异步执行的方法，**在 GUI 渲染之前，micro 之后执行**
 
 主要作用：传入一个回调，这个 回调函数 在浏览器下一次重绘之前执行
 
-
 ## 三、 node 的 event loop
-node IO处理使用了libuv （libuv是一个基于事件驱动的抽象层，封装了不同操作系统的一些底层特性，对外提供统一的API），里面包含了事件循环机制
 
-### 3.1 node运行机制
-1. V8解析js脚本
-2. 解析后的代码，调用node API
-3. libuv 负责node API的执行
+node IO 处理使用了 libuv （libuv 是一个基于事件驱动的抽象层，封装了不同操作系统的一些底层特性，对外提供统一的 API），里面包含了事件循环机制
+
+### 3.1 node 运行机制
+
+1. V8 解析 js 脚本
+2. 解析后的代码，调用 node API
+3. libuv 负责 node API 的执行
    1. 它将不同的任务分配给不同的线程，形成事件循环
-   2. 以异步的方式将任务的执行结果返回给V8引擎 
-4. V8引擎将结果返回给用户
+   2. 以异步的方式将任务的执行结果返回给 V8 引擎
+4. V8 引擎将结果返回给用户
 
 ### 3.2 六大阶段
-libuv 将事件循环分成6个阶段，他们按照顺序反复运行
+
+libuv 将事件循环分成 6 个阶段，他们按照顺序反复运行
 
 每当进入某个阶段时，都会从对应的**回调队列**中取出函数去执行
 
 当队列为空时就会进入下一个阶段
 
-1. update-time：获取系统时间，保证之后的timers 有个计时的指标
-2. **timers**:由 poll 控制，检查是否有到期的timer，执行 setTimeout、setInterval的回调
+1. update-time：获取系统时间，保证之后的 timers 有个计时的指标
+2. **timers**:由 poll 控制，检查是否有到期的 timer，执行 setTimeout、setInterval 的回调
 3. **IO callbacks**：处理上一轮未执行的 IO callback
-4. idle,prepare：node内部调用
-5. IO poll：获取新的IO事件，适当情况下会堵塞在这
-6. **check**：执行 setImmediate的回调
-7. **close callbacks**：执行socket的close回调
+4. idle,prepare：node 内部调用
+5. IO poll：获取新的 IO 事件，适当情况下会堵塞在这
+6. **check**：执行 setImmediate 的回调
+7. **close callbacks**：执行 socket 的 close 回调
 
-🐔 ①②⑤⑥都属于宏任务，在浏览器中宏任务可能只有一个，但在 node中，不同的macro会放置在不同的宏队列中
+🐔 ①②⑤⑥ 都属于宏任务，在浏览器中宏任务可能只有一个，但在 node 中，不同的 macro 会放置在不同的宏队列中
 
 🐟 微任务队列有两个 :
-- nextTick Queue：主要放process.nextTick回调
-- other Micro Queue：放其他micro task,比如：promise
+
+- nextTick Queue：主要放 process.nextTick 回调
+- other Micro Queue：放其他 micro task,比如：promise
 
 同样不同的微任务放在不同的微队列中
 
 ---
+
 观察者
 
 libuv 主要有一个**观察者**（负责将事件分类）来管理事件
 
-**事件驱动**的：异步IO、网络请求都是事件的生产者，为node 提供不同的事件类型
+**事件驱动**的：异步 IO、网络请求都是事件的生产者，为 node 提供不同的事件类型
 
-浏览器没有nextTick和setImmediate浏览器主要是 call stack
+浏览器没有 nextTick 和 setImmediate 浏览器主要是 call stack
 
-- idle观察者
-- io观察者
-- check观察者
+- idle 观察者
+- io 观察者
+- check 观察者
 
-不受默认的event loop去管理 
-
-## v8
-- JIT：即时编译，编译的结果直接是机器语言，而不是字节码，大大提高了执行效率
-- 垃圾回收：借鉴了Java VM的垃圾回收管理
-- 内联缓存：this.a没有内存缓存的时候每次a都会对哈希表进行一次寻址，加入v8之后能马上知道这个属性的偏移量
-- 隐藏类：
-
-
-### 编译器
-DSL：针对某一个
-NLP
-AST
-
-### 类型检查和优化
+不受默认的 event loop 去管理

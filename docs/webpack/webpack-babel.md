@@ -17,3 +17,12 @@ babel 会按照顺序访问每个 AST 上的节点，并调用插件对应的函
 最后 babel 把修改过的 AST 再转回代码
 
 剩下的工作就是写入文件或者在进一步处理，其实转换回代码后 babel 的工作就结束了
+
+
+## file-loader和url-loader的区别
+url-loader封装了file-loader。
+
+url-loader 可以识别图片的大小，然后把图片转换成base64，从而减少代码的体积，如果图片超过设定的现在，就还是用 file-loader来处理
+
+
+给图片配了 url-loader 在配置里面就不要再给图片配 file-loader 了 ，因为 url-loader 默认会使用 file-loader 来处理图片的路径关系的，只是加了个当图片太大把路径转成了base64的功能
