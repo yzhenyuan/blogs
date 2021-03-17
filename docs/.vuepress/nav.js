@@ -1,7 +1,7 @@
 module.exports = [
     { text: "基础" , link: "/Basics/html-1"},
     { text: "NodeJS",  link: "/NodeJS/node-1" },
-    { text: "Chrome" , link: '/Chrome/Chrome-1'},
+    { text: "Chrome" , link: '/Chrome/v8'},
     { text: "数据结构&算法" , link: '/Algorithm/algorithm-1'},
     { text: "框架" , items: [
       { text: 'Vue', link: '/vue/vue2-1' },

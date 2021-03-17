@@ -11,7 +11,8 @@ const BasicsJSList = [
 const es6List = [
     'js/module',
     "js/es6-module",
-    "js/es6-Reflect",
+    "js/es6-class",
+    "js/es6-ReflectProxy",
     "js/es6-promise",
     "js/es6-setMap",
     'js/js-for',
@@ -23,7 +24,7 @@ const performanceList = [
     'performance/performance-js',
     'performance/performance-methods'
 ]
-const ChromeList = ["chrome-v8",'chrome-url','chrome-eventLoop','chrome-PWA']
+const ChromeList = ["v8","chrome-v8",'chrome-url','chrome-eventLoop','chrome-PWA']
 const webpackList = ["webpack-1","webpack-2","webpack-babel","webpack-loaderPlugin",'esbuild','swc']
 const TsList = ["ts-basic","ts",'ts.config','ts.d.ts','ts-1','ts-2','ts-3']
 const NodeJSList = [ 
