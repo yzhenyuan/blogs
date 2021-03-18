@@ -50,7 +50,7 @@ const vueList =[
     "vue3-composition",
     "vue3-vs2"
 ]
-const reactList = ['vsVue','react-render','react-fiber', 'react','react-hooks']
+const reactList = [ 'react',"react-lifeCycle",'vsVue','react-render','react-fiber','react-hooks']
 const AlgorithmList =["algorithm-1","algorithm-3"]
 const NetworkList = [
     'http/modules',

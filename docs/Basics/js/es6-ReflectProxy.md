@@ -21,6 +21,11 @@ Reflect.has(Object, "assign"); // true
 
 4. Reflect 对象的方法与 Proxy 对象的方法一一对应，只要是 Proxy 对象的方法，就能在 Reflect 对象上找到对应的方法。这就让 Proxy 对象可以方便地调用对应的 Reflect 方法，完成默认行为，作为修改行为的基础。也就是说，不管 Proxy 怎么修改默认行为，你总可以在 Reflect 上获取默认行为。
 
+### 作用
+
+1. 将原生的 一些零散分布 Object、Function 或全局函数里的方法(apply、delete、get、set)，统一整合到 Reflect 上，更加方便统一管理这些原生 api
+2. 因为 proxy 可以改写原生 api，如果被改写就找不到了，所以可以起到备份 api 的作用
+
 ## Proxy
 
 Proxy 对象用于定义基本操作的自定义行为（如属性查找，赋值，枚举，函数调用等）
