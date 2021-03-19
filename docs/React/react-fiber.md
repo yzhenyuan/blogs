@@ -1,6 +1,6 @@
 # React Fiber
 
-## 为什么要了解 Fiber
+## 一、了解 Fiber
 
 **Fiber 是什么？**---计算机有进程（Process）和线程（Thread）的概念，然后，还有个`Fiber`概念，意思是比线程(Thread)控制得更精密的并发处理机制。
 
@@ -14,11 +14,11 @@ react 在进行组件渲染时，从 setState 开始到渲染完成整个过程�
 
 事实上，我们要解决的其实并不是性能问题，而是 **调度问题**。用户的交互事件属于高优先级，需要尽快响应。而 diff 操作优先级相对没那么高，可以在几个时间段内分片执行。
 
-## 什么是 React Fiber
+## 二、什么是 React Fiber
 
 为了解决 diff 时间过长导致的卡顿问题，React Fiber 用类似 `requestIdleCallback` 的机制来做异步 diff
 
-### 了解 requestIdleCallback
+### requestIdleCallback
 
 `requestIdleCallback` 方法将在浏览器的空闲时段内调用函数。这使开发者能够在主事件循环上执行后台和低优先级工作，而不会影响延迟关键事件，如动画和输入响应。
 
@@ -32,7 +32,7 @@ react 在进行组件渲染时，从 setState 开始到渲染完成整个过程�
 - 循环代替递归（深度优先遍历）——可中断（协程的概念来回交换执行权）
 - requestIdleCallback/requestAnimateFrame —— 可异步（时间切片把 langtime 分成一段一段小任务）
 
-## 二、 如何让 React 的 diff 可中断？
+## 三、 如何让 React 的 diff 可中断？
 
 虚拟 dom 是一个树状结构，diff 操作实际上就是递归遍历了一遍这颗树。
 
@@ -40,28 +40,43 @@ react 在进行组件渲染时，从 setState 开始到渲染完成整个过程�
 
 也就是说，我们需要将递归操作变成遍历操作，Fiber 恰巧也是这么做的。
 
-::: tips 总结
+
 总结一下，为了解决 diff 时间过长导致的卡顿问题，React Fiber 用类似 requestIdleCallback 的机制来做异步 diff。但是之前的数据结构不支持这样的实现异步 diff，于是 React 实现了一个类似链表的数据结构，将原来的 递归 diff 变成了现在的 遍历 diff，这样就能方便的做中断和恢复了。
-:::
-
-## React Fiber polyfill
-
-React16.6 之后在任务调度中意图使用 requestIdleCallback 这个函数，但是它的兼容性并不好，Safari、安卓 8.1 以下、IE 等都是重灾区，所以 React 做了一个 Polyfill，它是怎么做的呢？这里简要介绍下 React16.13.1 中实现的步骤。
-
-### React 如何 polyfill
-
-React 维护了两个小队列 `taskQueue`和`timerQueue`，前者保存等待被调度的任务，后者保存调度中的任务，它们的排列依据分别是任务的超时时间和过期时间。到达超时时间的任务会从`timerQueue`移动到`taskQueue`中，而在过期时间之内`taskQueue`中的任务期望得到执行，React 调度的核心主要是以下几点：
-
-1. 何时把超时的任务从`timerQueue`转移到`taskQueue`；
-2. `taskQueue`中任务的执行时机，以及后续任务的衔接；
-3. 何时暂停执行任务，把资源回交给浏览器。
-
-使用 `unstable_scheduleCallback` 注册任务的时候可以提供两个参数，`delay`表示任务的超时时长，`timeout`表示任务的过期时长（如果没有指定，根据优先程度任务会被分配默认的 timeout 时长）。
-
-如果没有提供`delay`，则任务被直接放到`taskQueue`中等待处理；
-如果提供了`delay`，则任务被放置在`timerQueue`中，此时如果`taskQueue`为空，且当前任务在 timerQueue 的堆顶（当前任务的超时时间最近），则使用 `requestHostTimeout` 启动定时器（setTimeout），在到达当前任务的超时时间时执行 `handleTimeout` ，此函数调用 `advanceTimers` 将`timerQueue`中的任务转移到`taskQueue`中，此时如果`taskQueue`没有开启执行则调用 `requestHostCallback` 启动它，否则继续递归地执行 `handleTimeout` 处理下一个`timerQueue`中的任务。
 
 
+## 四、 原理
 
-旧版react通过递归方式进行渲染，使用的是js的函数调用栈
+旧版 react 通过 **递归** 的方式进行渲染，使用的是js引擎自身的函数调用栈，会一直执行到**栈空**为止
 
+fiber 实现了自己的函数调用栈，以链表的形式遍历组件树，可以实现 暂停、继续、和丢弃执行的任务。实现方式是使用了浏览器 `requestIdleCallback`
+
+### 4.1 react 内部运转
+
+分为三层：
+1. virtual DOM：描述页面长什么样
+2. reconciler （调节器） ：负责调用组件生命周期方法，进行diff运算
+3. renderer 层：渲染相应的页面
+
+### 4.2 任务优先级
+
+为了实现不卡顿，就需要有一个调度器来进行任务分配
+
+优先级高的任务可以打断优先级低的任务的执行，从而更快的生效
+
+任务的优先级有六种：
+1. synchronous：同步任务
+2. task：在next tick 之前执行
+3. animation：下一帧之前执行
+4. high：在不久的将来执行
+5. low：稍微延迟执行也没关系
+6. offscreen：下次 render 或scroll 执行
+
+### 4.3 fiber 执行阶段
+1. 生成fiber 树，得出需要更新的节点信息；这一步是渐进的过程，客户源被打断
+2. 将需要更新的节点一次批量更新，过程不能被打断
+
+### 4.4 fiber 树
+fiber reconciler在阶段一进行diff的时候，会基于 vDOM树 生成一颗 fiber 树，本质是链表
+
+## 五、fiber 跟之前的 stack 算法有什么区别
+stack 

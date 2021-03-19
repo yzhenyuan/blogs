@@ -2,8 +2,6 @@
 
 ## hooks
 
-## Stack算法 和 Fiber算法
-Stack算法
 ## react 库
 
 matarial-ui、Storybook、gatsby、formik、react-hook-form、docusaurus、React TypeScript Cheatsheets、react-use、React-Query、Recoil、react-spring
@@ -15,4 +13,3 @@ matarial-ui、Storybook、gatsby、formik、react-hook-form、docusaurus、React
 import {VFC, FC} from "react"
 const Home = VFC<{}> => ()
 ```
-
