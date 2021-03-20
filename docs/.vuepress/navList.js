@@ -25,7 +25,7 @@ const performanceList = [
     'performance/performance-methods'
 ]
 const ChromeList = ["v8","chrome-v8",'chrome-url','chrome-eventLoop','chrome-PWA']
-const webpackList = ["webpack-1","webpack-2","webpack-babel","webpack-loaderPlugin",'esbuild','swc']
+const webpackList = ["webpack-1","webpack-optimize","webpack-babel","webpack-loaderPlugin",'esbuild','swc']
 const TsList = ["ts-basic","ts",'ts.config','ts.d.ts','ts-1','ts-2','ts-3']
 const NodeJSList = [ 
     "node-1", 
@@ -51,7 +51,7 @@ const vueList =[
     "vue3-vs2"
 ]
 const reactList = [ 'react',"react-lifeCycle",'vsVue','react-render','react-fiber','react-hooks']
-const AlgorithmList =["algorithm-1","algorithm-3"]
+const AlgorithmList =["structure","structure-stack","structure-tree","algorithm-sort"]
 const NetworkList = [
     'http/modules',
     'http/edition',

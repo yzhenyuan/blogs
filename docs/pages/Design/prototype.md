@@ -11,7 +11,7 @@ Person.prototype.name = "Tom";
 Person.prototype.sayName = function() {
   alert(this.name);
 };
-或者;
+// 或者
 Person.prototype = {
   constructor: Person,
   name: "Tom",
@@ -28,6 +28,7 @@ person2.sayName(); //"Tom"
 console.log(person1.sayName == persona2.sayName); //true
 ```
 
-与构造函数相比，
+## 与构造函数相比
+
 原型模式，把公共方法提出来放到 prototype 对象里。
 每个实例 的`[[prototype]]`指针 指向这个对象，所以所有实例的公共方法 是同一个。这样也避免了内存浪费。
