@@ -124,3 +124,35 @@ const React = { createElement: h }
 
 ### 消除不必要的虚拟DOM树遍历和属性比较
 编译器和运行时必须同时工作：编译器分析模板和生成带有优化提示的代码，同时，运行时拾取这些提示，并采取尽可能快的更新策略
+
+
+
+vue2流程
+模板 template==> 本地编译成render() ==> 上线到服务端 ==> 浏览器加载下来
+
+1. new Vue()实例，过程当中👇
+2. Observer 把数据处理成响应式数据
+3. 之后，绑定对应的get/set
+   1. get 收集
+   2. set 分发
+   3. 这个时候并没有马上去触发get/set
+4. 浏览器执行render，过程当中👇
+   1. 创建VNode 
+   2. 会使用with()，上面有个this 指向 vue实例，在里面使用数据的时候会触发 get 
+5. 同时 render的时候，会去new watcher（一个组件对应一个watcher），一个组件编译成一个render
+   1. 加到dep.target上面
+
+
+主要分三步
+1. 初始化
+   1. 把数据处理成响应式数据，也就是加上 setter/getter函数
+   2. Dep就是一个观察者类
+   3. 每一个data的属性都会有一个dep对象
+   4. 当getter调用的时候，去dep里注册
+   5. setter的时候，就是去通知执行刚刚注册的函数
+2. 挂载
+   1. 会创建一个Watcher类的对象，Watcher实际上是连接Vue组件与Dep的桥梁
+   3. 每一个Watcher对应一个组件
+3. 更新
+   1. 发生改变的时候，调用Dep的notify函数
+   2. 通知所有的Watcher调用update函数更新
