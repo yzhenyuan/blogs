@@ -66,8 +66,8 @@ libuv 将事件循环分成 6 个阶段，他们按照顺序反复运行
 2. **timers**:由 poll 控制，检查是否有到期的 timer，执行 setTimeout、setInterval 的回调
 3. **IO callbacks**：处理上一轮未执行的 IO callback
 4. idle,prepare：node 内部调用
-5. IO poll：获取新的 IO 事件，适当情况下会堵塞在这
-6. **check**：执行 setImmediate 的回调
+5. IO poll：获取新的 IO 事件，适当情况下会堵塞在这，网络连接，数据获取，读取文件等操作
+6. **check**：执行 setImmediate() 的回调
 7. **close callbacks**：执行 socket 的 close 回调
 
 🐔 ①②⑤⑥ 都属于宏任务，在浏览器中宏任务可能只有一个，但在 node 中，不同的 macro 会放置在不同的宏队列中

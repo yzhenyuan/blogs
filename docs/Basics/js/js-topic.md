@@ -1,5 +1,29 @@
 # 准备
 
+函数式编程 redux原理 ski组合子（koa-compose）curry
+TS深入的理解 (react Vue 业务逻辑 node 编译原理)
+测试 工程化推动Jest 
+项目 SSR （SPA MPA 同构）   
+Node.js eventloop libuv几个阶段 gc原理 qps 10 -> wrk bigpipe
+工程化 webpack roolup vite snowpack(parcel) swc esbuild microbundle CI/CD
+CSS BFC cssnext houdini 渲染原理 Gpu合成线程 
+原理 redux recoil vue react webpack 同构原理 vuex2 vuex3(inject provide)
+docker 具体 pwa 
+设计模式 网络安全 css csrf webshell dns劫持 点击劫持 
+HTTP协议 v8执行过程 性能优化  微信小程序架构
+
+
+
+
+
+
+
+
+
+
+
+
+
 1. CSS：BFC 容器、居中方式、flex 布局
 2. JS：原型链、函数执行栈、闭包、this
 3. 手写 JS 代码：防抖/节流、Promise.all、快排/归并排序

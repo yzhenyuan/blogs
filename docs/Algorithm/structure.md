@@ -52,3 +52,7 @@ function initArr(n) {
 线性表的衍生结构有三种
 基于读写位置受限
 串：字符串属于静态变量
+
+
+
+microbundle把SDK生成格式
